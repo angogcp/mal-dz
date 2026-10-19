@@ -47,450 +47,22 @@ export const ALL_SCHOOLS: School[] = [
     admission_intake: {
       intake_year: 2026,
       registration_start: "2026-06-01",
-      registration_deadline: "2026-08-30",
-      entrance_exam_date: "2026-09-19",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "必须参加入学试按成绩择优录取",
-      result_release_date: "2026-09-28"
-    },
-    fit_tags: ["万人超级大校", "纯单轨UEC", "学术数理强校", "全走读", "校友网络庞大"],
-    verification_status: {
-      source_level: "official_school_verified",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "foonyew-kulai",
-    name_zh: "宽柔中学古来分校",
-    name_en: "Foon Yew High School - Kulai",
-    name_ms: "Sekolah Menengah Foon Yew Kulai",
-    abbreviation: "古来宽中",
-    founding_year: 2004,
-    school_category: "branch_campus",
-    location: {
-      state: "柔佛",
-      city: "古来",
-      address: "Lot 1856, Jalan Persiaran Indahpura 1, 81000 Kulai, Johor",
-      postcode: "81000",
-      latitude: 1.6375,
-      longitude: 103.6062
-    },
-    contact: {
-      phone: "+60-7-6636479",
-      website_url: "https://www.fyk.edu.my"
-    },
-    academics: {
-      track_type: "单轨制 (纯UEC统考)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "商科", "文商科", "餐饮管理技职科", "电机电子技职科"],
-      academic_highlights: "兼顾传统学术与技职科系，校园宽敞现代化"
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 4500,
-      first_year_est_day_student: 5800
-    },
-    dormitory_and_boarding: {
-      has_dormitory: false,
-      dorm_gender: "无宿舍"
-    },
-    admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-08-30",
-      entrance_exam_date: "2026-09-19",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
-    },
-    fit_tags: ["现代大型校园", "单轨UEC", "设有技职科", "全走读"],
-    verification_status: {
-      source_level: "public_brochure",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "foonyew-bsa",
-    name_zh: "宽柔中学至达城分校",
-    name_en: "Foon Yew High School - Bandar Seri Alam",
-    name_ms: "Sekolah Menengah Foon Yew Bandar Seri Alam",
-    abbreviation: "至达城宽中",
-    founding_year: 2020,
-    school_category: "branch_campus",
-    location: {
-      state: "柔佛",
-      city: "巴西古当",
-      address: "Jalan Persiaran Seri Alam, Bandar Seri Alam, 81750 Masai, Johor",
-      postcode: "81750"
-    },
-    contact: {
-      phone: "+60-7-2133522",
-      website_url: "https://www.foonyewsa.edu.my"
-    },
-    academics: {
-      track_type: "单轨制 (纯UEC统考)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "纯商科", "文商科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 4600,
-      first_year_est_day_student: 5900
-    },
-    dormitory_and_boarding: {
-      has_dormitory: false,
-      dorm_gender: "无宿舍"
-    },
-    fit_tags: ["新锐智慧校园", "单轨UEC", "设备极新", "全走读"],
-    verification_status: {
-      source_level: "public_brochure",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "chonghwa-kluang",
-    name_zh: "居銮中华中学",
-    name_en: "Chong Hwa High School Kluang",
-    name_ms: "Sekolah Menengah Chong Hwa Kluang",
-    abbreviation: "銮中",
-    founding_year: 1918,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "居銮",
-      address: "Jalan Sekolah Chong Hwa, 86000 Kluang, Johor"
-    },
-    contact: {
-      phone: "+60-7-7724021",
-      website_url: "https://www.chonghwa.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "纯商科", "文商科", "美术设计技职科", "资讯与电脑技职科"],
-      academic_highlights: "柔中核心学府，美术与电科技职教育历史悠久"
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3800,
-      first_year_est_day_student: 4800,
-      first_year_est_boarder: 9800
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备",
-      dorm_capacity: 600,
-      air_conditioned: "部分冷气",
-      dorm_fee_monthly: 380,
-      meal_plan: "包早晚两餐"
-    },
-    admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-15",
-      registration_deadline: "2026-09-10",
-      entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
-    },
-    fit_tags: ["寄宿大校", "双轨制", "美术美工强项", "柔中枢纽", "适合外州生"],
-    verification_status: {
-      source_level: "official_school_verified",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "chunghwa-muar",
-    name_zh: "麻坡中化中学",
-    name_en: "Chung Hwa High School Muar",
-    name_ms: "Sekolah Menengah Chung Hwa Muar",
-    abbreviation: "中化中学",
-    founding_year: 1912,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "麻坡",
-      address: "Jalan Junid, 84000 Muar, Johor"
-    },
-    contact: {
-      phone: "+60-6-9522632",
-      website_url: "https://www.chhs.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "纯商科", "文商科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3600,
-      first_year_est_day_student: 4600,
-      first_year_est_boarder: 9600
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["百年名校", "人文底蕴", "双轨制", "设施完善寄宿"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "peichun-pontian",
-    name_zh: "笨珍培群独立中学",
-    name_en: "Pei Chun High School Pontian",
-    name_ms: "Sekolah Menengah Pei Chun Pontian",
-    abbreviation: "培群独中",
-    founding_year: 1922,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "笨珍",
-      address: "Jalan Parit Mesjid, 82000 Pontian, Johor"
-    },
-    contact: {
-      phone: "+60-7-6873980",
-      website_url: "https://peichunhs.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "商科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3500,
-      first_year_est_day_student: 4500,
-      first_year_est_boarder: 9400
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["双轨制", "近新山走廊", "寄宿温馨", "学风纯朴"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "chsbp-batupahat",
-    name_zh: "峇株巴辖华仁中学",
-    name_en: "Chinese High School Batu Pahat",
-    name_ms: "Sekolah Menengah Cina Batu Pahat",
-    abbreviation: "华仁中学",
-    founding_year: 1940,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "峇株巴辖",
-      address: "241, Jalan Tanjung Laboh, 83000 Batu Pahat, Johor"
-    },
-    contact: {
-      phone: "+60-7-4341108",
-      website_url: "https://www.chsbp.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "文商科", "美术设计技职科", "服装设计技职科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3700,
-      first_year_est_day_student: 4700,
-      first_year_est_boarder: 9800
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["人文艺术特色", "服装美术强项", "双轨制", "柔北名校"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "peihwa-tangkak",
-    name_zh: "利丰港培华独立中学",
-    name_en: "Pei Hwa High School Sungai Mati",
-    name_ms: "Sekolah Menengah Pei Hwa",
-    abbreviation: "培华独中",
-    founding_year: 1929,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "东甲",
-      address: "Sungai Mati, 84400 Tangkak, Johor"
-    },
-    contact: {
-      phone: "+60-6-9751032",
-      website_url: "https://peihwa.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "文商科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3200,
-      first_year_est_day_student: 4200,
-      first_year_est_boarder: 8900
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["小班关怀", "亲民学费", "双轨制", "寄宿便利"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "sinhwa-rengit",
-    name_zh: "龙引新文龙中华中学",
-    name_en: "Sin Hwa High School Rengit",
-    name_ms: "Sekolah Menengah Sin Hwa Rengit",
-    abbreviation: "新文龙中华",
-    founding_year: 1957,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "龙引",
-      address: "Jalan Rengit, 83100 Rengit, Johor"
-    },
-    contact: {
-      phone: "+60-7-4241148",
-      website_url: "https://sblchs.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "文商科", "生态农艺技职科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3100,
-      first_year_est_day_student: 4000,
-      first_year_est_boarder: 8600
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["生态农业特色", "平价寄宿", "民风纯朴", "小班教学"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-  {
-    school_id: "yongpeng-high",
-    name_zh: "永平独立中学",
-    name_en: "Yong Peng High School",
-    name_ms: "Sekolah Menengah Yong Peng",
-    abbreviation: "永平独中",
-    founding_year: 1960,
-    school_category: "traditional_60",
-    location: {
-      state: "柔佛",
-      city: "永平",
-      address: "Jalan Sekolah Cina, 83700 Yong Peng, Johor"
-    },
-    contact: {
-      phone: "+60-7-4671611",
-      website_url: "https://yphs.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "文商科"]
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      tuition_junior_yearly: 3200,
-      first_year_est_day_student: 4100,
-      first_year_est_boarder: 8800
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备"
-    },
-    fit_tags: ["关怀型小班", "双轨制", "学费实惠", "外州寄宿友好"],
-    verification_status: {
-      source_level: "dongzong_report",
-      is_verified: true,
-      last_updated: "2026-03-01"
-    }
-  },
-
-  // ===================== 2. 吉隆坡 (4所) =====================
-  {
-    school_id: "chonghwa-kl",
-    name_zh: "吉隆坡中华独立中学",
-    name_en: "Chong Hwa Independent High School, KL",
-    name_ms: "Sekolah Menengah Persendirian Chong Hwa Kuala Lumpur",
-    abbreviation: "隆中华",
-    founding_year: 1919,
-    school_category: "traditional_60",
-    location: {
-      state: "吉隆坡",
-      city: "吉隆坡",
-      address: "Jalan Ipoh, 51100 Kuala Lumpur",
-      postcode: "51100",
-      latitude: 3.1973,
-      longitude: 101.6845,
-      google_map_url: "https://maps.google.com/?q=Chong+Hwa+Independent+High+School+Kuala+Lumpur"
-    },
-    contact: {
-      phone: "+60-3-62587935",
-      email: "chonghwa@chonghwakl.edu.my",
-      website_url: "https://www.chonghwakl.edu.my"
-    },
-    academics: {
-      track_type: "双轨制 (UEC统考 + SPM政府考试)",
-      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
-      senior_tracks: ["理科", "纯商科", "文商科"],
-      academic_highlights: "全员双轨强制修读，学术竞赛与海外名校（北大清华英澳）直录战绩拔尖"
-    },
-    costs_and_fees: {
-      currency: "MYR",
-      registration_fee: 100,
-      tuition_junior_monthly: 650,
-      tuition_junior_yearly: 6500,
-      tuition_senior_yearly: 7200,
-      misc_fee_annual: 800,
-      first_year_est_day_student: 8200,
-      first_year_est_boarder: 16500,
-      scholarship_info: "学业优异者提供高额奖学金，清寒生可申请助学金"
-    },
-    dormitory_and_boarding: {
-      has_dormitory: true,
-      dorm_gender: "男女宿舍兼备",
-      dorm_capacity: 400,
-      room_types: ["4人间"],
-      air_conditioned: "全冷气",
-      study_hall_rules: "晚自习制度极其严格，禁止任何游戏电子产品",
-      electronics_policy: "周一至周五手机由舍监统一封存锁柜保管"
-    },
-    admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
       registration_deadline: "2026-09-15",
       entrance_exam_date: "2026-10-03",
       exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "必须参加入学试按成绩择优录取",
-      result_release_date: "2026-10-12"
+      exam_format: "四科统一命题闭卷笔试，每科各1小时，注重高阶思维",
+      exam_venue: "吉隆坡中华独中本部及指定外州/东海岸考场",
+      admission_mode: "保送免试直录与新生入学考试并行遴选",
+      direct_admission_criteria: [
+        "华小五、六年级各学期总平均成绩达 80 分以上可申请【特优免试直录】",
+        "获华小学校长特别具函保送推荐之品学兼优模范生",
+        "曾代表州或国家参加入学相关学术、数理奥林匹克或球类比赛获前三名者",
+        "友好华小校内排名前 5% 优秀毕业生保送名额"
+      ],
+      result_release_date: "2026-10-12",
+      registration_payment_deadline: "2026-10-22",
+      dorm_application_deadline: "2026-10-20 (外州生须随同注册缴费提交宿舍申请与体检证明)",
+      scholarship_quota: "入学试考获前 30 名特颁初一学杂费全免/半免奖学金；另设常年清寒子弟助学金"
     },
     fit_tags: ["顶尖学术", "严谨治学", "双轨全修", "名校录取率高", "竞争氛围浓厚", "外州生寄宿紧张"],
     verification_status: {
@@ -541,7 +113,18 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-10",
       entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      exam_format: "四科联考，英文与数学设深度应用题，注重国际视野",
+      admission_mode: "成绩达标免试保送 + 入学甄拔考试",
+      direct_admission_criteria: [
+        "华小五年级全年及六年级上半年四科总平均达 85 分以上免试直录",
+        "华小学校长具函保送推荐的优秀模范毕业生（限额审核）",
+        "全国数理竞赛金奖、三语演讲或国际机器人赛优胜者保送"
+      ],
+      result_release_date: "2026-10-06",
+      registration_payment_deadline: "2026-10-16",
+      dorm_application_deadline: "2026-10-15 (限女生及外州优异男生申请)",
+      scholarship_quota: "入学试排名前 20 名获初一年学费全免奖学金"
     },
     fit_tags: ["百年名校", "英语环境突出", "全人教育", "设施顶尖", "高升学率"],
     verification_status: {
@@ -584,6 +167,22 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: false,
       dorm_gender: "无宿舍"
+    },
+    admission_intake: {
+      intake_year: 2026,
+      registration_start: "2026-06-01",
+      registration_deadline: "2026-09-12",
+      entrance_exam_date: "2026-09-26",
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "五六年级优异成绩免试录取 + 统一入学选拔试",
+      direct_admission_criteria: [
+        "华小五年级及六年级上半年华国英数达全A或总平均 80 分以上直接免试录取",
+        "华小学校长签署推荐函之保送优等生",
+        "州级学术比赛代表直接保送"
+      ],
+      result_release_date: "2026-10-05",
+      registration_payment_deadline: "2026-10-15",
+      scholarship_quota: "成绩前 15 名免除初一全年学费"
     },
     fit_tags: ["纪律严谨", "学术过硬", "全走读", "数码教学典范", "吉隆坡四大校"],
     verification_status: {
@@ -680,7 +279,17 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-12",
       entrance_exam_date: "2026-10-03",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "保送免试直录与新生入学考试并行",
+      direct_admission_criteria: [
+        "华小五、六年级各学期总成绩达 80 分以上直接免试保送",
+        "华小学校长推荐之杰出品学兼优生 / 学长团团长 / 模范生",
+        "全国奥林匹克数理赛、创客机器人赛州代表保送直录"
+      ],
+      result_release_date: "2026-10-09",
+      registration_payment_deadline: "2026-10-19",
+      dorm_application_deadline: "2026-10-18 (现代化公寓式宿舍，外州生优先保留)",
+      scholarship_quota: "入学考前 20 名获全免或半免学费优异奖学金"
     },
     fit_tags: ["雪州名校龙头", "现代高科技校园", "自主学习典范", "宿舍设施高档", "双轨并重"],
     verification_status: {
@@ -858,7 +467,19 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-20",
       entrance_exam_date: "2026-10-04",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      exam_venue: "芙中本部、吉隆坡中华分考场、雪兰莪分考场",
+      admission_mode: "外州绿色直录 + 华小保送 + 统一入学选拔试",
+      direct_admission_criteria: [
+        "华小五年级及六年级上半年总成绩平均达 75 分以上直接免试录取",
+        "雪隆及外州华小学校长具函保送推荐优异生",
+        "森美兰州各华小校内排名前五名保送直录",
+        "外州住宿生专设提前审核绿色通道"
+      ],
+      result_release_date: "2026-10-12",
+      registration_payment_deadline: "2026-10-25",
+      dorm_application_deadline: "2026-10-25 (千人寄宿大校，住宿申请与学籍注册同步确认)",
+      scholarship_quota: "入学考前 30 名享有初一学杂费减免奖学金"
     },
     fit_tags: ["全马寄宿标杆", "外州生首选", "校园依山傍水", "单双轨兼设", "生活独立能力培养"],
     verification_status: {
@@ -1152,7 +773,17 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-15",
       registration_deadline: "2026-10-15",
       entrance_exam_date: "2026-10-24",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "华小保送优先 + 入学甄拔试",
+      direct_admission_criteria: [
+        "华小学校长具函推荐信即可直接保送免试录取",
+        "外州寄宿生凭华小校考成绩单提前免试预录",
+        "操行品格达乙等以上合格"
+      ],
+      result_release_date: "2026-10-30",
+      registration_payment_deadline: "2026-11-10",
+      dorm_application_deadline: "2026-11-10 (严格纪律寄宿，须签署宿舍守则)",
+      scholarship_quota: "提供清寒子弟助学金与优秀寄宿生学费减免"
     },
     fit_tags: ["纪律严管典范", "雪隆外派寄宿首选", "品格教育", "性价比较高"],
     verification_status: {
@@ -1361,7 +992,16 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-15",
       entrance_exam_date: "2026-10-03",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "特优保送直录 + 入学甄拔试按分录取",
+      direct_admission_criteria: [
+        "华小五、六年级校内总成绩 80 分以上可免试直录",
+        "国际/全国数理奥林匹克比赛金银牌保送并颁发全免奖学金",
+        "槟城各华小全级前三名校长保送推荐"
+      ],
+      result_release_date: "2026-10-10",
+      registration_payment_deadline: "2026-10-20",
+      scholarship_quota: "入学考前 10 名获免交初一至高三全额学费荣誉奖"
     },
     fit_tags: ["北马学术第一校", "国际数理强校", "发明创新典范", "双轨顶尖", "外州生青睐"],
     verification_status: {
@@ -1742,7 +1382,16 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-30",
       entrance_exam_date: "2026-10-10",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "东海岸华小保送 + 入学甄拔考试",
+      direct_admission_criteria: [
+        "彭亨州及东海岸华小五年级/六年级总成绩达 75 分以上免试直录",
+        "华小学校长具函保送推荐",
+        "外州生优先安排全冷气学生宿舍"
+      ],
+      result_release_date: "2026-10-18",
+      registration_payment_deadline: "2026-10-28",
+      dorm_application_deadline: "2026-10-28"
     },
     fit_tags: ["东海岸现代化独中", "双轨制", "全冷气宿舍", "寄宿管理规范"],
     verification_status: {
@@ -1794,7 +1443,16 @@ export const ALL_SCHOOLS: School[] = [
       registration_start: "2026-06-01",
       registration_deadline: "2026-09-15",
       entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "特优保送 + 新生资格考试",
+      direct_admission_criteria: [
+        "亚庇及全沙巴各华小五年级及六年级总平均达 80 分以上直接免试录取",
+        "华小学校长保送特别名额",
+        "全州数理竞赛、三语演讲优胜代表直接保送"
+      ],
+      result_release_date: "2026-10-05",
+      registration_payment_deadline: "2026-10-18",
+      scholarship_quota: "入学考前 15 名获初一学费全免奖励"
     },
     fit_tags: ["东马学术龙头", "双轨强校", "沙巴第一学府", "寄宿设施齐全"],
     verification_status: {
@@ -2152,6 +1810,21 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+      intake_year: 2026,
+      registration_start: "2026-06-01",
+      registration_deadline: "2026-09-30",
+      entrance_exam_date: "2026-10-10",
+      exam_subjects: ["华文", "国文", "英文", "数学"],
+      admission_mode: "校长保送直通 + 统一评估试",
+      direct_admission_criteria: [
+        "古晋属下华小校长推荐信直接保送免试录取",
+        "华小五、六年级各科平均达标者免试直录",
+        "享有砂拉越州政府特别奖助学金资助"
+      ],
+      result_release_date: "2026-10-20",
+      registration_payment_deadline: "2026-10-31"
     },
     fit_tags: ["砂拉越旗舰名校", "受州政府支持承认", "全人与学术兼备", "性价比较高"],
     verification_status: {

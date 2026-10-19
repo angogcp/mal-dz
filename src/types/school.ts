@@ -58,8 +58,14 @@ export interface School {
     open_day_dates?: string[];
     entrance_exam_date?: string;
     exam_subjects?: string[];
+    exam_format?: string;
+    exam_venue?: string;
     admission_mode?: string;
+    direct_admission_criteria?: string[]; // 保送与免试直录条件
     result_release_date?: string;
+    registration_payment_deadline?: string; // 注册缴费确认截止
+    scholarship_quota?: string; // 优异新生奖学金细则
+    dorm_application_deadline?: string; // 外州住宿申请截止
   };
   fit_tags: string[];
   verification_status: {

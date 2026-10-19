@@ -10,7 +10,7 @@ import {
   BookOpen, Calculator, Calendar, ExternalLink, 
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
   GraduationCap, HelpCircle, Phone, Globe, DollarSign,
-  Sparkles, Share2, Layers, Check
+  Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -33,6 +33,9 @@ export default function HomePage() {
   // Share Modal state
   const [isShareOpen, setIsShareOpen] = useState(false);
 
+  // Timeline table filter state
+  const [timelineStateFilter, setTimelineStateFilter] = useState('全部');
+
   // Calculator state
   const [calcSchoolId, setCalcSchoolId] = useState<string>('foonyew-jb');
   const [calcIsBoarder, setCalcIsBoarder] = useState<boolean>(false);
@@ -52,7 +55,7 @@ export default function HomePage() {
     return counts;
   }, []);
 
-  // Filter logic
+  // Filter logic for main directory
   const filteredSchools = useMemo(() => {
     return ALL_SCHOOLS.filter((school) => {
       // Keyword search
@@ -86,6 +89,14 @@ export default function HomePage() {
     });
   }, [searchTerm, selectedState, selectedDorm, selectedTrack, selectedTag]);
 
+  // Filtered schools for timeline section
+  const timelineSchools = useMemo(() => {
+    return ALL_SCHOOLS.filter(s => {
+      const matchState = timelineStateFilter === '全部' || s.location.state === timelineStateFilter;
+      return matchState && s.admission_intake;
+    });
+  }, [timelineStateFilter]);
+
   // Toggle comparison
   const toggleCompare = (school: School) => {
     if (compareList.some(s => s.school_id === school.school_id)) {
@@ -111,7 +122,7 @@ export default function HomePage() {
     const dormAnnual = (calcSchool.dormitory_and_boarding.dorm_fee_monthly || 400) * 11;
     const transportAnnual = calcMonthlyTransport * 11;
 
-    const yearlyCostJunior = baseJunior + (calcIsBoarder ? dormAnnual : transportAnnual) + 800; // 800 misc
+    const yearlyCostJunior = baseJunior + (calcIsBoarder ? dormAnnual : transportAnnual) + 800;
     const yearlyCostSenior = baseSenior + (calcIsBoarder ? dormAnnual : transportAnnual) + 900;
 
     const total6Years = (yearlyCostJunior * 3) + (yearlyCostSenior * 3);
@@ -152,10 +163,11 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" />
             </button>
             <a
-              href="#directory"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm"
+              href="#timeline"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
             >
-              浏览 63 所独中全名单
+              <Clock className="w-4 h-4 text-red-700" />
+              <span>查看 2026 招生日程与保送条件</span>
             </a>
           </div>
 
@@ -215,7 +227,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* State Distribution Visualizer (Pills with Counts) */}
+        {/* State Distribution Visualizer */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 mb-8">
           <div>
             <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
@@ -371,6 +383,20 @@ export default function HomePage() {
                     )}
                   </div>
 
+                  {/* Admission Quick Info Pill */}
+                  {school.admission_intake && (
+                    <div className="mt-3 p-2 rounded-lg bg-red-50/70 border border-red-100 text-[11px] text-red-900 flex items-center justify-between">
+                      <span className="truncate">
+                        考试日：<strong>{school.admission_intake.entrance_exam_date || '9-10月'}</strong>
+                      </span>
+                      {school.admission_intake.direct_admission_criteria && (
+                        <span className="font-bold text-emerald-700 bg-white px-1.5 py-0.5 rounded border border-emerald-200 shrink-0 ml-1">
+                          可保送免试
+                        </span>
+                      )}
+                    </div>
+                  )}
+
                   {/* Tags */}
                   <div className="mt-3 flex flex-wrap gap-1">
                     {school.fit_tags.slice(0, 3).map((tag) => (
@@ -425,7 +451,7 @@ export default function HomePage() {
                 <span>多校横向对比器 (已选 {compareList.length}/4)</span>
               </h2>
               <p className="text-slate-500 text-sm mt-1">
-                选择 2–4 所心仪学校，客观横向对比学费总投入、住宿规则与升学分流。
+                选择 2–4 所心仪学校，客观横向对比保送条件、招考日程、学费总投入与寄宿管理。
               </p>
             </div>
 
@@ -453,7 +479,7 @@ export default function HomePage() {
               <Building2 className="w-12 h-12 text-slate-300 mx-auto mb-3" />
               <p className="text-slate-600 font-medium">暂未选择对比学校</p>
               <p className="text-slate-400 text-xs mt-1">
-                请在上方学校库中点击“+ 加入对比”，即可在此处一览各校详细差异。
+                请在上方学校库中点击“+ 加入对比”，即可在此处一览各校保送、招考与费用差异。
               </p>
             </div>
           ) : (
@@ -480,6 +506,51 @@ export default function HomePage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
+                  {/* DIRECT ADMISSION ROW */}
+                  <tr className="bg-emerald-50/30">
+                    <td className="p-3 bg-emerald-50/70 font-bold text-emerald-900 text-xs flex items-center space-x-1">
+                      <Award className="w-3.5 h-3.5 text-emerald-700 inline" />
+                      <span>保送与免试直录条件</span>
+                    </td>
+                    {compareList.map((sch) => (
+                      <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
+                        {sch.admission_intake?.direct_admission_criteria && sch.admission_intake.direct_admission_criteria.length > 0 ? (
+                          <div className="space-y-1">
+                            {sch.admission_intake.direct_admission_criteria.map((c, i) => (
+                              <div key={i} className="flex items-start space-x-1.5 text-slate-700">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                                <span className="leading-tight">{c}</span>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="text-slate-400">常规全员参加入学甄拔考试</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* EXAM DATES ROW */}
+                  <tr className="bg-red-50/20">
+                    <td className="p-3 bg-red-50/50 font-bold text-red-900 text-xs">
+                      招考关键日程
+                    </td>
+                    {compareList.map((sch) => (
+                      <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
+                        {sch.admission_intake ? (
+                          <div className="space-y-1">
+                            <div>报名截止：<strong>{sch.admission_intake.registration_deadline || '9月'}</strong></div>
+                            <div className="text-red-700 font-bold">考试日期：{sch.admission_intake.entrance_exam_date || '待公布'}</div>
+                            <div className="text-slate-500">放榜日期：{sch.admission_intake.result_release_date || '考后公布'}</div>
+                            <div className="text-slate-600">注册确认：{sch.admission_intake.registration_payment_deadline || '放榜后10日'}</div>
+                          </div>
+                        ) : (
+                          <span className="text-slate-400">详询校方招生处</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">学制轨道</td>
                     {compareList.map((sch) => (
@@ -688,53 +759,142 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. 2026 ADMISSION TIMELINE */}
+      {/* 5. 2026 ADMISSION TIMELINE & POLICY MATRIX */}
       <section id="timeline" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center justify-center space-x-2">
             <Calendar className="w-8 h-8 text-red-700" />
-            <span>2026 全马独中招生日历总表</span>
+            <span>2026 全马独中招生日历与保送条件总汇</span>
           </h2>
           <p className="text-slate-500 text-sm mt-2">
-            独中招考季通常从每年 6 月持续到 11 月，提前锁定报名与考试节点，避免错过心仪学校。
+            独中招考季通常从每年 6 月持续到 11 月。各校【免试保送】与【入学考日期】如下，谨防考试撞期！
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* 4 Stage Timeline Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
             <div className="w-1.5 h-full bg-blue-600 absolute left-0 top-0"></div>
             <div className="text-xs font-bold text-blue-600 tracking-wider">阶段一：6月 - 8月</div>
-            <h4 className="font-bold text-slate-900 text-base mt-1">简章发布与线上报名</h4>
+            <h4 className="font-bold text-slate-900 text-base mt-1">简章发布与保送申请</h4>
             <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-              各独中陆续发布初一新生简章，开放官网报名，名校（宽柔、隆中华、坤成、日新）启动报名并举办开放日。
+              各校官网开放报名，提交华小五年级/六年级在校成绩单申请【免试保送直录】。名校陆续举办开放日。
             </p>
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
             <div className="w-1.5 h-full bg-amber-500 absolute left-0 top-0"></div>
             <div className="text-xs font-bold text-amber-600 tracking-wider">阶段二：9月 - 10月</div>
-            <h4 className="font-bold text-slate-900 text-base mt-1">新生入学资格考试</h4>
+            <h4 className="font-bold text-slate-900 text-base mt-1">入学资格甄拔考试</h4>
             <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-              全马入学试最高峰！四科联考（华、国、英、数）。考生凭成绩单获得普通班、特辅班录取或免除学费奖学金。
+              全马入学试最高峰！四科联考（华、国、英、数）。考生按成绩竞争普通班录取或前数十名免学杂费奖学金。
             </p>
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
             <div className="w-1.5 h-full bg-emerald-600 absolute left-0 top-0"></div>
             <div className="text-xs font-bold text-emerald-600 tracking-wider">阶段三：10月 - 11月</div>
-            <h4 className="font-bold text-slate-900 text-base mt-1">放榜与注册缴费</h4>
+            <h4 className="font-bold text-slate-900 text-base mt-1">放榜与注册缴费锁定</h4>
             <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-              公布录取名单与候补名单。家长须在指定期限内完成注册并缴付新生学杂费，外州生提交宿舍申请。
+              公布正取与备取名单。家长须在截止日前缴费确认学籍，外州寄宿生同步提交宿舍申请与体检报告。
             </p>
           </div>
 
           <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
             <div className="w-1.5 h-full bg-purple-600 absolute left-0 top-0"></div>
             <div className="text-xs font-bold text-purple-600 tracking-wider">阶段四：12月 - 次年1月</div>
-            <h4 className="font-bold text-slate-900 text-base mt-1">新生迎新与入舍入住</h4>
+            <h4 className="font-bold text-slate-900 text-base mt-1">迎新入宿与新学年</h4>
             <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-              购买校服、领课本、参加入宿说明会及迎新营。新学年通常于每年 1 月正式开学（与全国学年同步）。
+              购置校服、领新课本、参加入宿说明会及迎新营。新学年于每年 1 月正式开学（与全马学年同步）。
             </p>
+          </div>
+        </div>
+
+        {/* Detailed Intake & Direct Admission Table */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                <Clock className="w-5 h-5 text-red-700" />
+                <span>各校招考日程与保送免试条件对照表</span>
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                点击表格可快速核对各校报名截止、考试日（红色高亮）及保送免试录取门槛。
+              </p>
+            </div>
+
+            {/* State filter for timeline */}
+            <div className="flex items-center space-x-2">
+              <span className="text-xs text-slate-500">按州属过滤：</span>
+              <select
+                value={timelineStateFilter}
+                onChange={(e) => setTimelineStateFilter(e.target.value)}
+                className="text-xs py-1.5 px-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-red-600"
+              >
+                {states.map(st => (
+                  <option key={st} value={st}>{st}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse text-left text-xs">
+              <thead>
+                <tr className="bg-slate-100 border-b border-slate-200">
+                  <th className="p-3 font-bold text-slate-700 w-44">学校名称 (州属)</th>
+                  <th className="p-3 font-bold text-slate-700 w-28">报名截止日</th>
+                  <th className="p-3 font-bold text-red-700 w-32">入学考试日</th>
+                  <th className="p-3 font-bold text-emerald-800">保送与免试直录条件</th>
+                  <th className="p-3 font-bold text-slate-700 w-28">放榜/注册确认</th>
+                  <th className="p-3 font-bold text-slate-700 w-24 text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {timelineSchools.map(sch => (
+                  <tr key={sch.school_id} className="hover:bg-slate-50/70 transition">
+                    <td className="p-3">
+                      <div className="font-bold text-slate-900 text-sm">{sch.name_zh}</div>
+                      <div className="text-[11px] text-slate-500">{sch.location.state} · {sch.location.city}</div>
+                    </td>
+                    <td className="p-3 text-slate-700 font-medium">
+                      {sch.admission_intake?.registration_deadline || '9月'}
+                    </td>
+                    <td className="p-3">
+                      <span className="inline-block px-2 py-1 rounded bg-red-100 text-red-800 font-bold">
+                        {sch.admission_intake?.entrance_exam_date || '9-10月'}
+                      </span>
+                    </td>
+                    <td className="p-3">
+                      {sch.admission_intake?.direct_admission_criteria && sch.admission_intake.direct_admission_criteria.length > 0 ? (
+                        <div className="space-y-1">
+                          {sch.admission_intake.direct_admission_criteria.slice(0, 2).map((c, i) => (
+                            <div key={i} className="flex items-start space-x-1 text-slate-700 text-[11px]">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                              <span className="line-clamp-1">{c}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-slate-400">统一参加入学甄拔试录取</span>
+                      )}
+                    </td>
+                    <td className="p-3 text-slate-600">
+                      <div>放榜：{sch.admission_intake?.result_release_date || '考后'}</div>
+                      <div className="text-[10px] text-slate-400">截止：{sch.admission_intake?.registration_payment_deadline || '放榜后10天'}</div>
+                    </td>
+                    <td className="p-3 text-center">
+                      <button
+                        onClick={() => setActiveModalSchool(sch)}
+                        className="px-2.5 py-1.5 rounded-lg bg-slate-900 text-white font-medium text-[11px] hover:bg-slate-800 transition"
+                      >
+                        详情
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -855,6 +1015,91 @@ export default function HomePage() {
             </div>
 
             <div className="mt-6 space-y-6 text-sm text-slate-700">
+              {/* 🌟 2026 初一招生与保送直录全指南 (NEW HIGH-VALUE SECTION) */}
+              <div className="p-4 rounded-2xl bg-gradient-to-br from-red-50/80 via-white to-amber-50/50 border border-red-200/80 space-y-4 shadow-sm">
+                <div className="flex items-center justify-between border-b border-red-100 pb-2.5">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
+                    <h5 className="font-bold text-slate-900 text-sm">2026 初一新生招考与保送直录全指南</h5>
+                  </div>
+                  <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
+                    {activeModalSchool.admission_intake?.admission_mode || '入学考试遴选'}
+                  </span>
+                </div>
+
+                {/* Direct Admission / Guaranteed Criteria */}
+                <div>
+                  <div className="flex items-center space-x-1.5 text-xs font-bold text-emerald-800 mb-2">
+                    <Award className="w-4 h-4 text-emerald-600" />
+                    <span>免试保送 / 绿色直录条件 (Direct Admission)：</span>
+                  </div>
+                  {activeModalSchool.admission_intake?.direct_admission_criteria && activeModalSchool.admission_intake.direct_admission_criteria.length > 0 ? (
+                    <div className="space-y-1.5">
+                      {activeModalSchool.admission_intake.direct_admission_criteria.map((crit, idx) => (
+                        <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700 bg-white/90 p-2.5 rounded-xl border border-slate-200">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span className="leading-snug">{crit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-slate-500 bg-white/60 p-2.5 rounded-xl border border-slate-200">
+                      该校主要依据华小五、六年级在校学业成绩评估或统一入学甄拔考试成绩择优录取，详见招生章程。
+                    </p>
+                  )}
+                </div>
+
+                {/* Timeline Milestones Grid */}
+                <div>
+                  <div className="text-xs font-bold text-slate-700 mb-2">关键招考日程节点：</div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 block">报名起止时间</span>
+                      <span className="font-semibold text-slate-900 block mt-0.5">
+                        {activeModalSchool.admission_intake?.registration_start || '6月'} ~ {activeModalSchool.admission_intake?.registration_deadline || '9月'}
+                      </span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-xl border border-red-300 bg-red-50/30">
+                      <span className="text-[10px] text-red-600 font-bold block">新生入学甄拔考试日</span>
+                      <span className="font-black text-red-700 block mt-0.5">
+                        {activeModalSchool.admission_intake?.entrance_exam_date || '9月 - 10月'}
+                      </span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 block">录取放榜日</span>
+                      <span className="font-semibold text-slate-900 block mt-0.5">
+                        {activeModalSchool.admission_intake?.result_release_date || '考后 1-2 周'}
+                      </span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-xl border border-slate-200">
+                      <span className="text-[10px] text-slate-400 block">注册缴费确认截止</span>
+                      <span className="font-semibold text-slate-900 block mt-0.5">
+                        {activeModalSchool.admission_intake?.registration_payment_deadline || '放榜后10日内'}
+                      </span>
+                    </div>
+                    <div className="bg-white p-2.5 rounded-xl border border-amber-300 bg-amber-50/30 sm:col-span-2">
+                      <span className="text-[10px] text-amber-800 font-bold block">外州生宿舍申请截止</span>
+                      <span className="font-semibold text-slate-900 block mt-0.5">
+                        {activeModalSchool.admission_intake?.dorm_application_deadline || (activeModalSchool.dormitory_and_boarding.has_dormitory ? '注册缴费时同步提交申请' : '该校无宿舍 (全走读)')}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Exam details & Scholarships */}
+                <div className="space-y-1.5 text-xs text-slate-600 bg-white/70 p-3 rounded-xl border border-slate-200">
+                  {activeModalSchool.admission_intake?.exam_subjects && (
+                    <div>• <strong>考试科目</strong>：{activeModalSchool.admission_intake.exam_subjects.join('、')} (按华小六年级大纲命题)</div>
+                  )}
+                  {activeModalSchool.admission_intake?.exam_format && (
+                    <div>• <strong>考务形式</strong>：{activeModalSchool.admission_intake.exam_format}</div>
+                  )}
+                  {activeModalSchool.admission_intake?.scholarship_quota && (
+                    <div className="text-amber-800 font-semibold">• <strong>优异新生奖学金</strong>：{activeModalSchool.admission_intake.scholarship_quota}</div>
+                  )}
+                </div>
+              </div>
+
               {/* Highlights */}
               <div>
                 <h5 className="font-bold text-slate-900 mb-1 text-xs uppercase tracking-wider text-slate-500">办学理念与特色</h5>
