@@ -3,11 +3,14 @@
 import React, { useState, useMemo } from 'react';
 import { ALL_SCHOOLS } from '../data/schoolsData';
 import { School } from '../types/school';
+import FitQuizModal from '../components/FitQuizModal';
+import ShareComparisonModal from '../components/ShareComparisonModal';
 import { 
   Search, Filter, MapPin, Building2, BedDouble, 
   BookOpen, Calculator, Calendar, ExternalLink, 
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
-  GraduationCap, HelpCircle, Phone, Globe, DollarSign
+  GraduationCap, HelpCircle, Phone, Globe, DollarSign,
+  Sparkles, Share2, Layers, Check
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -24,6 +27,12 @@ export default function HomePage() {
   // Modal detail state
   const [activeModalSchool, setActiveModalSchool] = useState<School | null>(null);
 
+  // Quiz Modal state
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
+  // Share Modal state
+  const [isShareOpen, setIsShareOpen] = useState(false);
+
   // Calculator state
   const [calcSchoolId, setCalcSchoolId] = useState<string>('foonyew-jb');
   const [calcIsBoarder, setCalcIsBoarder] = useState<boolean>(false);
@@ -33,6 +42,15 @@ export default function HomePage() {
     '全部', '柔佛', '吉隆坡', '雪兰莪', '森美兰', '马六甲', 
     '霹雳', '槟城', '吉打', '吉兰丹', '彭亨', '沙巴', '砂拉越'
   ];
+
+  // State school count map
+  const stateCounts = useMemo(() => {
+    const counts: Record<string, number> = { '全部': ALL_SCHOOLS.length };
+    ALL_SCHOOLS.forEach(s => {
+      counts[s.location.state] = (counts[s.location.state] || 0) + 1;
+    });
+    return counts;
+  }, []);
 
   // Filter logic
   const filteredSchools = useMemo(() => {
@@ -106,7 +124,7 @@ export default function HomePage() {
   }, [calcSchool, calcIsBoarder, calcMonthlyTransport]);
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-16 pb-24 relative">
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-b from-amber-50 via-white to-slate-50 pt-16 pb-20 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -123,11 +141,29 @@ export default function HomePage() {
             告别分散繁杂的简章与社群传闻。独中通为家长与学生提供全马独中统一结构化档案、多校横向对比、外州寄宿生活指南、首年真实总开支测算与 UEC 统考全球升学路径。
           </p>
 
+          {/* Action CTAs */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <button
+              onClick={() => setIsQuizOpen(true)}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <Sparkles className="w-4 h-4" />
+              <span>智能匹配：5题测评最适合哪所独中</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <a
+              href="#directory"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm"
+            >
+              浏览 63 所独中全名单
+            </a>
+          </div>
+
           {/* Quick Stat Cards */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
               <div className="text-2xl sm:text-3xl font-black text-red-700">63 所</div>
-              <div className="text-xs sm:text-sm font-medium text-slate-500 mt-1">全国独中全覆盖 (含分校/关中)</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-500 mt-1">全国独中全收录 (含分校/关中)</div>
             </div>
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
               <div className="text-2xl sm:text-3xl font-black text-amber-600">12 州属</div>
@@ -135,7 +171,7 @@ export default function HomePage() {
             </div>
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
               <div className="text-2xl sm:text-3xl font-black text-emerald-700">&gt;85%</div>
-              <div className="text-xs sm:text-sm font-medium text-slate-500 mt-1">学校设规范学生宿舍</div>
+              <div className="text-xs sm:text-sm font-medium text-slate-500 mt-1">学校设有规范学生宿舍</div>
             </div>
             <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
               <div className="text-2xl sm:text-3xl font-black text-sky-700">TCO</div>
@@ -179,23 +215,29 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Filters Bar */}
+        {/* State Distribution Visualizer (Pills with Counts) */}
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4 mb-8">
-          {/* State Filter */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">按州属筛选：</label>
+            <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              按州属快速定位 (附各州独中数量)：
+            </label>
             <div className="flex flex-wrap gap-1.5 sm:gap-2">
               {states.map((st) => (
                 <button
                   key={st}
                   onClick={() => setSelectedState(st)}
-                  className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition ${
+                  className={`px-3 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition flex items-center space-x-1.5 ${
                     selectedState === st
                       ? 'bg-red-700 text-white shadow-sm'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
-                  {st}
+                  <span>{st}</span>
+                  <span className={`text-[11px] px-1.5 py-0.2 rounded-full ${
+                    selectedState === st ? 'bg-red-900/50 text-white' : 'bg-slate-200 text-slate-600'
+                  }`}>
+                    {stateCounts[st] || 0}
+                  </span>
                 </button>
               ))}
             </div>
@@ -388,12 +430,21 @@ export default function HomePage() {
             </div>
 
             {compareList.length > 0 && (
-              <button
-                onClick={() => setCompareList([])}
-                className="text-xs font-medium text-slate-500 hover:text-red-700 underline self-start sm:self-auto"
-              >
-                清空对比列表
-              </button>
+              <div className="flex items-center space-x-3">
+                <button
+                  onClick={() => setIsShareOpen(true)}
+                  className="px-4 py-2 rounded-xl bg-red-50 text-red-700 font-semibold text-xs border border-red-200 hover:bg-red-100 transition flex items-center space-x-1.5"
+                >
+                  <Share2 className="w-4 h-4" />
+                  <span>导出 / 分享对比简报</span>
+                </button>
+                <button
+                  onClick={() => setCompareList([])}
+                  className="text-xs font-medium text-slate-400 hover:text-red-700 underline"
+                >
+                  清空
+                </button>
+              </div>
             )}
           </div>
 
@@ -739,6 +790,47 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FLOATING COMPARISON BAR (When schools are selected) */}
+      {compareList.length > 0 && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 backdrop-blur-md text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 flex items-center space-x-4 animate-bounce-short">
+          <div className="flex items-center space-x-2">
+            <Layers className="w-5 h-5 text-amber-400" />
+            <span className="text-xs sm:text-sm font-semibold">
+              已选 <span className="text-amber-400 font-bold">{compareList.length}</span>/4 所学校
+            </span>
+          </div>
+          <div className="h-4 w-px bg-slate-700"></div>
+          <a
+            href="#comparator"
+            className="px-3.5 py-1.5 rounded-xl bg-red-700 hover:bg-red-800 text-xs font-bold transition flex items-center space-x-1"
+          >
+            <span>立即对比</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
+          <button
+            onClick={() => setCompareList([])}
+            className="text-xs text-slate-400 hover:text-white"
+          >
+            清空
+          </button>
+        </div>
+      )}
+
+      {/* MODAL: FIT QUIZ */}
+      <FitQuizModal
+        isOpen={isQuizOpen}
+        onClose={() => setIsQuizOpen(false)}
+        onSelectSchoolForDetail={(s) => setActiveModalSchool(s)}
+        onAddToCompare={(s) => toggleCompare(s)}
+      />
+
+      {/* MODAL: SHARE COMPARISON */}
+      <ShareComparisonModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        schools={compareList}
+      />
 
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {activeModalSchool && (
