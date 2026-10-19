@@ -12,3 +12,51 @@ body {
   background-color: rgb(var(--background-rgb));
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+/* ================= PRINT OPTIMIZATIONS ================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  /* Hide regular page elements */
+  header,
+  footer,
+  section,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #0f172a !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Ensure the printable report is exclusively visible and occupies full page */
+  #printable-comparison-sheet {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #printable-comparison-sheet * {
+    visibility: visible !important;
+  }
+
+  /* Prevent page cuts inside table rows */
+  table, tr, td, th {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Clear box-shadows and borders for clean ink/PDF export */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
