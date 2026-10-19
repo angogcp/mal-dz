@@ -1,0 +1,239 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MalaysiaDuZhongSchoolSchema",
+  "description": "马来西亚华文独立中学（独中）标准化数据模式，支持选校库、多校对比器、费用测算与招生日历",
+  "type": "object",
+  "required": [
+    "school_id",
+    "name_zh",
+    "name_en",
+    "state",
+    "city",
+    "track_type",
+    "has_dormitory",
+    "verification_status"
+  ],
+  "properties": {
+    "school_id": {
+      "type": "string",
+      "description": "学校唯一标识符 (Slug)，如 chonghwa-kl, foonyew-jb, hin-hua-klang",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name_zh": {
+      "type": "string",
+      "description": "学校中文全称，如：吉隆坡中华独立中学"
+    },
+    "name_en": {
+      "type": "string",
+      "description": "学校英文/官方注册名称，如：Chong Hwa Independent High School"
+    },
+    "name_ms": {
+      "type": "string",
+      "description": "学校马来文名称，如：Sekolah Menengah Persendirian Chong Hwa"
+    },
+    "abbreviation": {
+      "type": "string",
+      "description": "学校通用简称，如：隆中华、宽柔、坤成、兴华"
+    },
+    "founding_year": {
+      "type": "integer",
+      "description": "创校年份，如 1919"
+    },
+    "school_category": {
+      "type": "string",
+      "enum": ["traditional_60", "branch_campus", "conforming_private_kuantan"],
+      "description": "学校类别：traditional_60 (传统60所独中), branch_campus (宽柔分校), conforming_private_kuantan (关丹中华中学)"
+    },
+    "location": {
+      "type": "object",
+      "required": ["state", "city", "address"],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": [
+            "柔佛", "吉隆坡", "雪兰莪", "森美兰", "马六甲",
+            "霹雳", "槟城", "吉打", "吉兰丹", "彭亨", "沙巴", "砂拉越"
+          ],
+          "description": "所在州属"
+        },
+        "city": {
+          "type": "string",
+          "description": "所在城市/区域，如：新山、巴生、怡保、古晋"
+        },
+        "address": {
+          "type": "string",
+          "description": "学校实体详细地址"
+        },
+        "postcode": {
+          "type": "string",
+          "description": "邮递区号"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "纬度坐标（用于地图找学校）"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "经度坐标（用于地图找学校）"
+        },
+        "google_map_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Google Maps 导航链接"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "phone": { "type": "string", "description": "总机电话" },
+        "fax": { "type": "string", "description": "传真号码" },
+        "email": { "type": "string", "format": "email", "description": "官方联络/咨询邮箱" },
+        "admission_email": { "type": "string", "format": "email", "description": "招生处/教务处专线邮箱" },
+        "website_url": { "type": "string", "format": "uri", "description": "学校官方网址" },
+        "facebook_url": { "type": "string", "format": "uri", "description": "官方 Facebook 主页链接" },
+        "instagram_url": { "type": "string", "format": "uri", "description": "官方 Instagram 主页链接" },
+        "youtube_url": { "type": "string", "format": "uri", "description": "官方 YouTube 频道" },
+        "admission_portal_url": { "type": "string", "format": "uri", "description": "新生线上报考系统链接" }
+      }
+    },
+    "academics": {
+      "type": "object",
+      "required": ["track_type", "secondary_levels"],
+      "properties": {
+        "track_type": {
+          "type": "string",
+          "enum": [
+            "单轨制 (纯UEC统考)",
+            "双轨制 (UEC统考 + SPM政府考试)",
+            "并存/自选单双轨 (学生按班别自选)",
+            "三轨制 (UEC + SPM + IGCSE国际课程)"
+          ],
+          "description": "核心教学体制"
+        },
+        "secondary_levels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "涵盖年级，常规为 [初一, 初二, 初三, 高一, 高二, 高三]"
+        },
+        "senior_tracks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["理科", "纯商科", "文商科", "文科", "电机电子技职科", "餐饮管理技职科", "美术设计技职科", "资讯与电脑技职科", "机械技职科"]
+          },
+          "description": "高中开设的分流科系"
+        },
+        "primary_instruction_language": {
+          "type": "string",
+          "default": "华语为主，重视英语与马来文",
+          "description": "主要教学语言环境"
+        },
+        "academic_highlights": {
+          "type": "string",
+          "description": "教学特色摘要，如：重视数理竞赛、创客教育、三语并重等"
+        }
+      }
+    },
+    "costs_and_fees": {
+      "type": "object",
+      "description": "学费与整体费用结构，驱动学费计算器（TCO 计算）",
+      "properties": {
+        "currency": { "type": "string", "default": "MYR" },
+        "registration_fee": { "type": "number", "description": "初一新生报名/注册考务费（一次性）" },
+        "development_fund_annual": { "type": "number", "description": "建校发展基金（每年或初一入学一次性缴纳）" },
+        "tuition_junior_monthly": { "type": "number", "description": "初中生每月学费" },
+        "tuition_junior_months_per_year": { "type": "integer", "default": 10, "description": "每年缴纳月份数，通常为 10 或 11 期" },
+        "tuition_junior_yearly": { "type": "number", "description": "初中全年学费总额" },
+        "tuition_senior_yearly": { "type": "number", "description": "高中全年学费总额" },
+        "misc_fee_annual": { "type": "number", "description": "杂费年度总额（含电脑费、实验室、冷气费、学生保险）" },
+        "first_year_est_day_student": {
+          "type": "number",
+          "description": "走读生首年总成本估算（含学费、注册、杂费、书本预估，不含校车）"
+        },
+        "scholarship_info": {
+          "type": "string",
+          "description": "清寒助学金、学业优异奖学金、华小教师子女学费减免政策"
+        }
+      }
+    },
+    "dormitory_and_boarding": {
+      "type": "object",
+      "required": ["has_dormitory"],
+      "properties": {
+        "has_dormitory": { "type": "boolean", "description": "是否设有学生宿舍" },
+        "dorm_gender": {
+          "type": "string",
+          "enum": ["男女宿舍兼备", "仅限男宿", "仅限女宿", "无宿舍"]
+        },
+        "dorm_capacity": { "type": "integer", "description": "宿舍床位总容量" },
+        "room_types": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "房型，如 [4人间, 6人间, 8人间]"
+        },
+        "air_conditioned": {
+          "type": "string",
+          "enum": ["全冷气", "部分冷气", "仅电风扇", "未公开"]
+        },
+        "dorm_fee_monthly": { "type": "number", "description": "每月纯住宿费" },
+        "meal_plan": {
+          "type": "string",
+          "enum": ["包一日三餐", "包早晚两餐", "自理/食堂自由刷卡", "周日不包餐"]
+        },
+        "meal_fee_monthly": { "type": "number", "description": "每月膳食费（若统一收缴）" },
+        "study_hall_rules": { "type": "string", "description": "晚自习制度与督导要求" },
+        "electronics_policy": { "type": "string", "description": "智能手机/笔记本电脑管控政策（如周一至周四封存）" },
+        "weekend_policy": { "type": "string", "description": "周末外出与留校外出请假规则" },
+        "first_year_est_boarder": {
+          "type": "number",
+          "description": "住宿生首年总花费估算（学杂费+住宿+伙食+冷气押金）"
+        }
+      }
+    },
+    "admission_intake": {
+      "type": "object",
+      "description": "招生日历与报名时间线",
+      "properties": {
+        "intake_year": { "type": "integer", "description": "招收目标学年，如 2026" },
+        "registration_start": { "type": "string", "format": "date", "description": "报名开始日期" },
+        "registration_deadline": { "type": "string", "format": "date", "description": "报名截止日期" },
+        "open_day_dates": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "校园开放日/招生说明会日期列表"
+        },
+        "entrance_exam_date": { "type": "string", "format": "date", "description": "新生入学资格考试日期" },
+        "exam_subjects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "入学考科目，如 [华文, 国文, 英文, 数学]"
+        },
+        "admission_mode": {
+          "type": "string",
+          "enum": ["必须参加入学试按成绩择优录取", "凭华小五年级/六年级校考成绩免试录取", "先报先得，名额有限"]
+        },
+        "result_release_date": { "type": "string", "format": "date", "description": "录取名单放榜公布日" }
+      }
+    },
+    "fit_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "去排名化的特色与适合度标签，用于个性化推荐算法（如：[大型千人名校, 寄宿制度成熟, 技职科丰富, 双轨并重, 适合外州生, 关怀小班制]）"
+    },
+    "verification_status": {
+      "type": "object",
+      "required": ["source_level", "is_verified", "last_updated"],
+      "properties": {
+        "source_level": {
+          "type": "string",
+          "enum": ["official_school_verified", "dongzong_report", "public_brochure", "alumni_crowdsourced"],
+          "description": "数据权威级别"
+        },
+        "is_verified": { "type": "boolean", "description": "是否获得学校官方认证徽章" },
+        "last_updated": { "type": "string", "format": "date", "description": "最近核对日期" },
+        "maintainer_notes": { "type": "string", "description": "运营审核备注" }
+      }
+    }
+  }
+}

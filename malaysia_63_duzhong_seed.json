@@ -1,0 +1,826 @@
+[
+  {
+    "school_id": "foonyew-jb",
+    "name_zh": "新山宽柔中学",
+    "name_en": "Foon Yew High School, Johor Bahru",
+    "name_ms": "Sekolah Menengah Foon Yew Johor Bahru",
+    "abbreviation": "新山宽中",
+    "founding_year": 1913,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "柔佛",
+      "city": "新山",
+      "address": "59-C, Jalan Ibrahim Sultan, 80300 Johor Bahru, Johor",
+      "postcode": "80300",
+      "latitude": 1.4682,
+      "longitude": 103.7749,
+      "google_map_url": "https://maps.google.com/?q=Foon+Yew+High+School"
+    },
+    "contact": {
+      "phone": "+60-7-2224446",
+      "email": "admin@foonyew.edu.my",
+      "website_url": "https://www.foonyew.edu.my",
+      "facebook_url": "https://www.facebook.com/foonyewjb"
+    },
+    "academics": {
+      "track_type": "单轨制 (纯UEC统考)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "全马学生人数最多学府之一，单轨制学术深厚，统考成绩名列前茅"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "registration_fee": 50,
+      "tuition_junior_monthly": 450,
+      "tuition_junior_months_per_year": 10,
+      "tuition_junior_yearly": 4500,
+      "tuition_senior_yearly": 5200,
+      "misc_fee_annual": 600,
+      "first_year_est_day_student": 5800,
+      "scholarship_info": "提供清寒子弟助学金与优秀新生学杂费全免/半免奖励"
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": false,
+      "dorm_gender": "无宿舍"
+    },
+    "fit_tags": ["万人超级大校", "纯单轨UEC", "学术数理强校", "全走读", "校友网络庞大"],
+    "verification_status": {
+      "source_level": "dongzong_report",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "foonyew-kulai",
+    "name_zh": "宽柔中学古来分校",
+    "name_en": "Foon Yew High School - Kulai",
+    "name_ms": "Sekolah Menengah Foon Yew Kulai",
+    "abbreviation": "古来宽中",
+    "founding_year": 2004,
+    "school_category": "branch_campus",
+    "location": {
+      "state": "柔佛",
+      "city": "古来",
+      "address": "Lot 1856, Jalan Persiaran Indahpura 1, Indahpura, 81000 Kulai, Johor",
+      "postcode": "81000",
+      "latitude": 1.6375,
+      "longitude": 103.6062,
+      "google_map_url": "https://maps.google.com/?q=Foon+Yew+High+School+Kulai"
+    },
+    "contact": {
+      "phone": "+60-7-6636479",
+      "email": "enquiry@fyk.edu.my",
+      "website_url": "https://www.fyk.edu.my"
+    },
+    "academics": {
+      "track_type": "单轨制 (纯UEC统考)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科", "餐饮管理技职科", "电机电子技职科"],
+      "academic_highlights": "兼顾传统学术与技职科系，校园宽敞现代化"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4500,
+      "first_year_est_day_student": 5800
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": false,
+      "dorm_gender": "无宿舍"
+    },
+    "fit_tags": ["现代大型校园", "单轨UEC", "设有技职科", "全走读"],
+    "verification_status": {
+      "source_level": "public_brochure",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "foonyew-bsa",
+    "name_zh": "宽柔中学至达城分校",
+    "name_en": "Foon Yew High School - Bandar Seri Alam",
+    "name_ms": "Sekolah Menengah Foon Yew Bandar Seri Alam",
+    "abbreviation": "至达城宽中",
+    "founding_year": 2020,
+    "school_category": "branch_campus",
+    "location": {
+      "state": "柔佛",
+      "city": "巴西古当",
+      "address": "Jalan Persiaran Seri Alam, Bandar Seri Alam, 81750 Masai, Johor",
+      "postcode": "81750",
+      "latitude": 1.5034,
+      "longitude": 103.8821,
+      "google_map_url": "https://maps.google.com/?q=Foon+Yew+Bandar+Seri+Alam"
+    },
+    "contact": {
+      "phone": "+60-7-2133522",
+      "website_url": "https://www.foonyewsa.edu.my"
+    },
+    "academics": {
+      "track_type": "单轨制 (纯UEC统考)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "宽柔最新分校，全面智慧化多媒体教学设施"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4600,
+      "first_year_est_day_student": 5900
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": false,
+      "dorm_gender": "无宿舍"
+    },
+    "fit_tags": ["新锐智慧校园", "单轨UEC", "设备极新", "全走读"],
+    "verification_status": {
+      "source_level": "public_brochure",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chonghwa-kluang",
+    "name_zh": "居銮中华中学",
+    "name_en": "Chong Hwa High School Kluang",
+    "name_ms": "Sekolah Menengah Chong Hwa Kluang",
+    "abbreviation": "銮中",
+    "founding_year": 1918,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "柔佛",
+      "city": "居銮",
+      "address": "Jalan Sekolah Chong Hwa, 86000 Kluang, Johor",
+      "postcode": "86000",
+      "latitude": 2.0305,
+      "longitude": 103.3211,
+      "google_map_url": "https://maps.google.com/?q=Chong+Hwa+High+School+Kluang"
+    },
+    "contact": {
+      "phone": "+60-7-7724021",
+      "website_url": "https://www.chonghwa.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科", "美术设计技职科", "资讯与电脑技职科"],
+      "academic_highlights": "柔中地区核心学府，美术与电科技职教育历史悠久成果斐然"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 3800,
+      "first_year_est_day_student": 4800,
+      "first_year_est_boarder": 9800
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "dorm_capacity": 600,
+      "room_types": ["4人间", "6人间"],
+      "air_conditioned": "部分冷气",
+      "dorm_fee_monthly": 380,
+      "meal_plan": "包早晚两餐",
+      "study_hall_rules": "每晚 19:30-21:30 统一晚自习，舍监现场督导"
+    },
+    "fit_tags": ["寄宿大校", "双轨制", "美术美工强项", "柔中枢纽", "适合外州生"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chunghwa-muar",
+    "name_zh": "麻坡中化中学",
+    "name_en": "Chung Hwa High School Muar",
+    "name_ms": "Sekolah Menengah Chung Hwa Muar",
+    "abbreviation": "中化中学",
+    "founding_year": 1912,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "柔佛",
+      "city": "麻坡",
+      "address": "Jalan Junid, 84000 Muar, Johor",
+      "postcode": "84000",
+      "latitude": 2.0401,
+      "longitude": 102.5694,
+      "google_map_url": "https://maps.google.com/?q=Chung+Hwa+High+School+Muar"
+    },
+    "contact": {
+      "phone": "+60-6-9522632",
+      "website_url": "https://www.chhs.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "百年文化古韵学府，演艺与人文底蕴极深厚"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 3600,
+      "first_year_est_day_student": 4600
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备"
+    },
+    "fit_tags": ["百年名校", "人文底蕴", "双轨制", "设施完善寄宿"],
+    "verification_status": {
+      "source_level": "dongzong_report",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chonghwa-kl",
+    "name_zh": "吉隆坡中华独立中学",
+    "name_en": "Chong Hwa Independent High School, KL",
+    "name_ms": "Sekolah Menengah Persendirian Chong Hwa Kuala Lumpur",
+    "abbreviation": "隆中华",
+    "founding_year": 1919,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "吉隆坡",
+      "city": "吉隆坡",
+      "address": "Jalan Ipoh, 51100 Kuala Lumpur",
+      "postcode": "51100",
+      "latitude": 3.1973,
+      "longitude": 101.6845,
+      "google_map_url": "https://maps.google.com/?q=Chong+Hwa+Independent+High+School+Kuala+Lumpur"
+    },
+    "contact": {
+      "phone": "+60-3-62587935",
+      "email": "chonghwa@chonghwakl.edu.my",
+      "website_url": "https://www.chonghwakl.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "全员双轨强制修读，学术竞赛与海外名校（北大清华英澳）直录战绩拔尖"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "registration_fee": 100,
+      "tuition_junior_monthly": 650,
+      "tuition_junior_yearly": 6500,
+      "tuition_senior_yearly": 7200,
+      "misc_fee_annual": 800,
+      "first_year_est_day_student": 8200,
+      "first_year_est_boarder": 16500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "dorm_capacity": 400,
+      "room_types": ["4人间"],
+      "air_conditioned": "全冷气",
+      "study_hall_rules": "晚自习制度极其严格，禁止任何游戏电子产品",
+      "electronics_policy": "周一至周五手机由舍监统一封存锁柜保管"
+    },
+    "fit_tags": ["顶尖学术", "严谨治学", "双轨全修", "名校录取率高", "竞争氛围浓厚", "外州生寄宿紧张"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "kuencheng-kl",
+    "name_zh": "坤成中学",
+    "name_en": "Kuen Cheng High School",
+    "name_ms": "Sekolah Menengah Kuen Cheng",
+    "abbreviation": "坤成",
+    "founding_year": 1908,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "吉隆坡",
+      "city": "吉隆坡",
+      "address": "Jalan Syed Putra, 50460 Kuala Lumpur",
+      "postcode": "50460",
+      "latitude": 3.1298,
+      "longitude": 101.6902,
+      "google_map_url": "https://maps.google.com/?q=Kuen+Cheng+High+School"
+    },
+    "contact": {
+      "phone": "+60-3-22763288",
+      "website_url": "https://www.kuencheng.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "百年老校转男女合校极度成功，全人教育，英语氛围浓郁，设施五星级"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 6200,
+      "first_year_est_day_student": 7800,
+      "first_year_est_boarder": 15800
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "air_conditioned": "全冷气"
+    },
+    "fit_tags": ["百年名校", "英语环境突出", "全人教育", "设施顶尖", "高升学率"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "tsunjin-kl",
+    "name_zh": "循人中学",
+    "name_en": "Tsun Jin High School",
+    "name_ms": "Sekolah Menengah Tsun Jin",
+    "abbreviation": "循人",
+    "founding_year": 1913,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "吉隆坡",
+      "city": "吉隆坡",
+      "address": "6, Jalan Loke Yew, 55200 Kuala Lumpur",
+      "postcode": "55200",
+      "latitude": 3.1332,
+      "longitude": 101.7088,
+      "google_map_url": "https://maps.google.com/?q=Tsun+Jin+High+School"
+    },
+    "contact": {
+      "phone": "+60-3-92214368",
+      "website_url": "https://www.tsunjin.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "以校风严谨、自律规矩、学生纪律与团队精神闻名，科技数码教学领先"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 6500,
+      "first_year_est_day_student": 8000
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": false,
+      "dorm_gender": "无宿舍"
+    },
+    "fit_tags": ["纪律严谨", "学术过硬", "全走读", "数码教学典范", "吉隆坡四大校"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "confucian-kl",
+    "name_zh": "尊孔独立中学",
+    "name_en": "Confucian Private Secondary School",
+    "name_ms": "Sekolah Menengah Persendirian Confucian",
+    "abbreviation": "尊孔独中",
+    "founding_year": 1906,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "吉隆坡",
+      "city": "吉隆坡",
+      "address": "Lorong Hang Jebat, 50150 Kuala Lumpur",
+      "postcode": "50150",
+      "latitude": 3.1415,
+      "longitude": 101.7005,
+      "google_map_url": "https://maps.google.com/?q=Confucian+Private+Secondary+School"
+    },
+    "contact": {
+      "phone": "+60-3-20726321",
+      "website_url": "https://www.confucian.edu.my"
+    },
+    "academics": {
+      "track_type": "并存/自选单双轨 (学生按班别自选)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "文商科", "餐饮管理技职科", "美术设计技职科"],
+      "academic_highlights": "华教源流发祥地之一，特辅班关怀基础较弱学生，新综合大楼宿舍极具特色"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 5500,
+      "first_year_est_day_student": 6800,
+      "first_year_est_boarder": 13800
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "air_conditioned": "全冷气"
+    },
+    "fit_tags": ["百年古校", "多元包容", "特辅班关怀", "设有餐饮美术技职", "新落成现代化宿舍"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "hinhua-klang",
+    "name_zh": "巴生兴华中学",
+    "name_en": "Hin Hua High School Klang",
+    "name_ms": "Sekolah Menengah Hin Hua Klang",
+    "abbreviation": "兴华中学",
+    "founding_year": 1947,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "雪兰莪",
+      "city": "巴生",
+      "address": "141, Persiaran Raja Muda Musa, 41200 Klang, Selangor",
+      "postcode": "41200",
+      "latitude": 3.0315,
+      "longitude": 101.4402,
+      "google_map_url": "https://maps.google.com/?q=Hin+Hua+High+School"
+    },
+    "contact": {
+      "phone": "+60-3-33714241",
+      "website_url": "https://www.hinhua.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科", "文商科"],
+      "academic_highlights": "自主学习模式全国典范，科技人文并重，天文台与现代科创中心完备"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 6000,
+      "first_year_est_day_student": 7500,
+      "first_year_est_boarder": 14500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "air_conditioned": "全冷气",
+      "study_hall_rules": "专属晚自习中心，配有安静自习室与研讨室"
+    },
+    "fit_tags": ["雪州名校龙头", "现代高科技校园", "自主学习典范", "宿舍设施高档", "双轨并重"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chunghua-seremban",
+    "name_zh": "芙蓉中华中学",
+    "name_en": "Chung Hua High School Seremban",
+    "name_ms": "Sekolah Menengah Chung Hua Seremban",
+    "abbreviation": "芙中",
+    "founding_year": 1913,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "森美兰",
+      "city": "芙蓉",
+      "address": "Jalan Temiang, 70200 Seremban, Negeri Sembilan",
+      "postcode": "70200",
+      "latitude": 2.7369,
+      "longitude": 101.9385,
+      "google_map_url": "https://maps.google.com/?q=Chung+Hua+High+School+Seremban"
+    },
+    "contact": {
+      "phone": "+60-6-7612782",
+      "website_url": "https://www.chhsban.edu.my"
+    },
+    "academics": {
+      "track_type": "并存/自选单双轨 (学生按班别自选)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "商科", "文科", "美术设计技职科"],
+      "academic_highlights": "全马规模最大的寄宿独中之一，依山而建环境优美，天文天象馆全国闻名"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4800,
+      "first_year_est_day_student": 6000,
+      "first_year_est_boarder": 12500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "dorm_capacity": 1200,
+      "room_types": ["4人间", "6人间"],
+      "air_conditioned": "部分冷气",
+      "meal_plan": "包早晚两餐",
+      "study_hall_rules": "千人晚自习，宿舍生活自治会管理成熟"
+    },
+    "fit_tags": ["全马寄宿标杆", "外州生首选", "校园依山傍水", "单双轨兼设", "生活独立能力培养"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "payfong-melaka",
+    "name_zh": "马六甲培风中学",
+    "name_en": "Pay Fong High School Melaka",
+    "name_ms": "Sekolah Menengah Pay Fong Melaka",
+    "abbreviation": "培风中学",
+    "founding_year": 1913,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "马六甲",
+      "city": "马六甲市",
+      "address": "40, Jalan Tan Chay Yan, 75300 Melaka",
+      "postcode": "75300",
+      "latitude": 2.2038,
+      "longitude": 102.2471,
+      "google_map_url": "https://maps.google.com/?q=Pay+Fong+High+School"
+    },
+    "contact": {
+      "phone": "+60-6-2824217",
+      "website_url": "https://www.payfong.edu.my"
+    },
+    "academics": {
+      "track_type": "单轨制 (纯UEC统考)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "商科", "电机电子技职科"],
+      "academic_highlights": "马六甲唯一独中，华社爱护如眼珠，自编综合校本教材体系，校风纯正"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4200,
+      "first_year_est_day_student": 5200,
+      "first_year_est_boarder": 11000
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备"
+    },
+    "fit_tags": ["古城唯一独中", "校风极纯", "百年爱校情怀", "纯单轨统考"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chungling-penang",
+    "name_zh": "槟城钟灵独立中学",
+    "name_en": "Chung Ling Private High School Penang",
+    "name_ms": "Sekolah Menengah Persendirian Chung Ling",
+    "abbreviation": "钟灵独中",
+    "founding_year": 1962,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "槟城",
+      "city": "乔治市",
+      "address": "Jalan Air Itam, 11400 George Town, Penang",
+      "postcode": "11400",
+      "latitude": 5.4042,
+      "longitude": 100.2952,
+      "google_map_url": "https://maps.google.com/?q=Chung+Ling+Private+High+School"
+    },
+    "contact": {
+      "phone": "+60-4-8282636",
+      "website_url": "https://clphs.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科"],
+      "academic_highlights": "北马学术学术殿堂，国际数理与发明展金牌大户，全马五星级卓越私立学校"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 5200,
+      "first_year_est_day_student": 6600,
+      "first_year_est_boarder": 13500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "air_conditioned": "全冷气"
+    },
+    "fit_tags": ["北马学术第一校", "国际数理强校", "发明创新典范", "双轨顶尖", "外州生青睐"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "hanchiang-penang",
+    "name_zh": "槟城韩江中学",
+    "name_en": "Han Chiang High School Penang",
+    "name_ms": "Sekolah Menengah Han Chiang",
+    "abbreviation": "韩江中学",
+    "founding_year": 1950,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "槟城",
+      "city": "乔治市",
+      "address": "Lim Lean Teng Road, 11600 George Town, Penang",
+      "postcode": "11600",
+      "latitude": 5.4071,
+      "longitude": 100.3061,
+      "google_map_url": "https://maps.google.com/?q=Han+Chiang+High+School"
+    },
+    "contact": {
+      "phone": "+60-4-2811533",
+      "website_url": "https://hanchiang.edu.my"
+    },
+    "academics": {
+      "track_type": "三轨制 (UEC + SPM + IGCSE国际课程)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "纯商科"],
+      "academic_highlights": "创客空间（Maker Space）与机器人教育闻名，开办剑桥IGCSE与统考多轨"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 5500,
+      "first_year_est_day_student": 6900
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备"
+    },
+    "fit_tags": ["三轨国际化", "创客与STEAM", "机器人全国冠军", "设施先进"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "sanmin-telukintan",
+    "name_zh": "安顺三民独立中学",
+    "name_en": "San Min Independent High School Teluk Intan",
+    "name_ms": "Sekolah Menengah San Min Persendirian",
+    "abbreviation": "三民独中",
+    "founding_year": 1929,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "霹雳",
+      "city": "安顺",
+      "address": "Jalan Abdul Rahman, 36000 Teluk Intan, Perak",
+      "postcode": "36000",
+      "latitude": 4.0152,
+      "longitude": 101.0205,
+      "google_map_url": "https://maps.google.com/?q=San+Min+Independent+High+School"
+    },
+    "contact": {
+      "phone": "+60-5-6221622",
+      "website_url": "https://sanmin.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "商科"],
+      "academic_highlights": "以军事化/半军事化严格品德管理著称，深受雪隆外州家长信赖"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 3200,
+      "first_year_est_day_student": 4200,
+      "first_year_est_boarder": 9500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "dorm_capacity": 500,
+      "study_hall_rules": "晚自习纪律严明，严禁电子娱乐"
+    },
+    "fit_tags": ["纪律严管典范", "雪隆外派寄宿首选", "品格教育", "性价比较高"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "tshungtsin-kk",
+    "name_zh": "沙巴崇正中学",
+    "name_en": "Sabah Tshung Tsin Secondary School",
+    "name_ms": "Sekolah Menengah Tshung Tsin Sabah",
+    "abbreviation": "沙巴崇正",
+    "founding_year": 1965,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "沙巴",
+      "city": "亚庇",
+      "address": "Jalan Damai, Luyang, 88300 Kota Kinabalu, Sabah",
+      "postcode": "88300",
+      "latitude": 5.9612,
+      "longitude": 116.0963,
+      "google_map_url": "https://maps.google.com/?q=Sabah+Tshung+Tsin+Secondary+School"
+    },
+    "contact": {
+      "phone": "+60-88-254154",
+      "website_url": "https://sttss.edu.my"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "商科"],
+      "academic_highlights": "东马独中学术龙头，全马学术与统考表现排头兵，软硬件一流"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4800,
+      "first_year_est_day_student": 6000,
+      "first_year_est_boarder": 12800
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备"
+    },
+    "fit_tags": ["东马学术龙头", "双轨强校", "沙巴第一学府", "寄宿设施齐全"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chms1-kuching",
+    "name_zh": "古晋中华第一中学",
+    "name_en": "Chung Hua Middle School No. 1",
+    "name_ms": "Sekolah Menengah Chung Hua No. 1 Kuching",
+    "abbreviation": "古晋一中",
+    "founding_year": 1958,
+    "school_category": "traditional_60",
+    "location": {
+      "state": "砂拉越",
+      "city": "古晋",
+      "address": "Jalan Pending, 93450 Kuching, Sarawak",
+      "postcode": "93450",
+      "latitude": 1.5541,
+      "longitude": 110.3708,
+      "google_map_url": "https://maps.google.com/?q=Chung+Hua+Middle+School+No.+1"
+    },
+    "contact": {
+      "phone": "+60-82-331599",
+      "website_url": "https://chms1.edu.my"
+    },
+    "academics": {
+      "track_type": "并存/自选单双轨 (学生按班别自选)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "文商科"],
+      "academic_highlights": "砂拉越旗舰独中，受砂拉越政府常年资金特别拔款与统考官方承认支持"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 3500,
+      "first_year_est_day_student": 4500,
+      "first_year_est_boarder": 9500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备"
+    },
+    "fit_tags": ["砂拉越旗舰名校", "受州政府支持承认", "全人与学术兼备", "性价比较高"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  },
+  {
+    "school_id": "chonghwa-kuantan",
+    "name_zh": "关丹中华中学",
+    "name_en": "Chong Hwa High School Kuantan",
+    "name_ms": "Sekolah Menengah Chong Hwa Kuantan",
+    "abbreviation": "关中",
+    "founding_year": 2012,
+    "school_category": "conforming_private_kuantan",
+    "location": {
+      "state": "彭亨",
+      "city": "关丹",
+      "address": "Lot 8798, Mukim Kuala Kuantan, Jalan Tanjung Lumpur, 26060 Kuantan, Pahang",
+      "postcode": "26060",
+      "latitude": 3.7651,
+      "longitude": 103.3289,
+      "google_map_url": "https://maps.google.com/?q=Chong+Hwa+High+School+Kuantan"
+    },
+    "contact": {
+      "phone": "+60-9-5343628",
+      "website_url": "https://chhs.edu.my/kuantan"
+    },
+    "academics": {
+      "track_type": "双轨制 (UEC统考 + SPM政府考试)",
+      "secondary_levels": ["初一", "初二", "初三", "高一", "高二", "高三"],
+      "senior_tracks": ["理科", "商科"],
+      "academic_highlights": "东海岸彭亨州唯一开办统考体系中学，校舍现代，全寄宿管理规范"
+    },
+    "costs_and_fees": {
+      "currency": "MYR",
+      "tuition_junior_yearly": 4800,
+      "first_year_est_day_student": 6000,
+      "first_year_est_boarder": 12500
+    },
+    "dormitory_and_boarding": {
+      "has_dormitory": true,
+      "dorm_gender": "男女宿舍兼备",
+      "air_conditioned": "全冷气"
+    },
+    "fit_tags": ["东海岸现代化独中", "双轨制", "全冷气宿舍", "寄宿管理规范"],
+    "verification_status": {
+      "source_level": "official_school_verified",
+      "is_verified": true,
+      "last_updated": "2026-03-01"
+    }
+  }
+]
