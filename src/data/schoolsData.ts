@@ -45,24 +45,697 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "无宿舍"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-15",
-      entrance_exam_date: "2026-10-03",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      exam_format: "四科统一命题闭卷笔试，每科各1小时，注重高阶思维",
-      exam_venue: "吉隆坡中华独中本部及指定外州/东海岸考场",
-      admission_mode: "保送免试直录与新生入学考试并行遴选",
-      direct_admission_criteria: [
-        "华小五、六年级各学期总平均成绩达 80 分以上可申请【特优免试直录】",
-        "获华小学校长特别具函保送推荐之品学兼优模范生",
-        "曾代表州或国家参加入学相关学术、数理奥林匹克或球类比赛获前三名者",
-        "友好华小校内排名前 5% 优秀毕业生保送名额"
-      ],
-      result_release_date: "2026-10-12",
-      registration_payment_deadline: "2026-10-22",
-      dorm_application_deadline: "2026-10-20 (外州生须随同注册缴费提交宿舍申请与体检证明)",
-      scholarship_quota: "入学试考获前 30 名特颁初一学杂费全免/半免奖学金；另设常年清寒子弟助学金"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-08-30",
+        "open_day_dates": [
+            "2026-07-18"
+        ],
+        "entrance_exam_date": "2026-09-19",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "四科各占100分，依据华小高年段课程标准出题，闭卷笔试",
+        "exam_venue": "新山宽柔中学本部、古来分校、至达城分校三校同步",
+        "admission_mode": "宽柔三校联合初一甄拔考试（全员依总分择优录取）",
+        "direct_admission_criteria": [
+            "不设校外无条件免试直录（全员统一参加入学甄选考试）",
+            "宽柔直属华小特定品学兼优保送推荐名额",
+            "华小全级第一名且入学试达标者特颁新生荣誉奖"
+        ],
+        "result_release_date": "2026-09-28",
+        "registration_payment_deadline": "2026-10-08",
+        "scholarship_quota": "入学考成绩第1至10名免初一至高三全额学费；第11至50名免初一全年学费"
+    },
+    fit_tags: ["万人超级大校", "纯单轨UEC", "学术数理强校", "全走读", "校友网络庞大"],
+    verification_status: {
+      source_level: "official_school_verified",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "foonyew-kulai",
+    name_zh: "宽柔中学古来分校",
+    name_en: "Foon Yew High School - Kulai",
+    name_ms: "Sekolah Menengah Foon Yew Kulai",
+    abbreviation: "古来宽中",
+    founding_year: 2004,
+    school_category: "branch_campus",
+    location: {
+      state: "柔佛",
+      city: "古来",
+      address: "Lot 1856, Jalan Persiaran Indahpura 1, 81000 Kulai, Johor",
+      postcode: "81000",
+      latitude: 1.6375,
+      longitude: 103.6062
+    },
+    contact: {
+      phone: "+60-7-6636479",
+      website_url: "https://www.fyk.edu.my"
+    },
+    academics: {
+      track_type: "单轨制 (纯UEC统考)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "商科", "文商科", "餐饮管理技职科", "电机电子技职科"],
+      academic_highlights: "兼顾传统学术与技职科系，校园宽敞现代化"
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 4500,
+      first_year_est_day_student: 5800
+    },
+    dormitory_and_boarding: {
+      has_dormitory: false,
+      dorm_gender: "无宿舍"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-08-30",
+        "open_day_dates": [
+            "2026-07-25"
+        ],
+        "entrance_exam_date": "2026-09-19",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "宽柔三校统一命题笔试，按学区配额与录取分数线分发",
+        "exam_venue": "宽柔中学古来分校考场",
+        "admission_mode": "三校联合甄拔试（依学区录取）",
+        "direct_admission_criteria": [
+            "按宽柔学村统一章程参加入学考，无个别免试通道",
+            "古来区友好华小特优生荣誉保送奖",
+            "三校统一由电脑按考区住址与志愿分派学籍"
+        ],
+        "result_release_date": "2026-09-28",
+        "registration_payment_deadline": "2026-10-08",
+        "scholarship_quota": "古来考区总成绩前20名获初一学费全免奖励"
+    },
+    fit_tags: ["现代大型校园", "单轨UEC", "设有技职科", "全走读"],
+    verification_status: {
+      source_level: "public_brochure",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "foonyew-bsa",
+    name_zh: "宽柔中学至达城分校",
+    name_en: "Foon Yew High School - Bandar Seri Alam",
+    name_ms: "Sekolah Menengah Foon Yew Bandar Seri Alam",
+    abbreviation: "至达城宽中",
+    founding_year: 2020,
+    school_category: "branch_campus",
+    location: {
+      state: "柔佛",
+      city: "巴西古当",
+      address: "Jalan Persiaran Seri Alam, Bandar Seri Alam, 81750 Masai, Johor",
+      postcode: "81750"
+    },
+    contact: {
+      phone: "+60-7-2133522",
+      website_url: "https://www.foonyewsa.edu.my"
+    },
+    academics: {
+      track_type: "单轨制 (纯UEC统考)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "纯商科", "文商科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 4600,
+      first_year_est_day_student: 5900
+    },
+    dormitory_and_boarding: {
+      has_dormitory: false,
+      dorm_gender: "无宿舍"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-08-30",
+        "open_day_dates": [
+            "2026-08-01"
+        ],
+        "entrance_exam_date": "2026-09-19",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "宽柔三校统一命题笔试",
+        "exam_venue": "宽柔中学至达城分校大礼堂",
+        "admission_mode": "三校联合甄拔试（巴西古当及新山东区生源）",
+        "direct_admission_criteria": [
+            "统一参加宽柔初一甄拔考试，择优录取",
+            "巴西古当区友好华小特优生保送",
+            "清寒子弟可同步递交学杂费援助金申请"
+        ],
+        "result_release_date": "2026-09-28",
+        "registration_payment_deadline": "2026-10-08",
+        "scholarship_quota": "至达城考区成绩前20名获免除初一年学费"
+    },
+    fit_tags: ["新锐智慧校园", "单轨UEC", "设备极新", "全走读"],
+    verification_status: {
+      source_level: "public_brochure",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "chonghwa-kluang",
+    name_zh: "居銮中华中学",
+    name_en: "Chong Hwa High School Kluang",
+    name_ms: "Sekolah Menengah Chong Hwa Kluang",
+    abbreviation: "銮中",
+    founding_year: 1918,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "居銮",
+      address: "Jalan Sekolah Chong Hwa, 86000 Kluang, Johor"
+    },
+    contact: {
+      phone: "+60-7-7724021",
+      website_url: "https://www.chonghwa.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "纯商科", "文商科", "美术设计技职科", "资讯与电脑技职科"],
+      academic_highlights: "柔中核心学府，美术与电科技职教育历史悠久"
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3800,
+      first_year_est_day_student: 4800,
+      first_year_est_boarder: 9800
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备",
+      dorm_capacity: 600,
+      air_conditioned: "部分冷气",
+      dorm_fee_monthly: 380,
+      meal_plan: "包早晚两餐"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-15",
+        "open_day_dates": [
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "闭卷笔试，每科各1小时",
+        "exam_venue": "居銮中华中学本部及外州指定代考点",
+        "admission_mode": "在校成绩特优保送直录 + 统一入学选拔考",
+        "direct_admission_criteria": [
+            "华小五年级全年及六年级上半年总平均达 80 分以上可免试直录",
+            "居銮县及柔中区华小学校长具函保送优秀模范生",
+            "全国/全州数理竞赛获前三名直接保送免考",
+            "外州寄宿生凭原校成绩优先审核直通预录"
+        ],
+        "result_release_date": "2026-10-12",
+        "registration_payment_deadline": "2026-10-22",
+        "dorm_application_deadline": "2026-10-20 (冷气千人宿舍，外州生优先办理床位锁定)",
+        "scholarship_quota": "入学考前30名享有初一年学费全免或半免奖励"
+    },
+    fit_tags: ["寄宿大校", "双轨制", "美术美工强项", "柔中枢纽", "适合外州生"],
+    verification_status: {
+      source_level: "official_school_verified",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "chunghwa-muar",
+    name_zh: "麻坡中化中学",
+    name_en: "Chung Hwa High School Muar",
+    name_ms: "Sekolah Menengah Chung Hwa Muar",
+    abbreviation: "中化中学",
+    founding_year: 1912,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "麻坡",
+      address: "Jalan Junid, 84000 Muar, Johor"
+    },
+    contact: {
+      phone: "+60-6-9522632",
+      website_url: "https://www.chhs.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "纯商科", "文商科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3600,
+      first_year_est_day_student: 4600,
+      first_year_est_boarder: 9600
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-20",
+        "open_day_dates": [
+            "2026-08-22"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "笔试四科，各100分",
+        "exam_venue": "麻坡中化中学大礼堂",
+        "admission_mode": "成绩免试保送 + 入学甄选考试",
+        "direct_admission_criteria": [
+            "华小六年级上半年总成绩达 80 分或全级前五名免试直录",
+            "麻坡县及东甲县华小学校长特别保送推荐生",
+            "全国华小三语演讲或全州球类代表保送"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (外区生冷气宿舍申请)",
+        "scholarship_quota": "入学考成绩前20名及校长保送特优生获全免学费"
+    },
+    fit_tags: ["百年名校", "人文底蕴", "双轨制", "设施完善寄宿"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "peichun-pontian",
+    name_zh: "笨珍培群独立中学",
+    name_en: "Pei Chun High School Pontian",
+    name_ms: "Sekolah Menengah Pei Chun Pontian",
+    abbreviation: "培群独中",
+    founding_year: 1922,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "笨珍",
+      address: "Jalan Parit Mesjid, 82000 Pontian, Johor"
+    },
+    contact: {
+      phone: "+60-7-6873980",
+      website_url: "https://peichunhs.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "商科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3500,
+      first_year_est_day_student: 4500,
+      first_year_est_boarder: 9400
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "闭卷笔试",
+        "exam_venue": "笨珍培群独中校本部",
+        "admission_mode": "校长保送免试直录 + 入学编班甄选试",
+        "direct_admission_criteria": [
+            "华小五、六年级各科平均达 75 分以上免试直录",
+            "笨珍县各华小学校长具函保送推荐直通录取",
+            "柔南及新山外区寄宿生凭在校成绩单提前直录"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (全新现代化宿舍，外州寄宿生优先)",
+        "scholarship_quota": "考获前15名免除初一全年学费"
+    },
+    fit_tags: ["双轨制", "近新山走廊", "寄宿温馨", "学风纯朴"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "chsbp-batupahat",
+    name_zh: "峇株巴辖华仁中学",
+    name_en: "Chinese High School Batu Pahat",
+    name_ms: "Sekolah Menengah Cina Batu Pahat",
+    abbreviation: "华仁中学",
+    founding_year: 1940,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "峇株巴辖",
+      address: "241, Jalan Tanjung Laboh, 83000 Batu Pahat, Johor"
+    },
+    contact: {
+      phone: "+60-7-4341108",
+      website_url: "https://www.chsbp.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "文商科", "美术设计技职科", "服装设计技职科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3700,
+      first_year_est_day_student: 4700,
+      first_year_est_boarder: 9800
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-25",
+        "open_day_dates": [
+            "2026-08-29"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "四科联考，注重综合素养",
+        "exam_venue": "华仁中学校园考场",
+        "admission_mode": "华小保送优先 + 入学甄试",
+        "direct_admission_criteria": [
+            "华小五、六年级校内总成绩 80 分以上可免试直录",
+            "峇株巴辖县各华小学校长特选保送推荐优等生",
+            "学术才艺州级代表免试录取"
+        ],
+        "result_release_date": "2026-10-12",
+        "registration_payment_deadline": "2026-10-22",
+        "scholarship_quota": "入学试前20名获初一学费全免奖励"
+    },
+    fit_tags: ["人文艺术特色", "服装美术强项", "双轨制", "柔北名校"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "peihwa-tangkak",
+    name_zh: "利丰港培华独立中学",
+    name_en: "Pei Hwa High School Sungai Mati",
+    name_ms: "Sekolah Menengah Pei Hwa",
+    abbreviation: "培华独中",
+    founding_year: 1929,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "东甲",
+      address: "Sungai Mati, 84400 Tangkak, Johor"
+    },
+    contact: {
+      phone: "+60-6-9751032",
+      website_url: "https://peihwa.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "文商科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3200,
+      first_year_est_day_student: 4200,
+      first_year_est_boarder: 8900
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-10",
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试直通 + 新生素质评估",
+        "direct_admission_criteria": [
+            "华小毕业生凭校长推荐函可直接免试录取",
+            "华小五年级及六年级成绩总及格以上",
+            "外区寄宿生设提前预审通道"
+        ],
+        "result_release_date": "2026-10-25",
+        "registration_payment_deadline": "2026-11-05",
+        "dorm_application_deadline": "2026-11-05",
+        "scholarship_quota": "提供清寒子弟助学金与优秀新生学杂费补贴"
+    },
+    fit_tags: ["小班关怀", "亲民学费", "双轨制", "寄宿便利"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "sinhwa-rengit",
+    name_zh: "龙引新文龙中华中学",
+    name_en: "Sin Hwa High School Rengit",
+    name_ms: "Sekolah Menengah Sin Hwa Rengit",
+    abbreviation: "新文龙中华",
+    founding_year: 1957,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "龙引",
+      address: "Jalan Rengit, 83100 Rengit, Johor"
+    },
+    contact: {
+      phone: "+60-7-4241148",
+      website_url: "https://sblchs.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "文商科", "生态农艺技职科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3100,
+      first_year_est_day_student: 4000,
+      first_year_est_boarder: 8600
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "全员免试保送（重在素质评估与分班）",
+        "direct_admission_criteria": [
+            "全马各华小毕业生态度良好，校长推荐免试直录",
+            "全国生态寄宿与生态农业特色关怀直录",
+            "外州寄宿生全额保障宿舍床位"
+        ],
+        "result_release_date": "2026-10-30",
+        "registration_payment_deadline": "2026-11-15",
+        "dorm_application_deadline": "2026-11-15",
+        "scholarship_quota": "全免与半免学费扶助名额充足"
+    },
+    fit_tags: ["生态农业特色", "平价寄宿", "民风纯朴", "小班教学"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+  {
+    school_id: "yongpeng-high",
+    name_zh: "永平独立中学",
+    name_en: "Yong Peng High School",
+    name_ms: "Sekolah Menengah Yong Peng",
+    abbreviation: "永平独中",
+    founding_year: 1960,
+    school_category: "traditional_60",
+    location: {
+      state: "柔佛",
+      city: "永平",
+      address: "Jalan Sekolah Cina, 83700 Yong Peng, Johor"
+    },
+    contact: {
+      phone: "+60-7-4671611",
+      website_url: "https://yphs.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "文商科"]
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      tuition_junior_yearly: 3200,
+      first_year_est_day_student: 4100,
+      first_year_est_boarder: 8800
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "小班保送直接录取 + 编班测验",
+        "direct_admission_criteria": [
+            "华小毕业凭校长推荐免试录取",
+            "柔中周边华小生直接保送",
+            "小班制精细化教学优先席位"
+        ],
+        "result_release_date": "2026-10-26",
+        "registration_payment_deadline": "2026-11-08",
+        "scholarship_quota": "设董压清寒奖助学金与新生鼓励金"
+    },
+    fit_tags: ["关怀型小班", "双轨制", "学费实惠", "外州寄宿友好"],
+    verification_status: {
+      source_level: "dongzong_report",
+      is_verified: true,
+      last_updated: "2026-03-01"
+    }
+  },
+
+  // ===================== 2. 吉隆坡 (4所) =====================
+  {
+    school_id: "chonghwa-kl",
+    name_zh: "吉隆坡中华独立中学",
+    name_en: "Chong Hwa Independent High School, KL",
+    name_ms: "Sekolah Menengah Persendirian Chong Hwa Kuala Lumpur",
+    abbreviation: "隆中华",
+    founding_year: 1919,
+    school_category: "traditional_60",
+    location: {
+      state: "吉隆坡",
+      city: "吉隆坡",
+      address: "Jalan Ipoh, 51100 Kuala Lumpur",
+      postcode: "51100",
+      latitude: 3.1973,
+      longitude: 101.6845,
+      google_map_url: "https://maps.google.com/?q=Chong+Hwa+Independent+High+School+Kuala+Lumpur"
+    },
+    contact: {
+      phone: "+60-3-62587935",
+      email: "chonghwa@chonghwakl.edu.my",
+      website_url: "https://www.chonghwakl.edu.my"
+    },
+    academics: {
+      track_type: "双轨制 (UEC统考 + SPM政府考试)",
+      secondary_levels: ["初一", "初二", "初三", "高一", "高二", "高三"],
+      senior_tracks: ["理科", "纯商科", "文商科"],
+      academic_highlights: "全员双轨强制修读，学术竞赛与海外名校（北大清华英澳）直录战绩拔尖"
+    },
+    costs_and_fees: {
+      currency: "MYR",
+      registration_fee: 100,
+      tuition_junior_monthly: 650,
+      tuition_junior_yearly: 6500,
+      tuition_senior_yearly: 7200,
+      misc_fee_annual: 800,
+      first_year_est_day_student: 8200,
+      first_year_est_boarder: 16500,
+      scholarship_info: "学业优异者提供高额奖学金，清寒生可申请助学金"
+    },
+    dormitory_and_boarding: {
+      has_dormitory: true,
+      dorm_gender: "男女宿舍兼备",
+      dorm_capacity: 400,
+      room_types: ["4人间"],
+      air_conditioned: "全冷气",
+      study_hall_rules: "晚自习制度极其严格，禁止任何游戏电子产品",
+      electronics_policy: "周一至周五手机由舍监统一封存锁柜保管"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-15",
+        "open_day_dates": [
+            "2026-07-11",
+            "2026-08-08"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "四科统一命题闭卷笔试，每科各1小时，注重高阶思维",
+        "exam_venue": "吉隆坡中华独中本部及指定外州/东海岸考场",
+        "admission_mode": "保送免试直录与新生入学考试并行遴选",
+        "direct_admission_criteria": [
+            "华小五、六年级各学期总平均成绩达 80 分以上可申请【特优免试直录】",
+            "获华小学校长特别具函保送推荐之品学兼优模范生",
+            "曾代表州或国家参加入学相关学术、数理奥林匹克或球类比赛获前三名者",
+            "友好华小校内排名前 5% 优秀毕业生保送名额"
+        ],
+        "result_release_date": "2026-10-12",
+        "registration_payment_deadline": "2026-10-22",
+        "dorm_application_deadline": "2026-10-20 (外州生须随同注册缴费提交宿舍申请与体检证明)",
+        "scholarship_quota": "入学试考获前 30 名特颁初一学杂费全免/半免奖学金；另设常年清寒子弟助学金"
     },
     fit_tags: ["顶尖学术", "严谨治学", "双轨全修", "名校录取率高", "竞争氛围浓厚", "外州生寄宿紧张"],
     verification_status: {
@@ -109,22 +782,31 @@ export const ALL_SCHOOLS: School[] = [
       air_conditioned: "全冷气"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-10",
-      entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      exam_format: "四科联考，英文与数学设深度应用题，注重国际视野",
-      admission_mode: "成绩达标免试保送 + 入学甄拔考试",
-      direct_admission_criteria: [
-        "华小五年级全年及六年级上半年四科总平均达 85 分以上免试直录",
-        "华小学校长具函保送推荐的优秀模范毕业生（限额审核）",
-        "全国数理竞赛金奖、三语演讲或国际机器人赛优胜者保送"
-      ],
-      result_release_date: "2026-10-06",
-      registration_payment_deadline: "2026-10-16",
-      dorm_application_deadline: "2026-10-15 (限女生及外州优异男生申请)",
-      scholarship_quota: "入学试排名前 20 名获初一年学费全免奖学金"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-10",
+        "open_day_dates": [
+            "2026-07-25",
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-09-26",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "四科联考，英文与数学设深度应用题，注重国际视野",
+        "admission_mode": "成绩达标免试保送 + 入学甄拔考试",
+        "direct_admission_criteria": [
+            "华小五年级全年及六年级总平均达 85 分以上，且主科全A/TP5以上直接免试录取",
+            "获华小学校长特别保送推荐之模范生/级长团团长",
+            "全国奥林匹克数理赛、英语拼字或三语演讲赛全州前三名直录"
+        ],
+        "result_release_date": "2026-10-05",
+        "registration_payment_deadline": "2026-10-16",
+        "dorm_application_deadline": "2026-10-15 (宿位极紧张，外州生需尽早递交)",
+        "scholarship_quota": "成绩名列前 20 名者免收初一全额学费"
     },
     fit_tags: ["百年名校", "英语环境突出", "全人教育", "设施顶尖", "高升学率"],
     verification_status: {
@@ -169,20 +851,28 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "无宿舍"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-12",
-      entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "五六年级优异成绩免试录取 + 统一入学选拔试",
-      direct_admission_criteria: [
-        "华小五年级及六年级上半年华国英数达全A或总平均 80 分以上直接免试录取",
-        "华小学校长签署推荐函之保送优等生",
-        "州级学术比赛代表直接保送"
-      ],
-      result_release_date: "2026-10-05",
-      registration_payment_deadline: "2026-10-15",
-      scholarship_quota: "成绩前 15 名免除初一全年学费"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-12",
+        "open_day_dates": [
+            "2026-08-01"
+        ],
+        "entrance_exam_date": "2026-09-26",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "五六年级优异成绩免试录取 + 统一入学选拔试",
+        "direct_admission_criteria": [
+            "华小五年级及六年级上半年华国英数达全A或总平均 80 分以上直接免试录取",
+            "华小学校长签署推荐函之保送优等生",
+            "州级学术比赛代表直接保送"
+        ],
+        "result_release_date": "2026-10-05",
+        "registration_payment_deadline": "2026-10-15",
+        "scholarship_quota": "成绩前 15 名免除初一全年学费"
     },
     fit_tags: ["纪律严谨", "学术过硬", "全走读", "数码教学典范", "吉隆坡四大校"],
     verification_status: {
@@ -227,6 +917,33 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备",
       air_conditioned: "全冷气"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-25",
+        "open_day_dates": [
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "闭卷笔试四科，设普通班与特辅班分流测试",
+        "admission_mode": "成绩保送直录 + 入学甄拔考试",
+        "direct_admission_criteria": [
+            "华小五年级及六年级校考总平均 75 分以上免试直录",
+            "华小学校长保送具函推荐优异生免试录取",
+            "全国/州级才艺及体育比赛优胜代表直接保送",
+            "特辅班面向需个别化关怀辅导学生提前评估面试"
+        ],
+        "result_release_date": "2026-10-19",
+        "registration_payment_deadline": "2026-10-30",
+        "dorm_application_deadline": "2026-10-30 (新建现代化冷气学生宿舍，外州生优先保障)",
+        "scholarship_quota": "入学考前20名免交首年学杂费；特设清寒子弟助学金"
     },
     fit_tags: ["百年古校", "多元包容", "特辅班关怀", "设有餐饮美术技职", "新落成现代化宿舍"],
     verification_status: {
@@ -275,21 +992,30 @@ export const ALL_SCHOOLS: School[] = [
       air_conditioned: "全冷气"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-12",
-      entrance_exam_date: "2026-10-03",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "保送免试直录与新生入学考试并行",
-      direct_admission_criteria: [
-        "华小五、六年级各学期总成绩达 80 分以上直接免试保送",
-        "华小学校长推荐之杰出品学兼优生 / 学长团团长 / 模范生",
-        "全国奥林匹克数理赛、创客机器人赛州代表保送直录"
-      ],
-      result_release_date: "2026-10-09",
-      registration_payment_deadline: "2026-10-19",
-      dorm_application_deadline: "2026-10-18 (现代化公寓式宿舍，外州生优先保留)",
-      scholarship_quota: "入学考前 20 名获全免或半免学费优异奖学金"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-12",
+        "open_day_dates": [
+            "2026-07-18",
+            "2026-08-08"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "保送免试直录与新生入学考试并行",
+        "direct_admission_criteria": [
+            "华小五、六年级各学期总成绩达 80 分以上直接免试保送",
+            "华小学校长推荐之杰出品学兼优生 / 学长团团长 / 模范生",
+            "全国奥林匹克数理赛、创客机器人赛州代表保送直录"
+        ],
+        "result_release_date": "2026-10-09",
+        "registration_payment_deadline": "2026-10-19",
+        "dorm_application_deadline": "2026-10-18 (现代化公寓式宿舍，外州生优先保留)",
+        "scholarship_quota": "入学考前 20 名获全免或半免学费优异奖学金"
     },
     fit_tags: ["雪州名校龙头", "现代高科技校园", "自主学习典范", "宿舍设施高档", "双轨并重"],
     verification_status: {
@@ -333,6 +1059,32 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备",
       air_conditioned: "全冷气"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-18",
+        "open_day_dates": [
+            "2026-08-01",
+            "2026-08-22"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "领导力特优免试直录 + 入学甄试",
+        "direct_admission_criteria": [
+            "华小五、六年级总成绩达 78 分以上直接免试直录",
+            "华小学校长保送之领导力模范生 / 杰出学长",
+            "全国学术才艺竞赛获奖代表免试保送"
+        ],
+        "result_release_date": "2026-10-10",
+        "registration_payment_deadline": "2026-10-21",
+        "dorm_application_deadline": "2026-10-20 (高层现代化宿舍，外州生优先)",
+        "scholarship_quota": "成绩前20名免收首年学费；设领导力优异奖"
+    },
     fit_tags: ["7个习惯领导力", "五星级校舍", "现代化寄宿", "双轨并重"],
     verification_status: {
       source_level: "official_school_verified",
@@ -372,6 +1124,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-25",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送优先 + 入学甄拔试",
+        "direct_admission_criteria": [
+            "华小五年级及六年级上半年成绩平均 75 分以上免试直录",
+            "巴生县及邻近华小学校长具函保送推荐信",
+            "艺术、管乐或体育特长生加分免试录取"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28",
+        "scholarship_quota": "入学考前15名免除初一学费"
+    },
     fit_tags: ["百年老校", "艺术文创特色", "双轨并重", "关怀寄宿"],
     verification_status: {
       source_level: "dongzong_report",
@@ -410,6 +1184,31 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-25",
+        "open_day_dates": [
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "成绩达标免试保送 + 新生入学甄选试",
+        "direct_admission_criteria": [
+            "华小五、六年级校考平均成绩达 75 分以上免试直录",
+            "华小学校长特别推荐品学兼优保送生",
+            "三轨国际班与统考班按英文数理特长分流面试"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28",
+        "scholarship_quota": "入学试优异生特颁奖学金"
     },
     fit_tags: ["数理与科技", "学风稳健", "双轨制", "寄宿完备"],
     verification_status: {
@@ -463,23 +1262,31 @@ export const ALL_SCHOOLS: School[] = [
       study_hall_rules: "千人晚自习，宿舍生活自治会管理成熟"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-20",
-      entrance_exam_date: "2026-10-04",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      exam_venue: "芙中本部、吉隆坡中华分考场、雪兰莪分考场",
-      admission_mode: "外州绿色直录 + 华小保送 + 统一入学选拔试",
-      direct_admission_criteria: [
-        "华小五年级及六年级上半年总成绩平均达 75 分以上直接免试录取",
-        "雪隆及外州华小学校长具函保送推荐优异生",
-        "森美兰州各华小校内排名前五名保送直录",
-        "外州住宿生专设提前审核绿色通道"
-      ],
-      result_release_date: "2026-10-12",
-      registration_payment_deadline: "2026-10-25",
-      dorm_application_deadline: "2026-10-25 (千人寄宿大校，住宿申请与学籍注册同步确认)",
-      scholarship_quota: "入学考前 30 名享有初一学杂费减免奖学金"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-20",
+        "open_day_dates": [
+            "2026-08-08"
+        ],
+        "entrance_exam_date": "2026-10-04",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_venue": "芙中本部、吉隆坡中华分考场、雪兰莪分考场",
+        "admission_mode": "外州绿色直录 + 华小保送 + 统一入学选拔试",
+        "direct_admission_criteria": [
+            "华小五年级及六年级上半年总成绩平均达 75 分以上直接免试录取",
+            "雪隆及外州华小学校长具函保送推荐优异生",
+            "森美兰州各华小校内排名前五名保送直录",
+            "外州住宿生专设提前审核绿色通道"
+        ],
+        "result_release_date": "2026-10-12",
+        "registration_payment_deadline": "2026-10-25",
+        "dorm_application_deadline": "2026-10-25 (千人寄宿大校，住宿申请与学籍注册同步确认)",
+        "scholarship_quota": "入学考前 30 名享有初一学杂费减免奖学金"
     },
     fit_tags: ["全马寄宿标杆", "外州生首选", "校园依山傍水", "单双轨兼设", "生活独立能力培养"],
     verification_status: {
@@ -519,6 +1326,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试录取 + 编班能力测验",
+        "direct_admission_criteria": [
+            "华小毕业生凭校长推荐函可直接保送录取",
+            "雪隆森外区寄宿生凭在校成绩单提前预审直录",
+            "海洋与人文特色研学优先录取"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10 (温馨小班寄宿保障)",
+        "scholarship_quota": "提供学杂费全免与半免名额"
     },
     fit_tags: ["海滨小班学府", "温馨关怀", "双轨制", "平价寄宿"],
     verification_status: {
@@ -565,6 +1394,33 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-25",
+        "open_day_dates": [
+            "2026-08-22"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "统一命题闭卷考试，每科1小时",
+        "exam_venue": "马六甲培风中学本部礼堂",
+        "admission_mode": "华小保送免试直录 + 入学甄试",
+        "direct_admission_criteria": [
+            "华小五年级及六年级上半年总成绩达 78 分以上或全级排名前10%免试直录",
+            "马六甲及邻近州属华小学校长保送推荐优异生",
+            "全州三语演讲、数理比赛优胜代表免试录取"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (外州生寄宿申请通道)",
+        "scholarship_quota": "入学考前20名特颁初一学费全免奖励金"
+    },
     fit_tags: ["古城唯一独中", "校风极纯", "百年爱校情怀", "纯单轨统考"],
     verification_status: {
       source_level: "official_school_verified",
@@ -606,6 +1462,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试录取 + 新生资格甄试",
+        "direct_admission_criteria": [
+            "华小五、六年级各科平均达 75 分以上免试直录",
+            "怡保及霹雳州各华小学校长具函保送推荐信",
+            "商科特长与学术优异保送"
+        ],
+        "result_release_date": "2026-10-19",
+        "registration_payment_deadline": "2026-10-30",
+        "dorm_application_deadline": "2026-10-30",
+        "scholarship_quota": "入学试前15名免交初一学费"
+    },
     fit_tags: ["怡保核心学府", "商科优势", "双轨并重", "外州寄宿生多"],
     verification_status: {
       source_level: "official_school_verified",
@@ -644,6 +1522,32 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-10",
+        "open_day_dates": [
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "闭卷笔试，设统考班与剑桥IGCSE班分流评估",
+        "admission_mode": "特优成绩免试直录 + 入学考试",
+        "direct_admission_criteria": [
+            "华小五、六年级校内成绩平均 78 分以上免试直录",
+            "校长保送推荐之优秀毕业生直接录取",
+            "全国英文能力或数理竞赛得奖生免试保送剑桥班"
+        ],
+        "result_release_date": "2026-10-25",
+        "registration_payment_deadline": "2026-11-05",
+        "dorm_application_deadline": "2026-11-05 (设备完善寄宿公寓)",
+        "scholarship_quota": "设初一优秀新生全免/半免学费奖"
     },
     fit_tags: ["三轨办学", "剑桥IGCSE考点", "外州及国际生友好", "高标准宿舍"],
     verification_status: {
@@ -684,6 +1588,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送优先 + 编班入学试",
+        "direct_admission_criteria": [
+            "华小毕业生凭校长推荐函免试直接录取",
+            "汽车维修、美工技职班专设特长免试直录",
+            "外州寄宿生优先安排冷气宿舍"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "设清寒子弟助学金与技职专修奖励金"
+    },
     fit_tags: ["百年工运传统", "汽修技职全马标杆", "美术科著名", "寄宿大楼完善"],
     verification_status: {
       source_level: "official_school_verified",
@@ -722,6 +1648,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-10",
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送免试录取 + 入学考",
+        "direct_admission_criteria": [
+            "太平及北霹雳华小成绩优异生免试直录",
+            "华小学校长具函保送推荐信",
+            "外区寄宿生凭在校成绩单提前审核预录"
+        ],
+        "result_release_date": "2026-10-25",
+        "registration_payment_deadline": "2026-11-05",
+        "dorm_application_deadline": "2026-11-05",
+        "scholarship_quota": "入学考前15名免除首年学费"
     },
     fit_tags: ["雨城百年名校", "学风恬静", "双轨制", "寄宿便利"],
     verification_status: {
@@ -769,21 +1717,26 @@ export const ALL_SCHOOLS: School[] = [
       study_hall_rules: "晚自习纪律严明，严禁电子娱乐"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-15",
-      registration_deadline: "2026-10-15",
-      entrance_exam_date: "2026-10-24",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "华小保送优先 + 入学甄拔试",
-      direct_admission_criteria: [
-        "华小学校长具函推荐信即可直接保送免试录取",
-        "外州寄宿生凭华小校考成绩单提前免试预录",
-        "操行品格达乙等以上合格"
-      ],
-      result_release_date: "2026-10-30",
-      registration_payment_deadline: "2026-11-10",
-      dorm_application_deadline: "2026-11-10 (严格纪律寄宿，须签署宿舍守则)",
-      scholarship_quota: "提供清寒子弟助学金与优秀寄宿生学费减免"
+        "intake_year": 2026,
+        "registration_start": "2026-06-15",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送优先 + 入学甄拔试",
+        "direct_admission_criteria": [
+            "华小学校长具函推荐信即可直接保送免试录取",
+            "外州寄宿生凭华小校考成绩单提前免试预录",
+            "操行品格达乙等以上合格"
+        ],
+        "result_release_date": "2026-10-30",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10 (严格纪律寄宿，须签署宿舍守则)",
+        "scholarship_quota": "提供清寒子弟助学金与优秀寄宿生学费减免"
     },
     fit_tags: ["纪律严管典范", "雪隆外派寄宿首选", "品格教育", "性价比较高"],
     verification_status: {
@@ -824,6 +1777,27 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-30",
+        "entrance_exam_date": "2026-11-07",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "全员免试直录保送（重在爱心关怀）",
+        "direct_admission_criteria": [
+            "全马华小毕业生态度端正校长保送免试全收",
+            "提供平价爱心寄宿保障",
+            "关怀型小班教学直通"
+        ],
+        "result_release_date": "2026-11-15",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "清寒家庭全免学费支持计划"
+    },
     fit_tags: ["渔村关怀学府", "小班师生比极高", "低学费", "温暖寄宿"],
     verification_status: {
       source_level: "dongzong_report",
@@ -862,6 +1836,27 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-31",
+        "entrance_exam_date": "2026-11-07",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试直通 + 农艺特长直录",
+        "direct_admission_criteria": [
+            "华小毕业校长推荐免试直录",
+            "热爱自然农艺与生态教育学生优先录取",
+            "外区寄宿生免费/低额住宿津贴"
+        ],
+        "result_release_date": "2026-11-15",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "农艺专修与学业优异全免学费名额"
     },
     fit_tags: ["王城绿色独中", "精致小班", "农艺特色", "学风恬静"],
     verification_status: {
@@ -902,6 +1897,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送免试录取 + 入学考",
+        "direct_admission_criteria": [
+            "曼绒县及外区华小成绩良好免试直录",
+            "华小学校长保送具函推荐生免考",
+            "全人教育特长生保送"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "入学考前15名免除学费"
+    },
     fit_tags: ["福州小福州文化", "全人关怀", "双轨并重", "寄宿温馨"],
     verification_status: {
       source_level: "dongzong_report",
@@ -940,6 +1957,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送直通 + 编班测验",
+        "direct_admission_criteria": [
+            "华小毕业生凭校长推荐免试直接录取",
+            "金宝周边华小保送优先",
+            "纯朴学风小班精细辅导"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "设清寒学杂费减免基金"
     },
     fit_tags: ["大学城近邻", "纯朴百年学府", "双轨制", "低生活成本"],
     verification_status: {
@@ -988,20 +2027,28 @@ export const ALL_SCHOOLS: School[] = [
       air_conditioned: "全冷气"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-15",
-      entrance_exam_date: "2026-10-03",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "特优保送直录 + 入学甄拔试按分录取",
-      direct_admission_criteria: [
-        "华小五、六年级校内总成绩 80 分以上可免试直录",
-        "国际/全国数理奥林匹克比赛金银牌保送并颁发全免奖学金",
-        "槟城各华小全级前三名校长保送推荐"
-      ],
-      result_release_date: "2026-10-10",
-      registration_payment_deadline: "2026-10-20",
-      scholarship_quota: "入学考前 10 名获免交初一至高三全额学费荣誉奖"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-15",
+        "open_day_dates": [
+            "2026-07-25"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "特优保送直录 + 入学甄拔试按分录取",
+        "direct_admission_criteria": [
+            "华小五、六年级校内总成绩 80 分以上可免试直录",
+            "国际/全国数理奥林匹克比赛金银牌保送并颁发全免奖学金",
+            "槟城各华小全级前三名校长保送推荐"
+        ],
+        "result_release_date": "2026-10-10",
+        "registration_payment_deadline": "2026-10-20",
+        "scholarship_quota": "入学考前 10 名获免交初一至高三全额学费荣誉奖"
     },
     fit_tags: ["北马学术第一校", "国际数理强校", "发明创新典范", "双轨顶尖", "外州生青睐"],
     verification_status: {
@@ -1043,6 +2090,32 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-20",
+        "open_day_dates": [
+            "2026-08-01"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "闭卷笔试，注重创客科技与双语综合能力",
+        "admission_mode": "创客科技保送直录 + 新生入学甄选试",
+        "direct_admission_criteria": [
+            "华小五、六年级校考平均成绩 78 分以上免试直录",
+            "华小学校长保送品学兼优毕业生",
+            "全国机器人、创客科技比赛获奖代表直接保送"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (外州生现代宿舍)",
+        "scholarship_quota": "入学试前15名免收初一年学费"
+    },
     fit_tags: ["三轨国际化", "创客与STEAM", "机器人全国冠军", "设施先进"],
     verification_status: {
       source_level: "official_school_verified",
@@ -1082,6 +2155,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "仅限女宿"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "女校保送免试录取 + 新生资格考",
+        "direct_admission_criteria": [
+            "华小女毕业生校考总平均 75 分以上免试直录",
+            "各华小学校长具函保送推荐女生免试",
+            "艺术、舞蹈或管乐特长保送录取"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (全女校安全寄宿楼)",
+        "scholarship_quota": "女校优秀新生奖学金"
+    },
     fit_tags: ["全马唯一纯女校独中", "淑女品格培养", "双轨并重", "女宿规范"],
     verification_status: {
       source_level: "official_school_verified",
@@ -1119,6 +2214,27 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: false,
       dorm_gender: "无宿舍"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "佛化全人关怀全员保送免试",
+        "direct_admission_criteria": [
+            "全马华小毕业凭校长推荐信免试直接录取",
+            "注重品行端正与慈悲利他品格",
+            "小班制关怀全走读"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "scholarship_quota": "佛学与清寒助学金"
     },
     fit_tags: ["佛化教育", "慈悲关怀", "小班教学", "品格涵养"],
     verification_status: {
@@ -1161,11 +2277,29 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-20",
-      entrance_exam_date: "2026-10-10",
-      exam_subjects: ["华文", "国文", "英文", "数学"]
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-15",
+        "open_day_dates": [
+            "2026-08-08"
+        ],
+        "entrance_exam_date": "2026-10-03",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "成绩特优免试直录 + 入学甄拔考试",
+        "direct_admission_criteria": [
+            "华小五、六年级上半年总成绩达 80 分以上直接免试直录",
+            "威中及北马各华小学校长保送推荐优等生",
+            "奥数、三语演讲全国优胜代表保送"
+        ],
+        "result_release_date": "2026-10-10",
+        "registration_payment_deadline": "2026-10-20",
+        "dorm_application_deadline": "2026-10-20 (寄宿设施完备)",
+        "scholarship_quota": "入学考前20名免交首年学杂费"
     },
     fit_tags: ["威省名校龙头", "双轨顶尖", "严谨自律", "美术科优异", "高性价比"],
     verification_status: {
@@ -1208,6 +2342,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "保送免试直通 + 新生甄选考",
+        "direct_admission_criteria": [
+            "吉华属下及吉打州各华小成绩排名前15%直接免试直录",
+            "华小学校长保送推荐信",
+            "华乐、管乐、体育校队州代表保送"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28",
+        "scholarship_quota": "前15名免初一学费"
+    },
     fit_tags: ["米都名校", "管乐华乐全国拔尖", "双轨制", "寄宿大楼完善"],
     verification_status: {
       source_level: "official_school_verified",
@@ -1247,6 +2403,27 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试直录 + 入学测验",
+        "direct_admission_criteria": [
+            "华小毕业成绩合格或校长推荐信免试录取",
+            "吉打周边华小优先保送",
+            "小班关怀制"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "scholarship_quota": "清寒与优秀助学金"
+    },
     fit_tags: ["小班关怀", "亲切师生关系", "双轨制", "平价寄宿"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1285,6 +2462,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-10",
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "优等保送直录 + 统一入学选拔考",
+        "direct_admission_criteria": [
+            "华小五、六年级各科平均 75 分以上免试直录",
+            "双溪大年及邻近华小学校长保送名额",
+            "稳健学术双轨直录"
+        ],
+        "result_release_date": "2026-10-25",
+        "registration_payment_deadline": "2026-11-05",
+        "dorm_application_deadline": "2026-11-05",
+        "scholarship_quota": "考获前15名免学费"
     },
     fit_tags: ["吉南核心独中", "稳健双轨", "寄宿设施齐备", "性价比高"],
     verification_status: {
@@ -1330,6 +2529,28 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备",
       dorm_capacity: 400,
       meal_plan: "包一日三餐"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-31",
+        "entrance_exam_date": "2026-11-07",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "全马免试直录保送 + 迎新适应性评估",
+        "direct_admission_criteria": [
+            "全马各州华小毕业生凭校长推荐函直接免试录取",
+            "全寄宿特色校园，外州生优先安排床位与生活导师督导",
+            "东海岸华教前哨保送计划全免学杂费"
+        ],
+        "result_release_date": "2026-11-15",
+        "registration_payment_deadline": "2026-11-30",
+        "dorm_application_deadline": "2026-11-30 (全寄宿保障，男女冷气宿舍)",
+        "scholarship_quota": "丹中特别奖助学金与领养计划"
     },
     fit_tags: ["全寄宿制特色", "学分制选课先驱", "东海岸华教灯塔", "独立自理能力强化"],
     verification_status: {
@@ -1378,20 +2599,29 @@ export const ALL_SCHOOLS: School[] = [
       air_conditioned: "全冷气"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-30",
-      entrance_exam_date: "2026-10-10",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "东海岸华小保送 + 入学甄拔考试",
-      direct_admission_criteria: [
-        "彭亨州及东海岸华小五年级/六年级总成绩达 75 分以上免试直录",
-        "华小学校长具函保送推荐",
-        "外州生优先安排全冷气学生宿舍"
-      ],
-      result_release_date: "2026-10-18",
-      registration_payment_deadline: "2026-10-28",
-      dorm_application_deadline: "2026-10-28"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "open_day_dates": [
+            "2026-08-22"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "东海岸华小保送 + 入学甄拔考试",
+        "direct_admission_criteria": [
+            "彭亨州及东海岸华小五年级/六年级总成绩达 75 分以上免试直录",
+            "华小学校长具函保送推荐",
+            "外州生优先安排全冷气学生宿舍"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (现代冷气宿舍)",
+        "scholarship_quota": "东海岸特优生奖学金"
     },
     fit_tags: ["东海岸现代化独中", "双轨制", "全冷气宿舍", "寄宿管理规范"],
     verification_status: {
@@ -1439,20 +2669,29 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-15",
-      entrance_exam_date: "2026-09-26",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "特优保送 + 新生资格考试",
-      direct_admission_criteria: [
-        "亚庇及全沙巴各华小五年级及六年级总平均达 80 分以上直接免试录取",
-        "华小学校长保送特别名额",
-        "全州数理竞赛、三语演讲优胜代表直接保送"
-      ],
-      result_release_date: "2026-10-05",
-      registration_payment_deadline: "2026-10-18",
-      scholarship_quota: "入学考前 15 名获初一学费全免奖励"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-15",
+        "open_day_dates": [
+            "2026-07-25"
+        ],
+        "entrance_exam_date": "2026-09-26",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "特优保送 + 新生资格考试",
+        "direct_admission_criteria": [
+            "亚庇及全沙巴各华小五年级及六年级总平均达 80 分以上直接免试录取",
+            "华小学校长保送特别名额",
+            "全州数理竞赛、三语演讲优胜代表直接保送"
+        ],
+        "result_release_date": "2026-10-05",
+        "registration_payment_deadline": "2026-10-18",
+        "dorm_application_deadline": "2026-10-18",
+        "scholarship_quota": "入学考前 15 名获初一学费全免奖励"
     },
     fit_tags: ["东马学术龙头", "双轨强校", "沙巴第一学府", "寄宿设施齐全"],
     verification_status: {
@@ -1493,6 +2732,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试录取 + 新生资格甄拔试",
+        "direct_admission_criteria": [
+            "华小五、六年级各科平均 75 分以上免试直录",
+            "亚庇周边华小学校长具函保送推荐信",
+            "全人与科学创客特长保送"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28",
+        "scholarship_quota": "前15名免除学费"
+    },
     fit_tags: ["科学创客特色", "现代教学楼", "双轨制", "亚庇核心校"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1531,6 +2792,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "特优保送 + 入学甄试",
+        "direct_admission_criteria": [
+            "斗湖各华小成绩达 75 分以上免试直录",
+            "华小学校长保送优等生",
+            "备有现代化冷气学生宿舍"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "设新生全免学费奖"
     },
     fit_tags: ["沙巴东海岸名校", "三语并重", "双轨制", "寄宿完善"],
     verification_status: {
@@ -1571,6 +2854,28 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-10",
+        "entrance_exam_date": "2026-10-17",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "华小保送优先 + 资讯科技特优甄试",
+        "direct_admission_criteria": [
+            "山打根各华小校内排名前列免试直录",
+            "校长保送推荐信",
+            "资讯科技与电脑特长保送"
+        ],
+        "result_release_date": "2026-10-25",
+        "registration_payment_deadline": "2026-11-05",
+        "dorm_application_deadline": "2026-11-05",
+        "scholarship_quota": "优异新生奖学金"
+    },
     fit_tags: ["资讯科技先行", "山打根最高学府", "双轨制", "寄宿大楼"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1609,6 +2914,27 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "entrance_exam_date": "2026-11-20",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "社区保送全员免试录取",
+        "direct_admission_criteria": [
+            "拿笃及周边华小毕业生凭校长推荐免试直录",
+            "小班社区精细关怀",
+            "提供寄宿与交通补贴"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "清寒助学金全额覆盖"
     },
     fit_tags: ["社区温暖学府", "小班教学", "双轨制", "关怀寄宿"],
     verification_status: {
@@ -1649,6 +2975,20 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "全员校长保送免试录取",
+        "direct_admission_criteria": [
+            "内陆省华小毕业生凭校长推荐免试直录",
+            "纯朴校风与生态农业特色保送",
+            "提供免费住宿与清寒膳食津贴"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "全免学费名额充足"
+    },
     fit_tags: ["咖啡之乡学府", "纯朴校风", "高性价比", "小班教育"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1687,6 +3027,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "小班保送免试录取",
+        "direct_admission_criteria": [
+            "保佛及周边华小毕业生校长保送直录",
+            "小班制爱心教育与课后督导",
+            "外埠生备有宿舍"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "清寒助学金"
     },
     fit_tags: ["微型关怀独中", "平价亲民", "师生如家人", "寄宿安全"],
     verification_status: {
@@ -1727,6 +3081,20 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "温馨校园保送免试直录",
+        "direct_admission_criteria": [
+            "吧巴各华小毕业生凭校长推荐免试直接录取",
+            "注重品德与母语文化传承",
+            "提供外区寄宿关怀"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "设学业优良奖励金"
+    },
     fit_tags: ["小班温馨学府", "双轨制", "生活能力培养", "低学费"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1765,6 +3133,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "最北端华教前哨保送免试直录",
+        "direct_admission_criteria": [
+            "全马各华小毕业生凭推荐信免试直接录取",
+            "全免学费与宿舍费特别资助计划",
+            "小班一对一关怀引导"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "全额奖助学金资助计划"
     },
     fit_tags: ["沙巴最北端华教灯塔", "微型关怀", "亲民费用", "寄宿温馨"],
     verification_status: {
@@ -1812,19 +3194,29 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备"
     },
     admission_intake: {
-      intake_year: 2026,
-      registration_start: "2026-06-01",
-      registration_deadline: "2026-09-30",
-      entrance_exam_date: "2026-10-10",
-      exam_subjects: ["华文", "国文", "英文", "数学"],
-      admission_mode: "校长保送直通 + 统一评估试",
-      direct_admission_criteria: [
-        "古晋属下华小校长推荐信直接保送免试录取",
-        "华小五、六年级各科平均达标者免试直录",
-        "享有砂拉越州政府特别奖助学金资助"
-      ],
-      result_release_date: "2026-10-20",
-      registration_payment_deadline: "2026-10-31"
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "open_day_dates": [
+            "2026-08-15"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送直通 + 统一评估试",
+        "direct_admission_criteria": [
+            "古晋属下华小校长推荐信直接保送免试录取",
+            "华小五、六年级各科平均达标者免试直录",
+            "享有砂拉越州政府特别奖助学金资助"
+        ],
+        "result_release_date": "2026-10-20",
+        "registration_payment_deadline": "2026-10-31",
+        "dorm_application_deadline": "2026-10-31",
+        "scholarship_quota": "设砂州政府资助优秀生奖学金"
     },
     fit_tags: ["砂拉越旗舰名校", "受州政府支持承认", "全人与学术兼备", "性价比较高"],
     verification_status: {
@@ -1865,6 +3257,27 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-31",
+        "entrance_exam_date": "2026-11-07",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "技职特色保送免试录取",
+        "direct_admission_criteria": [
+            "古晋及周边华小毕业校长推荐免试直录",
+            "美术设计、烘焙与技职专修特长保送",
+            "享有砂拉越独中统筹津贴资助"
+        ],
+        "result_release_date": "2026-11-15",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "技职专修奖励金"
+    },
     fit_tags: ["技职与商科见长", "双轨并重", "关怀寄宿", "古晋核心校"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1902,6 +3315,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: false,
       dorm_gender: "无宿舍"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-31",
+        "admission_mode": "赏识教育小班精品保送免试直录",
+        "direct_admission_criteria": [
+            "华小毕业凭校长推荐信免试直接录取",
+            "行知赏识教育无门槛爱心接纳",
+            "纯走读精品小班"
+        ],
+        "result_release_date": "2026-11-15",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "赏识好孩子奖学金"
     },
     fit_tags: ["赏识教育典范", "行知赏识文化", "精品小班", "充满爱与正能量"],
     verification_status: {
@@ -1942,6 +3369,20 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "社区华小保送免试直录",
+        "direct_admission_criteria": [
+            "石角区各华小毕业生校长保送直接录取",
+            "小班关怀制与课后作业辅导",
+            "提供外区宿舍"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "清寒助学金"
+    },
     fit_tags: ["郊区坚守学府", "平价亲民", "温馨关怀", "小班教学"],
     verification_status: {
       source_level: "dongzong_report",
@@ -1980,6 +3421,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "郊区保送免试录取",
+        "direct_admission_criteria": [
+            "西连省各华小毕业生校长推荐直接保送录取",
+            "乡村寄宿爱心学校保障",
+            "学杂费极其普惠平价"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "州政府拨款清寒援助"
     },
     fit_tags: ["乡村微型独中", "土著生融合典范", "学费低廉", "关怀寄宿"],
     verification_status: {
@@ -2021,6 +3476,31 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "open_day_dates": [
+            "2026-08-22"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "修士严谨办学保送直录 + 入学甄试",
+        "direct_admission_criteria": [
+            "诗巫及中区各华小五、六年级各科平均 75 分以上免试直录",
+            "各华小学校长具函保送推荐品学兼优生",
+            "全砂数理奥林匹克得奖者保送"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (修士督导严格管理宿舍)",
+        "scholarship_quota": "入学考前20名免收首年学费"
+    },
     fit_tags: ["诗巫学术第一校", "纪律严谨", "修士治学传统", "双轨顶尖"],
     verification_status: {
       source_level: "official_school_verified",
@@ -2059,6 +3539,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-20",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "校长保送免试录取 + 入学能力考",
+        "direct_admission_criteria": [
+            "华小毕业成绩合格或校长推荐信免试直录",
+            "诗巫友好华小优等生直接保送",
+            "纪念先贤黄乃裳精神特别助学金"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "先贤纪念奖助学金"
     },
     fit_tags: ["纪念垦场港主", "福州文化底蕴", "双轨并重", "设施现代"],
     verification_status: {
@@ -2099,6 +3601,20 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-10",
+        "admission_mode": "生态农耕环保保送免试录取",
+        "direct_admission_criteria": [
+            "华小毕业凭校长推荐信直接免试录取",
+            "生态环保农耕教育特色全人关怀",
+            "提供平价寄宿宿舍"
+        ],
+        "result_release_date": "2026-11-20",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "清寒助学金全免"
+    },
     fit_tags: ["拉让江畔学府", "农耕生态实践", "微型关怀", "低学费"],
     verification_status: {
       source_level: "dongzong_report",
@@ -2137,6 +3653,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-10",
+        "admission_mode": "家庭式小班关怀免试直录",
+        "direct_admission_criteria": [
+            "华小毕业生凭校长推荐免试直录",
+            "家庭式生活陪伴与品德熏陶",
+            "寄宿床位全额保障"
+        ],
+        "result_release_date": "2026-11-20",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "爱心助学扶助金"
     },
     fit_tags: ["平价微型独中", "生活自律教育", "温馨寄宿", "注重品德"],
     verification_status: {
@@ -2177,6 +3707,20 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-10",
+        "admission_mode": "纯朴校风校长保送免试直录",
+        "direct_admission_criteria": [
+            "华小毕业生态度端正由校长保送免试直录",
+            "传统纯朴校风与三语基础强化",
+            "提供外埠学生宿舍"
+        ],
+        "result_release_date": "2026-11-20",
+        "registration_payment_deadline": "2026-11-30",
+        "scholarship_quota": "清寒助学金"
+    },
     fit_tags: ["乡村质朴独中", "小班师生互动", "双轨制", "低费用"],
     verification_status: {
       source_level: "dongzong_report",
@@ -2215,6 +3759,20 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-11-15",
+        "admission_mode": "乡村坚守保送免试直接录取",
+        "direct_admission_criteria": [
+            "泗里街及周边华小毕业生直接保送免试录取",
+            "小班精细陪伴辅导",
+            "乡村寄宿全方位关怀"
+        ],
+        "result_release_date": "2026-11-25",
+        "registration_payment_deadline": "2026-12-05",
+        "scholarship_quota": "免除全额学费助学计划"
     },
     fit_tags: ["胡椒之乡独中", "平民坚守学府", "小班全人", "寄宿温馨"],
     verification_status: {
@@ -2257,6 +3815,33 @@ export const ALL_SCHOOLS: School[] = [
       dorm_gender: "男女宿舍兼备",
       air_conditioned: "全冷气"
     },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-09-30",
+        "open_day_dates": [
+            "2026-08-08"
+        ],
+        "entrance_exam_date": "2026-10-10",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "exam_format": "三轨国际评估闭卷试，注重数理英语高阶应用",
+        "admission_mode": "三轨保送直录 + 入学甄选试",
+        "direct_admission_criteria": [
+            "华小五、六年级各科平均达 80 分以上直接免试直录",
+            "美里及砂北各华小学校长特别推荐品学兼优保送生",
+            "全国/全砂数理奥林匹克或科技赛前三名直录并颁优异奖学金",
+            "五星级现代化冷气学生公寓，外地寄宿生专线审核"
+        ],
+        "result_release_date": "2026-10-18",
+        "registration_payment_deadline": "2026-10-28",
+        "dorm_application_deadline": "2026-10-28 (五星级冷气学生公寓)",
+        "scholarship_quota": "入学试考获前 15 名免除初一年全额学费"
+    },
     fit_tags: ["三轨办学", "现代五星级设施", "文体全面开花", "国际化视野"],
     verification_status: {
       source_level: "official_school_verified",
@@ -2295,6 +3880,28 @@ export const ALL_SCHOOLS: School[] = [
     dormitory_and_boarding: {
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "数理底蕴保送直录 + 入学甄拔考试",
+        "direct_admission_criteria": [
+            "美里及邻近华小排名前 15% 优异生免试保送",
+            "华小学校长具函保送推荐信",
+            "数理学术传统强项生免试录取"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10",
+        "scholarship_quota": "前15名免除学费优异生奖"
     },
     fit_tags: ["油城数理名校", "统考成绩卓著", "双轨并重", "寄宿大楼新颖"],
     verification_status: {
@@ -2336,6 +3943,31 @@ export const ALL_SCHOOLS: School[] = [
       has_dormitory: true,
       dorm_gender: "男女宿舍兼备",
       air_conditioned: "全冷气"
+    },
+    admission_intake: {
+        "intake_year": 2026,
+        "registration_start": "2026-06-01",
+        "registration_deadline": "2026-10-15",
+        "open_day_dates": [
+            "2026-08-29"
+        ],
+        "entrance_exam_date": "2026-10-24",
+        "exam_subjects": [
+            "华文",
+            "国文",
+            "英文",
+            "数学"
+        ],
+        "admission_mode": "现代化寄宿名校保送免试 + 入学试",
+        "direct_admission_criteria": [
+            "民都鲁各华小毕业由校长推荐免试直录",
+            "五、六年级各科成绩平均达 75 分以上免试直录",
+            "跨州迁校成功典范，现代化冷气宿舍保障外地生"
+        ],
+        "result_release_date": "2026-10-31",
+        "registration_payment_deadline": "2026-11-10",
+        "dorm_application_deadline": "2026-11-10 (现代化寄宿大楼)",
+        "scholarship_quota": "设开智优秀新生奖学金与常年清寒助学金"
     },
     fit_tags: ["迁校重生典范", "现代高规格校园", "双轨并重", "冷气寄宿大楼"],
     verification_status: {

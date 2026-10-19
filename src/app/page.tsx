@@ -814,12 +814,17 @@ export default function HomePage() {
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-xl font-bold text-slate-900 flex items-center space-x-2">
+              <div className="flex items-center space-x-2">
                 <Clock className="w-5 h-5 text-red-700" />
-                <span>各校招考日程与保送免试条件对照表</span>
-              </h3>
+                <h3 className="text-xl font-bold text-slate-900">
+                  全马 63 所独中招考日程与保送免试条件对照表
+                </h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                  已收录 {timelineSchools.length} 所
+                </span>
+              </div>
               <p className="text-xs text-slate-500 mt-1">
-                点击表格可快速核对各校报名截止、考试日（红色高亮）及保送免试录取门槛。
+                涵盖全国 12 州属全部 63 所独中；支持按州筛选快速核对报名截止、入学考日（红色高亮）及保送免试录取门槛。
               </p>
             </div>
 
