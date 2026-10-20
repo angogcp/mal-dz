@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { ALL_SCHOOLS } from '../data/schoolsData';
 import { School } from '../types/school';
+import { useLanguage } from '../contexts/LanguageContext';
 import FitQuizModal from '../components/FitQuizModal';
 import ShareComparisonModal from '../components/ShareComparisonModal';
 import { 
@@ -41,24 +42,67 @@ export default function HomePage() {
   const [calcIsBoarder, setCalcIsBoarder] = useState<boolean>(false);
   const [calcMonthlyTransport, setCalcMonthlyTransport] = useState<number>(200);
 
-  const states = [
-    '全部', '柔佛', '吉隆坡', '雪兰莪', '森美兰', '马六甲', 
-    '霹雳', '槟城', '吉打', '吉兰丹', '彭亨', '沙巴', '砂拉越'
-  ];
+  const { t, lang } = useLanguage();
+
+  const states = useMemo(() => [
+    t('全部'), t('柔佛'), t('吉隆坡'), t('雪兰莪'), t('森美兰'), t('马六甲'), 
+    t('霹雳'), t('槟城'), t('吉打'), t('吉兰丹'), t('彭亨'), t('沙巴'), t('砂拉越')
+  ], [lang]);
+
+  // Dynamically convert schools dataset based on active language (zh-Hans vs zh-Hant)
+  const displaySchools: School[] = useMemo(() => {
+    if (lang === 'zh-Hans') return ALL_SCHOOLS;
+    return ALL_SCHOOLS.map(sch => ({
+      ...sch,
+      name_zh: t(sch.name_zh),
+      abbreviation: t(sch.abbreviation),
+      location: {
+        ...sch.location,
+        state: t(sch.location.state),
+        city: t(sch.location.city),
+        address: t(sch.location.address),
+      },
+      academics: {
+        ...sch.academics,
+        track_type: t(sch.academics.track_type),
+        academic_highlights: sch.academics.academic_highlights ? t(sch.academics.academic_highlights) : undefined,
+      },
+      dormitory_and_boarding: {
+        ...sch.dormitory_and_boarding,
+        dorm_gender: sch.dormitory_and_boarding.dorm_gender ? t(sch.dormitory_and_boarding.dorm_gender) : undefined,
+        air_conditioned: sch.dormitory_and_boarding.air_conditioned ? t(sch.dormitory_and_boarding.air_conditioned) : undefined,
+        study_hall_rules: sch.dormitory_and_boarding.study_hall_rules ? t(sch.dormitory_and_boarding.study_hall_rules) : undefined,
+      },
+      costs_and_fees: {
+        ...sch.costs_and_fees,
+        scholarship_info: sch.costs_and_fees.scholarship_info ? t(sch.costs_and_fees.scholarship_info) : undefined,
+      },
+      admission_intake: sch.admission_intake ? {
+        ...sch.admission_intake,
+        admission_mode: sch.admission_intake.admission_mode ? t(sch.admission_intake.admission_mode) : undefined,
+        exam_format: sch.admission_intake.exam_format ? t(sch.admission_intake.exam_format) : undefined,
+        exam_venue: sch.admission_intake.exam_venue ? t(sch.admission_intake.exam_venue) : undefined,
+        scholarship_quota: sch.admission_intake.scholarship_quota ? t(sch.admission_intake.scholarship_quota) : undefined,
+        direct_admission_criteria: sch.admission_intake.direct_admission_criteria ? sch.admission_intake.direct_admission_criteria.map(c => t(c)) : undefined,
+      } : undefined,
+      fit_tags: sch.fit_tags.map(tag => t(tag)),
+    }));
+  }, [lang]);
 
   // State school count map
   const stateCounts = useMemo(() => {
-    const counts: Record<string, number> = { '全部': ALL_SCHOOLS.length };
-    ALL_SCHOOLS.forEach(s => {
+    const allKey = t('全部');
+    const counts: Record<string, number> = { [allKey]: displaySchools.length };
+    displaySchools.forEach(s => {
       counts[s.location.state] = (counts[s.location.state] || 0) + 1;
     });
     return counts;
-  }, []);
+  }, [displaySchools, lang]);
 
   // Filter logic for main directory
   const filteredSchools = useMemo(() => {
-    return ALL_SCHOOLS.filter((school) => {
-      // Keyword search
+    const allKey = t('全部');
+    return displaySchools.filter((school) => {
       const matchesSearch = 
         school.name_zh.toLowerCase().includes(searchTerm.toLowerCase()) ||
         school.name_en.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -66,36 +110,33 @@ export default function HomePage() {
         school.abbreviation.toLowerCase().includes(searchTerm.toLowerCase()) ||
         school.fit_tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      // State filter
-      const matchesState = selectedState === '全部' || school.location.state === selectedState;
+      const matchesState = selectedState === '全部' || selectedState === allKey || school.location.state === selectedState;
 
-      // Dorm filter
       const matchesDorm = 
-        selectedDorm === '全部' ||
-        (selectedDorm === '有宿舍' && school.dormitory_and_boarding.has_dormitory) ||
-        (selectedDorm === '走读校' && !school.dormitory_and_boarding.has_dormitory);
+        selectedDorm === '全部' || selectedDorm === allKey ||
+        ((selectedDorm === '有宿舍' || selectedDorm === t('有宿舍')) && school.dormitory_and_boarding.has_dormitory) ||
+        ((selectedDorm === '走读校' || selectedDorm === t('走读校')) && !school.dormitory_and_boarding.has_dormitory);
 
-      // Track filter
       const matchesTrack = 
-        selectedTrack === '全部' ||
-        (selectedTrack === '单轨' && school.academics.track_type.includes('单轨')) ||
-        (selectedTrack === '双轨' && school.academics.track_type.includes('双轨')) ||
-        (selectedTrack === '三轨' && school.academics.track_type.includes('三轨'));
+        selectedTrack === '全部' || selectedTrack === allKey ||
+        ((selectedTrack === '单轨' || selectedTrack === t('单轨')) && (school.academics.track_type.includes('单轨') || school.academics.track_type.includes('單軌'))) ||
+        ((selectedTrack === '双轨' || selectedTrack === t('双轨')) && (school.academics.track_type.includes('双轨') || school.academics.track_type.includes('雙軌'))) ||
+        ((selectedTrack === '三轨' || selectedTrack === t('三轨')) && (school.academics.track_type.includes('三轨') || school.academics.track_type.includes('三軌')));
 
-      // Tag filter
       const matchesTag = !selectedTag || school.fit_tags.includes(selectedTag);
 
       return matchesSearch && matchesState && matchesDorm && matchesTrack && matchesTag;
     });
-  }, [searchTerm, selectedState, selectedDorm, selectedTrack, selectedTag]);
+  }, [displaySchools, searchTerm, selectedState, selectedDorm, selectedTrack, selectedTag, lang]);
 
   // Filtered schools for timeline section
   const timelineSchools = useMemo(() => {
-    return ALL_SCHOOLS.filter(s => {
-      const matchState = timelineStateFilter === '全部' || s.location.state === timelineStateFilter;
+    const allKey = t('全部');
+    return displaySchools.filter(s => {
+      const matchState = timelineStateFilter === '全部' || timelineStateFilter === allKey || s.location.state === timelineStateFilter;
       return matchState && s.admission_intake;
     });
-  }, [timelineStateFilter]);
+  }, [displaySchools, timelineStateFilter, lang]);
 
   // Toggle comparison
   const toggleCompare = (school: School) => {
@@ -103,17 +144,28 @@ export default function HomePage() {
       setCompareList(compareList.filter(s => s.school_id !== school.school_id));
     } else {
       if (compareList.length >= 4) {
-        alert('对比器最多同时支持比较 4 所学校。请先移除一所后再添加。');
+        alert(t('对比器最多同时支持比较 4 所学校。请先移除一所后再添加。'));
         return;
       }
       setCompareList([...compareList, school]);
     }
   };
 
+  // Active compare list synced with language
+  const activeCompareList = useMemo(() => {
+    return compareList.map(sch => displaySchools.find(s => s.school_id === sch.school_id) || sch);
+  }, [compareList, displaySchools]);
+
   // Calculator selected school
   const calcSchool = useMemo(() => {
-    return ALL_SCHOOLS.find(s => s.school_id === calcSchoolId) || ALL_SCHOOLS[0];
-  }, [calcSchoolId]);
+    return displaySchools.find(s => s.school_id === calcSchoolId) || displaySchools[0];
+  }, [calcSchoolId, displaySchools]);
+
+  // Active modal school synced with language
+  const modalSchool = useMemo(() => {
+    if (!activeModalSchool) return null;
+    return displaySchools.find(s => s.school_id === activeModalSchool.school_id) || activeModalSchool;
+  }, [activeModalSchool, displaySchools]);
 
   // Total cost estimate
   const calcResults = useMemo(() => {
@@ -488,7 +540,7 @@ export default function HomePage() {
                 <thead>
                   <tr className="border-b border-slate-200">
                     <th className="p-3 bg-slate-50 font-semibold text-slate-600 w-36">比较项目</th>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <th key={sch.school_id} className="p-3 min-w-[220px] bg-white border-l border-slate-100">
                         <div className="flex items-center justify-between">
                           <span className="font-bold text-slate-900 text-base">{sch.name_zh}</span>
@@ -512,7 +564,7 @@ export default function HomePage() {
                       <Award className="w-3.5 h-3.5 text-emerald-700 inline" />
                       <span>保送与免试直录条件</span>
                     </td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
                         {sch.admission_intake?.direct_admission_criteria && sch.admission_intake.direct_admission_criteria.length > 0 ? (
                           <div className="space-y-1">
@@ -535,7 +587,7 @@ export default function HomePage() {
                     <td className="p-3 bg-red-50/50 font-bold text-red-900 text-xs">
                       招考关键日程
                     </td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
                         {sch.admission_intake ? (
                           <div className="space-y-1">
@@ -553,7 +605,7 @@ export default function HomePage() {
 
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">学制轨道</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs font-semibold text-slate-800">
                         {sch.academics.track_type}
                       </td>
@@ -561,7 +613,7 @@ export default function HomePage() {
                   </tr>
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">高中分流科系</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs text-slate-600">
                         {sch.academics.senior_tracks.join('、')}
                       </td>
@@ -569,7 +621,7 @@ export default function HomePage() {
                   </tr>
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">初中走读首年预估</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs font-bold text-slate-900">
                         RM {sch.costs_and_fees.first_year_est_day_student.toLocaleString()}
                       </td>
@@ -577,7 +629,7 @@ export default function HomePage() {
                   </tr>
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">宿舍与住宿首年</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
                         {sch.dormitory_and_boarding.has_dormitory ? (
                           <span className="font-bold text-amber-700">
@@ -594,7 +646,7 @@ export default function HomePage() {
                   </tr>
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">晚自习与手机管理</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs text-slate-600">
                         {sch.dormitory_and_boarding.study_hall_rules || '遵照各校宿管条例统一执行'}
                       </td>
@@ -602,7 +654,7 @@ export default function HomePage() {
                   </tr>
                   <tr>
                     <td className="p-3 bg-slate-50 font-medium text-slate-500 text-xs">特色适合度标签</td>
-                    {compareList.map((sch) => (
+                    {activeCompareList.map((sch) => (
                       <td key={sch.school_id} className="p-3 border-l border-slate-100 text-xs">
                         <div className="flex flex-wrap gap-1">
                           {sch.fit_tags.map(t => (
@@ -650,7 +702,7 @@ export default function HomePage() {
                   onChange={(e) => setCalcSchoolId(e.target.value)}
                   className="w-full py-2.5 px-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-500"
                 >
-                  {ALL_SCHOOLS.map(s => (
+                  {displaySchools.map(s => (
                     <option key={s.school_id} value={s.school_id}>
                       [{s.location.state}] {s.name_zh}
                     </option>
@@ -994,11 +1046,11 @@ export default function HomePage() {
       <ShareComparisonModal
         isOpen={isShareOpen}
         onClose={() => setIsShareOpen(false)}
-        schools={compareList}
+        schools={activeCompareList}
       />
 
       {/* MODAL: SCHOOL DETAIL VIEW */}
-      {activeModalSchool && (
+      {modalSchool && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
             <button
@@ -1011,12 +1063,12 @@ export default function HomePage() {
             <div className="pr-8">
               <div className="flex items-center space-x-2">
                 <span className="px-2.5 py-0.5 rounded-md bg-red-100 text-red-800 text-xs font-bold">
-                  {activeModalSchool.location.state}
+                  {modalSchool.location.state}
                 </span>
-                <span className="text-xs text-slate-400">创办于 {activeModalSchool.founding_year} 年</span>
+                <span className="text-xs text-slate-400">创办于 {modalSchool.founding_year} 年</span>
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mt-1">{activeModalSchool.name_zh}</h3>
-              <p className="text-xs text-slate-500 mt-0.5">{activeModalSchool.name_en}</p>
+              <h3 className="text-2xl font-black text-slate-900 mt-1">{modalSchool.name_zh}</h3>
+              <p className="text-xs text-slate-500 mt-0.5">{modalSchool.name_en}</p>
             </div>
 
             <div className="mt-6 space-y-6 text-sm text-slate-700">
@@ -1028,7 +1080,7 @@ export default function HomePage() {
                     <h5 className="font-bold text-slate-900 text-sm">2026 初一新生招考与保送直录全指南</h5>
                   </div>
                   <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
-                    {activeModalSchool.admission_intake?.admission_mode || '入学考试遴选'}
+                    {modalSchool.admission_intake?.admission_mode || '入学考试遴选'}
                   </span>
                 </div>
 
@@ -1038,9 +1090,9 @@ export default function HomePage() {
                     <Award className="w-4 h-4 text-emerald-600" />
                     <span>免试保送 / 绿色直录条件 (Direct Admission)：</span>
                   </div>
-                  {activeModalSchool.admission_intake?.direct_admission_criteria && activeModalSchool.admission_intake.direct_admission_criteria.length > 0 ? (
+                  {modalSchool.admission_intake?.direct_admission_criteria && modalSchool.admission_intake.direct_admission_criteria.length > 0 ? (
                     <div className="space-y-1.5">
-                      {activeModalSchool.admission_intake.direct_admission_criteria.map((crit, idx) => (
+                      {modalSchool.admission_intake.direct_admission_criteria.map((crit, idx) => (
                         <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700 bg-white/90 p-2.5 rounded-xl border border-slate-200">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                           <span className="leading-snug">{crit}</span>
@@ -1061,31 +1113,31 @@ export default function HomePage() {
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
                       <span className="text-[10px] text-slate-400 block">报名起止时间</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
-                        {activeModalSchool.admission_intake?.registration_start || '6月'} ~ {activeModalSchool.admission_intake?.registration_deadline || '9月'}
+                        {modalSchool.admission_intake?.registration_start || '6月'} ~ {modalSchool.admission_intake?.registration_deadline || '9月'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-red-300 bg-red-50/30">
                       <span className="text-[10px] text-red-600 font-bold block">新生入学甄拔考试日</span>
                       <span className="font-black text-red-700 block mt-0.5">
-                        {activeModalSchool.admission_intake?.entrance_exam_date || '9月 - 10月'}
+                        {modalSchool.admission_intake?.entrance_exam_date || '9月 - 10月'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
                       <span className="text-[10px] text-slate-400 block">录取放榜日</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
-                        {activeModalSchool.admission_intake?.result_release_date || '考后 1-2 周'}
+                        {modalSchool.admission_intake?.result_release_date || '考后 1-2 周'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
                       <span className="text-[10px] text-slate-400 block">注册缴费确认截止</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
-                        {activeModalSchool.admission_intake?.registration_payment_deadline || '放榜后10日内'}
+                        {modalSchool.admission_intake?.registration_payment_deadline || '放榜后10日内'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-amber-300 bg-amber-50/30 sm:col-span-2">
                       <span className="text-[10px] text-amber-800 font-bold block">外州生宿舍申请截止</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
-                        {activeModalSchool.admission_intake?.dorm_application_deadline || (activeModalSchool.dormitory_and_boarding.has_dormitory ? '注册缴费时同步提交申请' : '该校无宿舍 (全走读)')}
+                        {modalSchool.admission_intake?.dorm_application_deadline || (modalSchool.dormitory_and_boarding.has_dormitory ? '注册缴费时同步提交申请' : '该校无宿舍 (全走读)')}
                       </span>
                     </div>
                   </div>
@@ -1093,14 +1145,14 @@ export default function HomePage() {
 
                 {/* Exam details & Scholarships */}
                 <div className="space-y-1.5 text-xs text-slate-600 bg-white/70 p-3 rounded-xl border border-slate-200">
-                  {activeModalSchool.admission_intake?.exam_subjects && (
-                    <div>• <strong>考试科目</strong>：{activeModalSchool.admission_intake.exam_subjects.join('、')} (按华小六年级大纲命题)</div>
+                  {modalSchool.admission_intake?.exam_subjects && (
+                    <div>• <strong>考试科目</strong>：{modalSchool.admission_intake.exam_subjects.join('、')} (按华小六年级大纲命题)</div>
                   )}
-                  {activeModalSchool.admission_intake?.exam_format && (
-                    <div>• <strong>考务形式</strong>：{activeModalSchool.admission_intake.exam_format}</div>
+                  {modalSchool.admission_intake?.exam_format && (
+                    <div>• <strong>考务形式</strong>：{modalSchool.admission_intake.exam_format}</div>
                   )}
-                  {activeModalSchool.admission_intake?.scholarship_quota && (
-                    <div className="text-amber-800 font-semibold">• <strong>优异新生奖学金</strong>：{activeModalSchool.admission_intake.scholarship_quota}</div>
+                  {modalSchool.admission_intake?.scholarship_quota && (
+                    <div className="text-amber-800 font-semibold">• <strong>优异新生奖学金</strong>：{modalSchool.admission_intake.scholarship_quota}</div>
                   )}
                 </div>
               </div>
@@ -1109,7 +1161,7 @@ export default function HomePage() {
               <div>
                 <h5 className="font-bold text-slate-900 mb-1 text-xs uppercase tracking-wider text-slate-500">办学理念与特色</h5>
                 <p className="bg-slate-50 p-3.5 rounded-xl text-slate-600 text-xs leading-relaxed">
-                  {activeModalSchool.academics.academic_highlights || '坚持母语教学与三语并重，弘扬中华传统文化，注重学术成绩与全人品格培养。'}
+                  {modalSchool.academics.academic_highlights || '坚持母语教学与三语并重，弘扬中华传统文化，注重学术成绩与全人品格培养。'}
                 </p>
               </div>
 
@@ -1118,13 +1170,13 @@ export default function HomePage() {
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                   <span className="text-xs text-slate-400 block">教学体制</span>
                   <span className="font-semibold text-slate-900 text-xs mt-1 block">
-                    {activeModalSchool.academics.track_type}
+                    {modalSchool.academics.track_type}
                   </span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                   <span className="text-xs text-slate-400 block">初中走读首年费用</span>
                   <span className="font-bold text-slate-900 text-xs mt-1 block">
-                    RM {activeModalSchool.costs_and_fees.first_year_est_day_student.toLocaleString()}
+                    RM {modalSchool.costs_and_fees.first_year_est_day_student.toLocaleString()}
                   </span>
                 </div>
               </div>
@@ -1136,18 +1188,18 @@ export default function HomePage() {
                   <div className="flex justify-between">
                     <span className="text-slate-600">是否有宿舍：</span>
                     <span className="font-bold text-slate-900">
-                      {activeModalSchool.dormitory_and_boarding.has_dormitory ? '设有学生宿舍' : '无宿舍 (纯走读校)'}
+                      {modalSchool.dormitory_and_boarding.has_dormitory ? '设有学生宿舍' : '无宿舍 (纯走读校)'}
                     </span>
                   </div>
-                  {activeModalSchool.dormitory_and_boarding.has_dormitory && (
+                  {modalSchool.dormitory_and_boarding.has_dormitory && (
                     <>
                       <div className="flex justify-between">
                         <span className="text-slate-600">冷气配置：</span>
-                        <span className="font-medium text-slate-900">{activeModalSchool.dormitory_and_boarding.air_conditioned || '全冷气/部分冷气'}</span>
+                        <span className="font-medium text-slate-900">{modalSchool.dormitory_and_boarding.air_conditioned || '全冷气/部分冷气'}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-600">管理规则：</span>
-                        <span className="font-medium text-slate-900">{activeModalSchool.dormitory_and_boarding.study_hall_rules || '统一晚自习'}</span>
+                        <span className="font-medium text-slate-900">{modalSchool.dormitory_and_boarding.study_hall_rules || '统一晚自习'}</span>
                       </div>
                     </>
                   )}
@@ -1160,19 +1212,19 @@ export default function HomePage() {
                 <div className="space-y-1.5 text-xs text-slate-600">
                   <div className="flex items-center space-x-2">
                     <MapPin className="w-4 h-4 text-slate-400" />
-                    <span>{activeModalSchool.location.address}</span>
+                    <span>{modalSchool.location.address}</span>
                   </div>
-                  {activeModalSchool.contact.phone && (
+                  {modalSchool.contact.phone && (
                     <div className="flex items-center space-x-2">
                       <Phone className="w-4 h-4 text-slate-400" />
-                      <span>{activeModalSchool.contact.phone}</span>
+                      <span>{modalSchool.contact.phone}</span>
                     </div>
                   )}
-                  {activeModalSchool.contact.website_url && (
+                  {modalSchool.contact.website_url && (
                     <div className="flex items-center space-x-2">
                       <Globe className="w-4 h-4 text-slate-400" />
                       <a 
-                        href={activeModalSchool.contact.website_url} 
+                        href={modalSchool.contact.website_url} 
                         target="_blank" 
                         rel="noreferrer"
                         className="text-red-700 hover:underline flex items-center space-x-1"

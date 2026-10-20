@@ -1,0 +1,32 @@
+{
+  "name": "独中通｜马来西亚全国63所华文独中择校情报平台",
+  "short_name": "独中通",
+  "description": "专为华裔家庭打造的独中择校工具，提供63所独中标准化数据库、多校横向对比、TCO学杂费测算及2026招考日历",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#b91c1c",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "reference", "utilities"],
+  "lang": "zh-MY"
+}

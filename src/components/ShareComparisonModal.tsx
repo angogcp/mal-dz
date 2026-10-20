@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { School } from '../types/school';
+import { useLanguage } from '../contexts/LanguageContext';
 import { X, Copy, Check, Printer, Share2, FileText, CheckCircle2, ExternalLink } from 'lucide-react';
 
 interface ShareComparisonModalProps {
@@ -15,12 +16,13 @@ export default function ShareComparisonModal({
   onClose,
   schools,
 }: ShareComparisonModalProps) {
+  const { t, lang } = useLanguage();
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'preview' | 'text'>('preview');
 
   if (!isOpen || schools.length === 0) return null;
 
-  const currentDate = new Date().toLocaleDateString('zh-MY', {
+  const currentDate = new Date().toLocaleDateString(lang === 'zh-Hant' ? 'zh-TW' : 'zh-MY', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -28,29 +30,29 @@ export default function ShareComparisonModal({
 
   // Generate plain text formatted for WhatsApp
   const generateWhatsAppText = () => {
-    let text = `🇲🇾【独中通 · 多校横向择校简报】\n`;
-    text += `对比学校：${schools.map(s => s.name_zh).join(' vs ')}\n`;
-    text += `生成日期：${currentDate}\n`;
+    let text = t(`🇲🇾【独中通 · 多校横向择校简报】\n`);
+    text += t(`对比学校：`) + `${schools.map(s => t(s.name_zh)).join(' vs ')}\n`;
+    text += t(`生成日期：`) + `${currentDate}\n`;
     text += `------------------------------------\n\n`;
 
     schools.forEach((s, idx) => {
-      text += `📍 ${idx + 1}. ${s.name_zh} (${s.location.state} · ${s.location.city})\n`;
-      text += `• 学制：${s.academics.track_type}\n`;
-      text += `• 宿舍：${s.dormitory_and_boarding.has_dormitory ? '设有宿舍 (' + (s.dormitory_and_boarding.air_conditioned || '备有宿舍') + ')' : '无宿舍 (纯走读)'}\n`;
-      text += `• 初中走读首年：RM ${s.costs_and_fees.first_year_est_day_student.toLocaleString()}\n`;
+      text += `📍 ${idx + 1}. ${t(s.name_zh)} (${t(s.location.state)} · ${t(s.location.city)})\n`;
+      text += `• ` + t(`学制：`) + `${t(s.academics.track_type)}\n`;
+      text += `• ` + t(`宿舍：`) + `${s.dormitory_and_boarding.has_dormitory ? t('设有宿舍') + ' (' + t(s.dormitory_and_boarding.air_conditioned || '备有宿舍') + ')' : t('无宿舍 (纯走读)')}\n`;
+      text += `• ` + t(`初中走读首年：`) + `RM ${s.costs_and_fees.first_year_est_day_student.toLocaleString()}\n`;
       if (s.costs_and_fees.first_year_est_boarder) {
-        text += `• 寄宿生首年：RM ${s.costs_and_fees.first_year_est_boarder.toLocaleString()}\n`;
+        text += `• ` + t(`寄宿生首年：`) + `RM ${s.costs_and_fees.first_year_est_boarder.toLocaleString()}\n`;
       }
-      text += `• 晚自习/纪律：${s.dormitory_and_boarding.study_hall_rules || '统一校纪晚自习'}\n`;
-      text += `• 特色标签：#${s.fit_tags.slice(0, 3).join(' #')}\n`;
+      text += `• ` + t(`晚自习/纪律：`) + `${t(s.dormitory_and_boarding.study_hall_rules || '统一校纪晚自习')}\n`;
+      text += `• ` + t(`特色标签：`) + `#${s.fit_tags.slice(0, 3).map(tag => t(tag)).join(' #')}\n`;
       if (s.contact.website_url) {
-        text += `• 官网：${s.contact.website_url}\n`;
+        text += `• ` + t(`官网：`) + `${s.contact.website_url}\n`;
       }
       text += `\n`;
     });
 
-    text += `💡 资料来源：独中通 (DuZhongTong) - 全马63所独中数据库\n`;
-    text += `在线查看更多学校：https://mal-dz.vercel.app`;
+    text += `💡 ` + t(`资料来源：独中通 (DuZhongTong) - 全马63所独中数据库\n`);
+    text += t(`在线查看更多学校：`) + `https://mal-dz.vercel.app`;
     return text;
   };
 
