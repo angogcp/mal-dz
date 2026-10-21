@@ -6,6 +6,8 @@ import { School } from '../types/school';
 import { useLanguage } from '../contexts/LanguageContext';
 import FitQuizModal from '../components/FitQuizModal';
 import ShareComparisonModal from '../components/ShareComparisonModal';
+import UASACheckerModal from '../components/UASACheckerModal';
+import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
   Search, Filter, MapPin, Building2, BedDouble, 
   BookOpen, Calculator, Calendar, ExternalLink, 
@@ -34,6 +36,9 @@ export default function HomePage() {
   // Share Modal state
   const [isShareOpen, setIsShareOpen] = useState(false);
 
+  // UASA Checker Modal state
+  const [isUASAOpen, setIsUASAOpen] = useState(false);
+
   // Timeline table filter state
   const [timelineStateFilter, setTimelineStateFilter] = useState('全部');
 
@@ -43,6 +48,20 @@ export default function HomePage() {
   const [calcMonthlyTransport, setCalcMonthlyTransport] = useState<number>(200);
 
   const { t, lang } = useLanguage();
+
+  const handleDownloadSchoolCalendar = (school: School) => {
+    const ics = generateSchoolICS(school, lang);
+    if (!ics) {
+      alert(t('该校暂无明确的考试日期数据'));
+      return;
+    }
+    downloadICS(`${school.name_zh}_2026招考日程`, ics);
+  };
+
+  const handleDownloadAllCalendar = () => {
+    const ics = generateAllIntakeICS(displaySchools);
+    downloadICS('2026全马独中初一入学甄选考日程包', ics);
+  };
 
   const states = useMemo(() => [
     t('全部'), t('柔佛'), t('吉隆坡'), t('雪兰莪'), t('森美兰'), t('马六甲'), 
@@ -207,19 +226,26 @@ export default function HomePage() {
           {/* Action CTAs */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
             <button
+              onClick={() => setIsUASAOpen(true)}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <Award className="w-4 h-4 text-amber-300" />
+              <span>{t('UASA 成绩免试保送自测')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-800/60 text-[10px] font-bold">HOT</span>
+            </button>
+            <button
               onClick={() => setIsQuizOpen(true)}
               className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
             >
               <Sparkles className="w-4 h-4" />
-              <span>智能匹配：5题测评最适合哪所独中</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>{t('智能匹配：5题测评选校')}</span>
             </button>
             <a
               href="#timeline"
               className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
             >
               <Clock className="w-4 h-4 text-red-700" />
-              <span>查看 2026 招生日程与保送条件</span>
+              <span>{t('2026 招生日历与保送')}</span>
             </a>
           </div>
 
@@ -880,18 +906,37 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* State filter for timeline */}
-            <div className="flex items-center space-x-2">
-              <span className="text-xs text-slate-500">按州属过滤：</span>
-              <select
-                value={timelineStateFilter}
-                onChange={(e) => setTimelineStateFilter(e.target.value)}
-                className="text-xs py-1.5 px-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-red-600"
+            {/* Controls: UASA test, State filter & Calendar export */}
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={() => setIsUASAOpen(true)}
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-semibold hover:bg-emerald-100 transition shadow-xs"
               >
-                {states.map(st => (
-                  <option key={st} value={st}>{st}</option>
-                ))}
-              </select>
+                <Award className="w-3.5 h-3.5 text-emerald-600" />
+                <span>{t('UASA保送资格测算')}</span>
+              </button>
+
+              <button
+                onClick={handleDownloadAllCalendar}
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition shadow-xs"
+                title={t('一键导出全马独中 2026 入学考试日历到手机 (.ics)')}
+              >
+                <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                <span>{t('导出考程到日历 (.ics)')}</span>
+              </button>
+
+              <div className="flex items-center space-x-1.5 pl-1">
+                <span className="text-xs text-slate-500">{t('州属：')}</span>
+                <select
+                  value={timelineStateFilter}
+                  onChange={(e) => setTimelineStateFilter(e.target.value)}
+                  className="text-xs py-1.5 px-3 rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-1 focus:ring-red-600 font-medium"
+                >
+                  {states.map(st => (
+                    <option key={st} value={st}>{t(st)}</option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -1049,6 +1094,15 @@ export default function HomePage() {
         schools={activeCompareList}
       />
 
+      {/* MODAL: UASA CHECKER */}
+      <UASACheckerModal
+        isOpen={isUASAOpen}
+        onClose={() => setIsUASAOpen(false)}
+        schools={displaySchools}
+        onSelectSchool={(s) => setActiveModalSchool(s)}
+        onAddToCompare={(s) => toggleCompare(s)}
+      />
+
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {modalSchool && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
@@ -1063,9 +1117,9 @@ export default function HomePage() {
             <div className="pr-8">
               <div className="flex items-center space-x-2">
                 <span className="px-2.5 py-0.5 rounded-md bg-red-100 text-red-800 text-xs font-bold">
-                  {modalSchool.location.state}
+                  {t(modalSchool.location.state)}
                 </span>
-                <span className="text-xs text-slate-400">创办于 {modalSchool.founding_year} 年</span>
+                <span className="text-xs text-slate-400">{t('创办于')} {modalSchool.founding_year} {t('年')}</span>
               </div>
               <h3 className="text-2xl font-black text-slate-900 mt-1">{modalSchool.name_zh}</h3>
               <p className="text-xs text-slate-500 mt-0.5">{modalSchool.name_en}</p>
@@ -1074,70 +1128,80 @@ export default function HomePage() {
             <div className="mt-6 space-y-6 text-sm text-slate-700">
               {/* 🌟 2026 初一招生与保送直录全指南 (NEW HIGH-VALUE SECTION) */}
               <div className="p-4 rounded-2xl bg-gradient-to-br from-red-50/80 via-white to-amber-50/50 border border-red-200/80 space-y-4 shadow-sm">
-                <div className="flex items-center justify-between border-b border-red-100 pb-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-red-100 pb-2.5">
                   <div className="flex items-center space-x-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
-                    <h5 className="font-bold text-slate-900 text-sm">2026 初一新生招考与保送直录全指南</h5>
+                    <h5 className="font-bold text-slate-900 text-sm">{t('2026 初一新生招考与保送直录全指南')}</h5>
                   </div>
-                  <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
-                    {modalSchool.admission_intake?.admission_mode || '入学考试遴选'}
-                  </span>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => handleDownloadSchoolCalendar(modalSchool)}
+                      className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white text-[11px] font-semibold transition shadow-xs"
+                      title={t('导出该校日程到手机日历 (.ics)')}
+                    >
+                      <Calendar className="w-3 h-3 text-amber-300" />
+                      <span>{t('添加到手机日历 (.ics)')}</span>
+                    </button>
+                    <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
+                      {modalSchool.admission_intake?.admission_mode || '入学考试遴选'}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Direct Admission / Guaranteed Criteria */}
                 <div>
                   <div className="flex items-center space-x-1.5 text-xs font-bold text-emerald-800 mb-2">
                     <Award className="w-4 h-4 text-emerald-600" />
-                    <span>免试保送 / 绿色直录条件 (Direct Admission)：</span>
+                    <span>{t('免试保送 / 绿色直录条件 (Direct Admission)：')}</span>
                   </div>
                   {modalSchool.admission_intake?.direct_admission_criteria && modalSchool.admission_intake.direct_admission_criteria.length > 0 ? (
                     <div className="space-y-1.5">
                       {modalSchool.admission_intake.direct_admission_criteria.map((crit, idx) => (
                         <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700 bg-white/90 p-2.5 rounded-xl border border-slate-200">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span className="leading-snug">{crit}</span>
+                          <span className="leading-snug">{t(crit)}</span>
                         </div>
                       ))}
                     </div>
                   ) : (
                     <p className="text-xs text-slate-500 bg-white/60 p-2.5 rounded-xl border border-slate-200">
-                      该校主要依据华小五、六年级在校学业成绩评估或统一入学甄拔考试成绩择优录取，详见招生章程。
+                      {t('该校主要依据华小五、六年级在校学业成绩评估或统一入学甄拔考试成绩择优录取，详见招生章程。')}
                     </p>
                   )}
                 </div>
 
                 {/* Timeline Milestones Grid */}
                 <div>
-                  <div className="text-xs font-bold text-slate-700 mb-2">关键招考日程节点：</div>
+                  <div className="text-xs font-bold text-slate-700 mb-2">{t('关键招考日程节点：')}</div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 block">报名起止时间</span>
+                      <span className="text-[10px] text-slate-400 block">{t('报名起止时间')}</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
                         {modalSchool.admission_intake?.registration_start || '6月'} ~ {modalSchool.admission_intake?.registration_deadline || '9月'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-red-300 bg-red-50/30">
-                      <span className="text-[10px] text-red-600 font-bold block">新生入学甄拔考试日</span>
+                      <span className="text-[10px] text-red-600 font-bold block">{t('新生入学甄拔考试日')}</span>
                       <span className="font-black text-red-700 block mt-0.5">
                         {modalSchool.admission_intake?.entrance_exam_date || '9月 - 10月'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 block">录取放榜日</span>
+                      <span className="text-[10px] text-slate-400 block">{t('录取放榜日')}</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
                         {modalSchool.admission_intake?.result_release_date || '考后 1-2 周'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-slate-200">
-                      <span className="text-[10px] text-slate-400 block">注册缴费确认截止</span>
+                      <span className="text-[10px] text-slate-400 block">{t('注册缴费确认截止')}</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
                         {modalSchool.admission_intake?.registration_payment_deadline || '放榜后10日内'}
                       </span>
                     </div>
                     <div className="bg-white p-2.5 rounded-xl border border-amber-300 bg-amber-50/30 sm:col-span-2">
-                      <span className="text-[10px] text-amber-800 font-bold block">外州生宿舍申请截止</span>
+                      <span className="text-[10px] text-amber-800 font-bold block">{t('外州生宿舍申请截止')}</span>
                       <span className="font-semibold text-slate-900 block mt-0.5">
-                        {modalSchool.admission_intake?.dorm_application_deadline || (modalSchool.dormitory_and_boarding.has_dormitory ? '注册缴费时同步提交申请' : '该校无宿舍 (全走读)')}
+                        {modalSchool.admission_intake?.dorm_application_deadline || (modalSchool.dormitory_and_boarding.has_dormitory ? t('注册缴费时同步提交申请') : t('该校无宿舍 (全走读)'))}
                       </span>
                     </div>
                   </div>
@@ -1146,35 +1210,35 @@ export default function HomePage() {
                 {/* Exam details & Scholarships */}
                 <div className="space-y-1.5 text-xs text-slate-600 bg-white/70 p-3 rounded-xl border border-slate-200">
                   {modalSchool.admission_intake?.exam_subjects && (
-                    <div>• <strong>考试科目</strong>：{modalSchool.admission_intake.exam_subjects.join('、')} (按华小六年级大纲命题)</div>
+                    <div>• <strong>{t('考试科目')}</strong>：{modalSchool.admission_intake.exam_subjects.map(s => t(s)).join('、')} {t('(按华小六年级大纲命题)')}</div>
                   )}
                   {modalSchool.admission_intake?.exam_format && (
-                    <div>• <strong>考务形式</strong>：{modalSchool.admission_intake.exam_format}</div>
+                    <div>• <strong>{t('考务形式')}</strong>：{t(modalSchool.admission_intake.exam_format)}</div>
                   )}
                   {modalSchool.admission_intake?.scholarship_quota && (
-                    <div className="text-amber-800 font-semibold">• <strong>优异新生奖学金</strong>：{modalSchool.admission_intake.scholarship_quota}</div>
+                    <div className="text-amber-800 font-semibold">• <strong>{t('优异新生奖学金')}</strong>：{t(modalSchool.admission_intake.scholarship_quota)}</div>
                   )}
                 </div>
               </div>
 
               {/* Highlights */}
               <div>
-                <h5 className="font-bold text-slate-900 mb-1 text-xs uppercase tracking-wider text-slate-500">办学理念与特色</h5>
+                <h5 className="font-bold text-slate-900 mb-1 text-xs uppercase tracking-wider text-slate-500">{t('办学理念与特色')}</h5>
                 <p className="bg-slate-50 p-3.5 rounded-xl text-slate-600 text-xs leading-relaxed">
-                  {modalSchool.academics.academic_highlights || '坚持母语教学与三语并重，弘扬中华传统文化，注重学术成绩与全人品格培养。'}
+                  {t(modalSchool.academics.academic_highlights || '坚持母语教学与三语并重，弘扬中华传统文化，注重学术成绩与全人品格培养。')}
                 </p>
               </div>
 
               {/* Academics & Fees */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                  <span className="text-xs text-slate-400 block">教学体制</span>
+                  <span className="text-xs text-slate-400 block">{t('教学体制')}</span>
                   <span className="font-semibold text-slate-900 text-xs mt-1 block">
-                    {modalSchool.academics.track_type}
+                    {t(modalSchool.academics.track_type)}
                   </span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                  <span className="text-xs text-slate-400 block">初中走读首年费用</span>
+                  <span className="text-xs text-slate-400 block">{t('初中走读首年费用')}</span>
                   <span className="font-bold text-slate-900 text-xs mt-1 block">
                     RM {modalSchool.costs_and_fees.first_year_est_day_student.toLocaleString()}
                   </span>
@@ -1183,23 +1247,23 @@ export default function HomePage() {
 
               {/* Dormitory Details */}
               <div>
-                <h5 className="font-bold text-slate-900 mb-2 text-xs uppercase tracking-wider text-slate-500">住宿生活与管理</h5>
+                <h5 className="font-bold text-slate-900 mb-2 text-xs uppercase tracking-wider text-slate-500">{t('住宿生活与管理')}</h5>
                 <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/60 space-y-2 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-600">是否有宿舍：</span>
+                    <span className="text-slate-600">{t('是否有宿舍：')}</span>
                     <span className="font-bold text-slate-900">
-                      {modalSchool.dormitory_and_boarding.has_dormitory ? '设有学生宿舍' : '无宿舍 (纯走读校)'}
+                      {modalSchool.dormitory_and_boarding.has_dormitory ? t('设有学生宿舍') : t('无宿舍 (纯走读校)')}
                     </span>
                   </div>
                   {modalSchool.dormitory_and_boarding.has_dormitory && (
                     <>
                       <div className="flex justify-between">
-                        <span className="text-slate-600">冷气配置：</span>
-                        <span className="font-medium text-slate-900">{modalSchool.dormitory_and_boarding.air_conditioned || '全冷气/部分冷气'}</span>
+                        <span className="text-slate-600">{t('冷气配置：')}</span>
+                        <span className="font-medium text-slate-900">{t(modalSchool.dormitory_and_boarding.air_conditioned || '全冷气/部分冷气')}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-600">管理规则：</span>
-                        <span className="font-medium text-slate-900">{modalSchool.dormitory_and_boarding.study_hall_rules || '统一晚自习'}</span>
+                        <span className="text-slate-600">{t('管理规则：')}</span>
+                        <span className="font-medium text-slate-900">{t(modalSchool.dormitory_and_boarding.study_hall_rules || '统一晚自习')}</span>
                       </div>
                     </>
                   )}
@@ -1208,7 +1272,7 @@ export default function HomePage() {
 
               {/* Contact info */}
               <div>
-                <h5 className="font-bold text-slate-900 mb-2 text-xs uppercase tracking-wider text-slate-500">联系与官网</h5>
+                <h5 className="font-bold text-slate-900 mb-2 text-xs uppercase tracking-wider text-slate-500">{t('联系与官网')}</h5>
                 <div className="space-y-1.5 text-xs text-slate-600">
                   <div className="flex items-center space-x-2">
                     <MapPin className="w-4 h-4 text-slate-400" />
@@ -1229,7 +1293,7 @@ export default function HomePage() {
                         rel="noreferrer"
                         className="text-red-700 hover:underline flex items-center space-x-1"
                       >
-                        <span>访问学校官网</span>
+                        <span>{t('访问学校官网')}</span>
                         <ExternalLink className="w-3 h-3 inline" />
                       </a>
                     </div>
@@ -1243,7 +1307,7 @@ export default function HomePage() {
                 onClick={() => setActiveModalSchool(null)}
                 className="px-5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition"
               >
-                关闭档案
+                {t('关闭档案')}
               </button>
             </div>
           </div>
