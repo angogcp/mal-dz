@@ -67,6 +67,20 @@ export interface School {
     scholarship_quota?: string; // 优异新生奖学金细则
     dorm_application_deadline?: string; // 外州住宿申请截止
   };
+  culture_and_ethos?: {
+    school_motto?: string; // 校训 (e.g. "礼、义、廉、耻", "自强不息")
+    ethos_and_spirit?: string; // 校风与精神内核
+    flagship_features?: string[]; // 办学核心特征
+    flagship_clubs?: string[]; // 王牌社团/特色活动
+    campus_facilities?: string[]; // 标志性硬件设施
+    notable_alumni?: string[]; // 知名校友/影响力
+    matriculation_highlights?: string; // 升学走向与学术声誉
+  };
+  media?: {
+    hero_image?: string; // 校园实景主图
+    caption?: string; // 图片说明
+    thumbnail?: string; // 缩略图
+  };
   fit_tags: string[];
   verification_status: {
     source_level: string;

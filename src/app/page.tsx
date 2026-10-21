@@ -9,13 +9,16 @@ import ShareComparisonModal from '../components/ShareComparisonModal';
 import UASACheckerModal from '../components/UASACheckerModal';
 import ExamPrepModal from '../components/ExamPrepModal';
 import BudgetCalculatorModal from '../components/BudgetCalculatorModal';
+import SchoolImage from '../components/SchoolImage';
+import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
   Search, Filter, MapPin, Building2, BedDouble, 
   BookOpen, Calculator, Calendar, ExternalLink, 
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
   GraduationCap, HelpCircle, Phone, Globe, DollarSign,
-  Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock
+  Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock,
+  Landmark, Trophy, Users, Music
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -421,52 +424,77 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSchools.map((school) => {
             const isCompared = compareList.some(s => s.school_id === school.school_id);
+            const culture = getSchoolCulture(school.school_id);
             return (
               <div
                 key={school.school_id}
-                className={`bg-white rounded-2xl border transition duration-200 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md ${
+                className={`bg-white rounded-3xl border transition duration-200 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-lg ${
                   isCompared ? 'border-red-500 ring-2 ring-red-100' : 'border-slate-200 hover:border-slate-300'
                 }`}
               >
-                <div className="p-5">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center space-x-2">
-                        <h3 className="font-bold text-lg text-slate-900">{school.name_zh}</h3>
-                        {school.verification_status.is_verified && (
-                          <span title="官方档案已核实" className="text-emerald-600">
-                            <CheckCircle2 className="w-4 h-4 inline" />
-                          </span>
-                        )}
+                {/* School Campus Photo Banner */}
+                <div className="relative cursor-pointer" onClick={() => setActiveModalSchool(school)}>
+                  <SchoolImage
+                    src={culture.hero_image}
+                    alt={school.name_zh}
+                    caption={culture.caption}
+                    motto={culture.school_motto}
+                    foundingYear={school.founding_year}
+                    state={t(school.location.state)}
+                    aspectRatio="video"
+                    className="rounded-t-3xl rounded-b-none"
+                  />
+                  {school.verification_status.is_verified && (
+                    <span title={t('官方档案已核实')} className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full bg-emerald-600/90 text-white text-[10px] font-bold backdrop-blur-xs flex items-center space-x-1 shadow-xs">
+                      <CheckCircle2 className="w-3 h-3" />
+                      <span>{t('官方认证')}</span>
+                    </span>
+                  )}
+                </div>
+
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <div className="flex items-center space-x-2">
+                          <h3 
+                            onClick={() => setActiveModalSchool(school)}
+                            className="font-black text-lg text-slate-900 hover:text-red-700 transition cursor-pointer"
+                          >
+                            {school.name_zh}
+                          </h3>
+                        </div>
+                        <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">{school.name_en}</p>
                       </div>
-                      <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">{school.name_en}</p>
+                      <span className="shrink-0 px-2 py-0.5 text-xs font-bold rounded-lg bg-amber-50 text-amber-900 border border-amber-200">
+                        {culture.school_motto}
+                      </span>
                     </div>
-                    <span className="shrink-0 px-2.5 py-1 text-xs font-bold rounded-lg bg-slate-100 text-slate-700">
-                      {school.location.state}
-                    </span>
-                  </div>
 
-                  {/* Badges / Highlights */}
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    <span className="px-2 py-0.5 text-xs font-medium rounded-md bg-blue-50 text-blue-700 border border-blue-100">
-                      {school.academics.track_type.split(' ')[0]}
-                    </span>
-                    <span className={`px-2 py-0.5 text-xs font-medium rounded-md border ${
-                      school.dormitory_and_boarding.has_dormitory
-                        ? 'bg-emerald-50 text-emerald-800 border-emerald-100'
-                        : 'bg-slate-50 text-slate-600 border-slate-200'
-                    }`}>
-                      {school.dormitory_and_boarding.has_dormitory ? '设有宿舍' : '全走读'}
-                    </span>
-                    <span className="px-2 py-0.5 text-xs text-slate-600 bg-slate-100 rounded-md">
-                      创校 {school.founding_year}
-                    </span>
-                  </div>
+                    {/* Badges / Highlights */}
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      <span className="px-2 py-0.5 text-xs font-medium rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                        {t(school.academics.track_type.split(' ')[0])}
+                      </span>
+                      <span className={`px-2 py-0.5 text-xs font-medium rounded-md border ${
+                        school.dormitory_and_boarding.has_dormitory
+                          ? 'bg-emerald-50 text-emerald-800 border-emerald-100'
+                          : 'bg-slate-50 text-slate-600 border-slate-200'
+                      }`}>
+                        {school.dormitory_and_boarding.has_dormitory ? t('设有宿舍') : t('全走读')}
+                      </span>
+                      {culture.flagship_features.slice(0, 2).map((feat, idx) => (
+                        <span key={idx} className="px-2 py-0.5 text-xs text-slate-700 bg-slate-100 rounded-md">
+                          {t(feat)}
+                        </span>
+                      ))}
+                    </div>
 
-                  {/* Highlights Description */}
-                  <p className="mt-3 text-xs text-slate-600 leading-relaxed line-clamp-2">
-                    {school.academics.academic_highlights || `坐落于${school.location.city}，坚持华文独中全人办学，学风端正。`}
-                  </p>
+                    {/* School Ethos & Highlights Description */}
+                    <p className="mt-2.5 text-xs text-slate-600 leading-relaxed line-clamp-2">
+                      {t(culture.ethos_and_spirit)}
+                    </p>
+                  </div>
 
                   {/* Cost Summary Box */}
                   <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1">
@@ -1158,28 +1186,129 @@ export default function HomePage() {
       />
 
       {/* MODAL: SCHOOL DETAIL VIEW */}
-      {modalSchool && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative">
-            <button
-              onClick={() => setActiveModalSchool(null)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100"
-            >
-              <X className="w-5 h-5" />
-            </button>
+      {modalSchool && (() => {
+        const culture = getSchoolCulture(modalSchool.school_id);
+        return (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+            <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 shadow-2xl relative">
+              <button
+                onClick={() => setActiveModalSchool(null)}
+                className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 z-20"
+              >
+                <X className="w-5 h-5" />
+              </button>
 
-            <div className="pr-8">
-              <div className="flex items-center space-x-2">
-                <span className="px-2.5 py-0.5 rounded-md bg-red-100 text-red-800 text-xs font-bold">
-                  {t(modalSchool.location.state)}
-                </span>
-                <span className="text-xs text-slate-400">{t('创办于')} {modalSchool.founding_year} {t('年')}</span>
+              {/* Campus Photo Hero Banner */}
+              <div className="mb-4">
+                <SchoolImage
+                  src={culture.hero_image}
+                  alt={modalSchool.name_zh}
+                  caption={culture.caption}
+                  motto={culture.school_motto}
+                  foundingYear={modalSchool.founding_year}
+                  state={t(modalSchool.location.state)}
+                  aspectRatio="banner"
+                />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 mt-1">{modalSchool.name_zh}</h3>
-              <p className="text-xs text-slate-500 mt-0.5">{modalSchool.name_en}</p>
-            </div>
 
-            <div className="mt-6 space-y-6 text-sm text-slate-700">
+              {/* Title & Badges */}
+              <div className="pr-8">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-md bg-red-100 text-red-800 text-xs font-bold">
+                    {t(modalSchool.location.state)}
+                  </span>
+                  <span className="text-xs text-slate-400">{t('创办于')} {modalSchool.founding_year} {t('年')}</span>
+                  <span className="px-2.5 py-0.5 rounded-md bg-amber-100 text-amber-900 text-xs font-bold border border-amber-200">
+                    {t('校训：')}{culture.school_motto}
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">{modalSchool.name_zh}</h3>
+                <p className="text-xs sm:text-sm text-slate-500 mt-0.5">{modalSchool.name_en}</p>
+              </div>
+
+              <div className="mt-6 space-y-6 text-sm text-slate-700">
+
+                {/* 🌟 1. 校风传承与办学精神 (NEW ETHOS & SPIRIT SECTION) */}
+                <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-amber-50/80 via-white to-orange-50/40 border border-amber-200/80 space-y-3 shadow-xs">
+                  <div className="flex items-center space-x-2 font-bold text-amber-950 text-xs sm:text-sm">
+                    <Sparkles className="w-4 h-4 text-amber-600" />
+                    <span>{t('校风与精神内核 (School Ethos & Spirit)')}</span>
+                  </div>
+                  <p className="text-xs text-slate-700 leading-relaxed">
+                    {t(culture.ethos_and_spirit)}
+                  </p>
+                  
+                  {/* Flagship Feature Badges */}
+                  <div className="pt-2 border-t border-amber-100">
+                    <span className="text-[10px] font-bold text-amber-800 block mb-1.5">{t('办学核心特色与优势：')}</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {culture.flagship_features.map((feat, idx) => (
+                        <span key={idx} className="px-2.5 py-1 rounded-lg bg-white border border-amber-200 text-amber-950 text-xs font-medium shadow-xs">
+                          ✦ {t(feat)}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 🌟 2. 王牌社团、标志性设施与杰出校友 (NEW CHARACTERISTICS & CLUBS) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs">
+                  {/* Flagship Clubs */}
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div className="flex items-center space-x-1.5 font-bold text-slate-900">
+                      <Music className="w-4 h-4 text-red-600" />
+                      <span>{t('王牌社团与特色联课 (Signature CCAs)')}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {culture.flagship_clubs.map((club, idx) => (
+                        <span key={idx} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-[11px]">
+                          {t(club)}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Campus Facilities */}
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div className="flex items-center space-x-1.5 font-bold text-slate-900">
+                      <Landmark className="w-4 h-4 text-blue-600" />
+                      <span>{t('标志性校园设施 (Campus Facilities)')}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {culture.campus_facilities.map((fac, idx) => (
+                        <span key={idx} className="px-2 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-[11px]">
+                          🏛️ {t(fac)}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Notable Alumni */}
+                  {culture.notable_alumni && culture.notable_alumni.length > 0 && (
+                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-1.5 sm:col-span-2">
+                      <div className="flex items-center space-x-1.5 font-bold text-slate-900">
+                        <Trophy className="w-4 h-4 text-amber-500" />
+                        <span>{t('知名校友与社会影响力 (Notable Alumni)')}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        {culture.notable_alumni.map(a => t(a)).join(' · ')}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Matriculation Highlights */}
+                  {culture.matriculation_highlights && (
+                    <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5 sm:col-span-2">
+                      <div className="flex items-center space-x-1.5 font-bold text-emerald-900">
+                        <GraduationCap className="w-4 h-4 text-emerald-700" />
+                        <span>{t('升学去向与学术优势 (Global Matriculation)')}</span>
+                      </div>
+                      <p className="text-xs text-emerald-800 leading-relaxed">
+                        {t(culture.matriculation_highlights)}
+                      </p>
+                    </div>
+                  )}
+                </div>
               {/* 🌟 2026 初一招生与保送直录全指南 (NEW HIGH-VALUE SECTION) */}
               <div className="p-4 rounded-2xl bg-gradient-to-br from-red-50/80 via-white to-amber-50/50 border border-red-200/80 space-y-4 shadow-sm">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-red-100 pb-2.5">
@@ -1390,7 +1519,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }
