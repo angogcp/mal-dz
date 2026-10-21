@@ -7,6 +7,8 @@ import { useLanguage } from '../contexts/LanguageContext';
 import FitQuizModal from '../components/FitQuizModal';
 import ShareComparisonModal from '../components/ShareComparisonModal';
 import UASACheckerModal from '../components/UASACheckerModal';
+import ExamPrepModal from '../components/ExamPrepModal';
+import BudgetCalculatorModal from '../components/BudgetCalculatorModal';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
   Search, Filter, MapPin, Building2, BedDouble, 
@@ -38,6 +40,14 @@ export default function HomePage() {
 
   // UASA Checker Modal state
   const [isUASAOpen, setIsUASAOpen] = useState(false);
+
+  // Exam Prep & Past Papers Modal state
+  const [isExamPrepOpen, setIsExamPrepOpen] = useState(false);
+  const [examPrepSchoolId, setExamPrepSchoolId] = useState<string | null>(null);
+
+  // Budget Calculator Modal state
+  const [isBudgetOpen, setIsBudgetOpen] = useState(false);
+  const [budgetSelectedSchool, setBudgetSelectedSchool] = useState<School | null>(null);
 
   // Timeline table filter state
   const [timelineStateFilter, setTimelineStateFilter] = useState('全部');
@@ -224,25 +234,40 @@ export default function HomePage() {
           </p>
 
           {/* Action CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => setIsUASAOpen(true)}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
             >
               <Award className="w-4 h-4 text-amber-300" />
               <span>{t('UASA 成绩免试保送自测')}</span>
               <span className="px-1.5 py-0.5 rounded bg-emerald-800/60 text-[10px] font-bold">HOT</span>
             </button>
             <button
-              onClick={() => setIsQuizOpen(true)}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 to-red-600 text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+              onClick={() => setIsExamPrepOpen(true)}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-rose-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>{t('智能匹配：5题测评选校')}</span>
+              <BookOpen className="w-4 h-4 text-amber-300" />
+              <span>{t('入学考真题与备考全指南')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-red-800/60 text-[10px] font-bold">NEW</span>
+            </button>
+            <button
+              onClick={() => setIsBudgetOpen(true)}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
+            >
+              <Calculator className="w-4 h-4 text-emerald-600" />
+              <span>{t('学费生活费自选测算')}</span>
+            </button>
+            <button
+              onClick={() => setIsQuizOpen(true)}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
+            >
+              <Sparkles className="w-4 h-4 text-amber-600" />
+              <span>{t('5题测评选校')}</span>
             </button>
             <a
               href="#timeline"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
             >
               <Clock className="w-4 h-4 text-red-700" />
               <span>{t('2026 招生日历与保送')}</span>
@@ -917,6 +942,14 @@ export default function HomePage() {
               </button>
 
               <button
+                onClick={() => setIsExamPrepOpen(true)}
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-red-50 text-red-800 border border-red-200 text-xs font-semibold hover:bg-red-100 transition shadow-xs"
+              >
+                <BookOpen className="w-3.5 h-3.5 text-red-600" />
+                <span>{t('入学考真题与大纲')}</span>
+              </button>
+
+              <button
                 onClick={handleDownloadAllCalendar}
                 className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition shadow-xs"
                 title={t('一键导出全马独中 2026 入学考试日历到手机 (.ics)')}
@@ -1103,6 +1136,27 @@ export default function HomePage() {
         onAddToCompare={(s) => toggleCompare(s)}
       />
 
+      {/* MODAL: EXAM PREP & PAST PAPERS */}
+      <ExamPrepModal
+        isOpen={isExamPrepOpen}
+        onClose={() => setIsExamPrepOpen(false)}
+        initialSchoolId={examPrepSchoolId}
+        onSelectSchoolDetail={(sName) => {
+          const found = displaySchools.find(s => s.name_zh.includes(sName) || sName.includes(s.name_zh));
+          if (found) setActiveModalSchool(found);
+        }}
+        onOpenUASAChecker={() => setIsUASAOpen(true)}
+      />
+
+      {/* MODAL: BUDGET CALCULATOR */}
+      <BudgetCalculatorModal
+        isOpen={isBudgetOpen}
+        onClose={() => setIsBudgetOpen(false)}
+        schools={displaySchools}
+        initialSchool={budgetSelectedSchool}
+        onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+      />
+
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {modalSchool && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
@@ -1133,14 +1187,25 @@ export default function HomePage() {
                     <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse"></span>
                     <h5 className="font-bold text-slate-900 text-sm">{t('2026 初一新生招考与保送直录全指南')}</h5>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <button
+                      onClick={() => {
+                        setExamPrepSchoolId(modalSchool.school_id);
+                        setIsExamPrepOpen(true);
+                      }}
+                      className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-[11px] font-semibold transition shadow-xs"
+                      title={t('查看该校考题与大纲')}
+                    >
+                      <BookOpen className="w-3 h-3 text-amber-600" />
+                      <span>{t('真题与大纲')}</span>
+                    </button>
                     <button
                       onClick={() => handleDownloadSchoolCalendar(modalSchool)}
                       className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-red-700 hover:bg-red-800 text-white text-[11px] font-semibold transition shadow-xs"
                       title={t('导出该校日程到手机日历 (.ics)')}
                     >
                       <Calendar className="w-3 h-3 text-amber-300" />
-                      <span>{t('添加到手机日历 (.ics)')}</span>
+                      <span>{t('添加到日历 (.ics)')}</span>
                     </button>
                     <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
                       {modalSchool.admission_intake?.admission_mode || '入学考试遴选'}
@@ -1230,19 +1295,32 @@ export default function HomePage() {
               </div>
 
               {/* Academics & Fees */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                  <span className="text-xs text-slate-400 block">{t('教学体制')}</span>
-                  <span className="font-semibold text-slate-900 text-xs mt-1 block">
-                    {t(modalSchool.academics.track_type)}
-                  </span>
+              <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <span className="text-xs text-slate-400 block">{t('教学体制')}</span>
+                    <span className="font-semibold text-slate-900 text-xs mt-1 block">
+                      {t(modalSchool.academics.track_type)}
+                    </span>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <span className="text-xs text-slate-400 block">{t('初中走读首年费用')}</span>
+                    <span className="font-bold text-slate-900 text-xs mt-1 block">
+                      RM {modalSchool.costs_and_fees.first_year_est_day_student.toLocaleString()}
+                    </span>
+                  </div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                  <span className="text-xs text-slate-400 block">{t('初中走读首年费用')}</span>
-                  <span className="font-bold text-slate-900 text-xs mt-1 block">
-                    RM {modalSchool.costs_and_fees.first_year_est_day_student.toLocaleString()}
-                  </span>
-                </div>
+
+                <button
+                  onClick={() => {
+                    setBudgetSelectedSchool(modalSchool);
+                    setIsBudgetOpen(true);
+                  }}
+                  className="w-full py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-900 text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs"
+                >
+                  <Calculator className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{t('自选测算该校 1年/3年/6年 完整教育预算')}</span>
+                </button>
               </div>
 
               {/* Dormitory Details */}
