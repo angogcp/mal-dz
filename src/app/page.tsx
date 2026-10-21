@@ -10,6 +10,7 @@ import UASACheckerModal from '../components/UASACheckerModal';
 import ExamPrepModal from '../components/ExamPrepModal';
 import BudgetCalculatorModal from '../components/BudgetCalculatorModal';
 import SchoolImage from '../components/SchoolImage';
+import UECGlobalHub from '../components/UECGlobalHub';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
@@ -274,6 +275,13 @@ export default function HomePage() {
             >
               <Clock className="w-4 h-4 text-red-700" />
               <span>{t('2026 招生日历与保送')}</span>
+            </a>
+            <a
+              href="#uec-guide"
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-white text-slate-800 border border-slate-300 font-bold text-sm hover:bg-slate-50 transition shadow-sm flex items-center justify-center space-x-2"
+            >
+              <GraduationCap className="w-4 h-4 text-blue-700" />
+              <span>{t('UEC 全球名校升学')}</span>
             </a>
           </div>
 
@@ -1064,54 +1072,7 @@ export default function HomePage() {
 
       {/* 6. UEC & HIGHER-ED INTELLIGENCE */}
       <section id="uec-guide" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
-        <div className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
-          <div className="max-w-3xl mb-8">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-100 text-red-900 text-xs font-semibold mb-3">
-              <GraduationCap className="w-4 h-4" />
-              <span>UEC 统考全球升学枢纽</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-              读独中，未来能升入哪些国内外名牌大学？
-            </h2>
-            <p className="text-slate-600 text-sm mt-2">
-              华文独中统考（UEC）受全球数百所顶尖大学认可，具有学术深厚、直接衔接大学一年级本科的国际认可优势。
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
-              <h4 className="font-bold text-slate-900 flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600"></span>
-                <span>中国大陆与台湾地区</span>
-              </h4>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                <strong>中国大陆</strong>：清华、北大、浙大、复旦、上海交大等 985/双一流大学对 UEC 成绩免高考直接面试录取，常设高额奖学金。<br />
-                <strong>台湾地区</strong>：海外联招会传统主要去向，台大、清大、交大、成大免预科直录本科大一。
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
-              <h4 className="font-bold text-slate-900 flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                <span>新加坡、英澳美加</span>
-              </h4>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                <strong>新加坡</strong>：国大 (NUS)、南大 (NTU) 认可高中统考成绩直接申请大一；五所理工学院接受初三/高二成绩。<br />
-                <strong>英澳美加</strong>：澳洲八大名校（墨大、悉尼大）、英国罗素集团多数大学认可 UEC 相当于 A-Level，可直录本科。
-              </p>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
-              <h4 className="font-bold text-slate-900 flex items-center space-x-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
-                <span>马来西亚本地私立名校</span>
-              </h4>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                全马私立大专 100% 承认 UEC。拉曼大学 (UTAR)、双威大学 (Sunway)、泰莱大学 (Taylor&apos;s)、厦门大学马来西亚分校等，提供学费全免或半免奖学金，5科合格即可直接修读大一本科。
-              </p>
-            </div>
-          </div>
-        </div>
+        <UECGlobalHub />
       </section>
 
       {/* FLOATING COMPARISON BAR (When schools are selected) */}
