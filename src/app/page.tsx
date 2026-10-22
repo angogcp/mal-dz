@@ -15,6 +15,7 @@ import BoardingLifeModal from '../components/BoardingLifeModal';
 import UECHallOfFameModal from '../components/UECHallOfFameModal';
 import SchoolRadarChart from '../components/SchoolRadarChart';
 import CutoffTrendsModal from '../components/CutoffTrendsModal';
+import ScholarshipAidModal from '../components/ScholarshipAidModal';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
@@ -23,7 +24,7 @@ import {
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
   GraduationCap, HelpCircle, Phone, Globe, DollarSign,
   Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock,
-  Landmark, Trophy, Users, Music, TrendingUp
+  Landmark, Trophy, Users, Music, TrendingUp, HeartHandshake
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -67,6 +68,10 @@ export default function HomePage() {
   // Entrance Exam Cutoff Trends Modal state
   const [isCutoffModalOpen, setIsCutoffModalOpen] = useState(false);
   const [cutoffSchoolId, setCutoffSchoolId] = useState<string | undefined>(undefined);
+
+  // Scholarship & Financial Aid Modal state
+  const [isScholarshipOpen, setIsScholarshipOpen] = useState(false);
+  const [scholarshipSchoolId, setScholarshipSchoolId] = useState<string | undefined>(undefined);
 
   // Comparison section view mode: 'table' | 'radar'
   const [compareViewMode, setCompareViewMode] = useState<'table' | 'radar'>('radar');
@@ -302,6 +307,17 @@ export default function HomePage() {
               <TrendingUp className="w-4 h-4 text-amber-300" />
               <span>{t('历年录取分数线')}</span>
               <span className="px-1.5 py-0.5 rounded bg-red-950/60 text-[10px] font-bold">走势</span>
+            </button>
+            <button
+              onClick={() => {
+                setScholarshipSchoolId(undefined);
+                setIsScholarshipOpen(true);
+              }}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <HeartHandshake className="w-4 h-4 text-amber-300" />
+              <span>{t('奖助学金与清寒全免')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-950/60 text-[10px] font-bold">助学</span>
             </button>
             <button
               onClick={() => setIsBudgetOpen(true)}
@@ -1271,6 +1287,10 @@ export default function HomePage() {
         schools={displaySchools}
         initialSchool={budgetSelectedSchool}
         onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+        onOpenScholarshipPortal={() => {
+          setIsBudgetOpen(false);
+          setIsScholarshipOpen(true);
+        }}
       />
 
       {/* MODAL: BOARDING LIFE GUIDE */}
@@ -1302,6 +1322,15 @@ export default function HomePage() {
           setIsExamPrepOpen(true);
         }}
         onOpenUASAChecker={() => setIsUASAOpen(true)}
+      />
+
+      {/* MODAL: SCHOLARSHIPS & FINANCIAL AID */}
+      <ScholarshipAidModal
+        isOpen={isScholarshipOpen}
+        onClose={() => setIsScholarshipOpen(false)}
+        schools={displaySchools}
+        initialSchoolId={scholarshipSchoolId}
+        onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
       />
 
       {/* MODAL: SCHOOL DETAIL VIEW */}
@@ -1586,6 +1615,17 @@ export default function HomePage() {
                 >
                   <Calculator className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{t('自选测算该校 1年/3年/6年 完整教育预算')}</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setScholarshipSchoolId(modalSchool.school_id);
+                    setIsScholarshipOpen(true);
+                  }}
+                  className="w-full py-2.5 px-3 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-200 text-teal-900 text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs"
+                >
+                  <HeartHandshake className="w-3.5 h-3.5 text-teal-700" />
+                  <span>{t('查看该校董事会助学金 · 清寒免学费 · 郭氏基金申请指南')}</span>
                 </button>
               </div>
 

@@ -16,6 +16,7 @@ interface BudgetCalculatorModalProps {
   schools: School[];
   initialSchool?: School | null;
   onSelectSchoolDetail?: (school: School) => void;
+  onOpenScholarshipPortal?: () => void;
 }
 
 export default function BudgetCalculatorModal({
@@ -23,7 +24,8 @@ export default function BudgetCalculatorModal({
   onClose,
   schools,
   initialSchool,
-  onSelectSchoolDetail
+  onSelectSchoolDetail,
+  onOpenScholarshipPortal
 }: BudgetCalculatorModalProps) {
   const { t } = useLanguage();
 
@@ -465,14 +467,23 @@ export default function BudgetCalculatorModal({
                   </p>
                 </div>
 
-                <div className="p-3 bg-white rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                <div className="p-3.5 bg-white rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1.5 sm:col-span-2">
                   <div className="font-bold text-slate-900 flex items-center justify-between">
-                    <span>{t('奖助学金与助学金政策')}</span>
-                    <span className="text-emerald-700 text-[10px] bg-emerald-50 px-2 py-0.5 rounded">
-                      {selectedSchool.admission_intake?.scholarship_quota ? t('优异生全免/半免') : t('设清寒助学金')}
+                    <span className="flex items-center space-x-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                      <span>{t('奖助学金与清寒免学费政策')}</span>
                     </span>
+                    {onOpenScholarshipPortal && (
+                      <button
+                        onClick={onOpenScholarshipPortal}
+                        className="text-emerald-700 hover:text-emerald-900 text-xs font-bold underline flex items-center space-x-0.5"
+                      >
+                        <span>{t('打开奖助自测指南')}</span>
+                        <ChevronRight className="w-3.5 h-3.5 inline" />
+                      </button>
+                    )}
                   </div>
-                  <p className="text-[11px] text-slate-500">
+                  <p className="text-[11px] text-slate-500 leading-relaxed">
                     {t(selectedSchool.costs_and_fees.scholarship_info || '各独中董事会均设有品学兼优全免/半免学费奖学金，以及清寒子弟助学金与借书计划，确保华裔子弟不因家境贫寒而失学。')}
                   </p>
                 </div>
