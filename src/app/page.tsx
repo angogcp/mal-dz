@@ -13,6 +13,8 @@ import SchoolImage from '../components/SchoolImage';
 import UECGlobalHub from '../components/UECGlobalHub';
 import BoardingLifeModal from '../components/BoardingLifeModal';
 import UECHallOfFameModal from '../components/UECHallOfFameModal';
+import SchoolRadarChart from '../components/SchoolRadarChart';
+import CutoffTrendsModal from '../components/CutoffTrendsModal';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
@@ -21,7 +23,7 @@ import {
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
   GraduationCap, HelpCircle, Phone, Globe, DollarSign,
   Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock,
-  Landmark, Trophy, Users, Music
+  Landmark, Trophy, Users, Music, TrendingUp
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -61,6 +63,13 @@ export default function HomePage() {
 
   // UEC Hall of Fame Modal state
   const [isHallOfFameOpen, setIsHallOfFameOpen] = useState(false);
+
+  // Entrance Exam Cutoff Trends Modal state
+  const [isCutoffModalOpen, setIsCutoffModalOpen] = useState(false);
+  const [cutoffSchoolId, setCutoffSchoolId] = useState<string | undefined>(undefined);
+
+  // Comparison section view mode: 'table' | 'radar'
+  const [compareViewMode, setCompareViewMode] = useState<'table' | 'radar'>('radar');
 
   // Timeline table filter state
   const [timelineStateFilter, setTimelineStateFilter] = useState('全部');
@@ -282,6 +291,17 @@ export default function HomePage() {
               <Trophy className="w-4 h-4 text-amber-300" />
               <span>{t('UEC 顶尖名校录取榜')}</span>
               <span className="px-1.5 py-0.5 rounded bg-amber-800/60 text-[10px] font-bold">殿堂</span>
+            </button>
+            <button
+              onClick={() => {
+                setCutoffSchoolId(undefined);
+                setIsCutoffModalOpen(true);
+              }}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-rose-700 to-red-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <TrendingUp className="w-4 h-4 text-amber-300" />
+              <span>{t('历年录取分数线')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-red-950/60 text-[10px] font-bold">走势</span>
             </button>
             <button
               onClick={() => setIsBudgetOpen(true)}
@@ -642,15 +662,81 @@ export default function HomePage() {
           </div>
 
           {compareList.length === 0 ? (
-            <div className="p-12 text-center border-2 border-dashed border-slate-200 rounded-2xl">
-              <Building2 className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-              <p className="text-slate-600 font-medium">暂未选择对比学校</p>
-              <p className="text-slate-400 text-xs mt-1">
-                请在上方学校库中点击“+ 加入对比”，即可在此处一览各校保送、招考与费用差异。
-              </p>
+            <div className="p-10 sm:p-14 text-center border-2 border-dashed border-slate-200 rounded-3xl space-y-4">
+              <Building2 className="w-12 h-12 text-slate-300 mx-auto" />
+              <div>
+                <p className="text-slate-800 font-black text-base">{t('暂未选择对比学校')}</p>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
+                  {t('您可以在上方学校库卡片中点击“+ 加入对比”，或直接点击下方热门对比组合，一键生成六维雷达多维评估与对比表格：')}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                <button
+                  onClick={() => {
+                    const preset = displaySchools.filter(s => ['chong-hwa-kl', 'foonyew-jb', 'chung-ling'].includes(s.school_id));
+                    setCompareList(preset);
+                    setCompareViewMode('radar');
+                  }}
+                  className="px-4 py-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-xs"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300" />
+                  <span>{t('加载三大旗舰：隆中华 vs 宽柔 vs 锺灵')}</span>
+                </button>
+                <button
+                  onClick={() => {
+                    const preset = displaySchools.filter(s => ['chunghua-seremban', 'kluang-chonghwa', 'pay-fong'].includes(s.school_id));
+                    setCompareList(preset);
+                    setCompareViewMode('radar');
+                  }}
+                  className="px-4 py-2.5 rounded-2xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs"
+                >
+                  <BedDouble className="w-4 h-4 text-blue-600" />
+                  <span>{t('加载寄宿名校：芙中 vs 銮中 vs 培风')}</span>
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="overflow-x-auto">
+            <div className="space-y-6">
+              {/* View Switcher Tabs (Radar vs Table) */}
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div className="flex items-center bg-slate-100 p-1 rounded-2xl">
+                  <button
+                    onClick={() => setCompareViewMode('radar')}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                      compareViewMode === 'radar'
+                        ? 'bg-white text-slate-900 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                    <span>{t('六维雷达多维评估')}</span>
+                  </button>
+                  <button
+                    onClick={() => setCompareViewMode('table')}
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                      compareViewMode === 'table'
+                        ? 'bg-white text-slate-900 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <Layers className="w-3.5 h-3.5 text-blue-600" />
+                    <span>{t('全指标数据表格')}</span>
+                  </button>
+                </div>
+
+                <div className="text-xs text-slate-500">
+                  {t('已选')} <strong className="text-amber-700 font-bold">{activeCompareList.length}</strong> / 4 {t('所学校')}
+                </div>
+              </div>
+
+              {compareViewMode === 'radar' ? (
+                <SchoolRadarChart
+                  schools={activeCompareList}
+                  onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+                />
+              ) : (
+                <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-slate-200">
@@ -783,6 +869,8 @@ export default function HomePage() {
                   </tr>
                 </tbody>
               </table>
+            </div>
+              )}
             </div>
           )}
         </div>
@@ -1014,6 +1102,17 @@ export default function HomePage() {
               </button>
 
               <button
+                onClick={() => {
+                  setCutoffSchoolId(undefined);
+                  setIsCutoffModalOpen(true);
+                }}
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 text-xs font-semibold hover:bg-rose-100 transition shadow-xs"
+              >
+                <TrendingUp className="w-3.5 h-3.5 text-rose-600" />
+                <span>{t('历年录取分数线')}</span>
+              </button>
+
+              <button
                 onClick={handleDownloadAllCalendar}
                 className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition shadow-xs"
                 title={t('一键导出全马独中 2026 入学考试日历到手机 (.ics)')}
@@ -1191,6 +1290,20 @@ export default function HomePage() {
         onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
       />
 
+      {/* MODAL: ENTRANCE EXAM CUTOFF TRENDS */}
+      <CutoffTrendsModal
+        isOpen={isCutoffModalOpen}
+        onClose={() => setIsCutoffModalOpen(false)}
+        schools={displaySchools}
+        initialSchoolId={cutoffSchoolId}
+        onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+        onOpenExamPrep={(sId) => {
+          if (sId) setExamPrepSchoolId(sId);
+          setIsExamPrepOpen(true);
+        }}
+        onOpenUASAChecker={() => setIsUASAOpen(true)}
+      />
+
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {modalSchool && (() => {
         const culture = getSchoolCulture(modalSchool.school_id);
@@ -1348,6 +1461,17 @@ export default function HomePage() {
                     >
                       <Calendar className="w-3 h-3 text-amber-300" />
                       <span>{t('添加到日历 (.ics)')}</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setCutoffSchoolId(modalSchool.school_id);
+                        setIsCutoffModalOpen(true);
+                      }}
+                      className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-200 text-[11px] font-semibold transition shadow-xs"
+                      title={t('查看该校历年录取分数线与竞争度走势')}
+                    >
+                      <TrendingUp className="w-3 h-3 text-red-600" />
+                      <span>{t('历年录取线')}</span>
                     </button>
                     <span className="text-[11px] font-semibold text-red-700 bg-red-100/70 px-2 py-0.5 rounded-md">
                       {modalSchool.admission_intake?.admission_mode || '入学考试遴选'}
