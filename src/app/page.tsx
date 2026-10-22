@@ -11,6 +11,8 @@ import ExamPrepModal from '../components/ExamPrepModal';
 import BudgetCalculatorModal from '../components/BudgetCalculatorModal';
 import SchoolImage from '../components/SchoolImage';
 import UECGlobalHub from '../components/UECGlobalHub';
+import BoardingLifeModal from '../components/BoardingLifeModal';
+import UECHallOfFameModal from '../components/UECHallOfFameModal';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
@@ -52,6 +54,13 @@ export default function HomePage() {
   // Budget Calculator Modal state
   const [isBudgetOpen, setIsBudgetOpen] = useState(false);
   const [budgetSelectedSchool, setBudgetSelectedSchool] = useState<School | null>(null);
+
+  // Boarding Life & Outstation Parents Modal state
+  const [isBoardingOpen, setIsBoardingOpen] = useState(false);
+  const [boardingSchoolId, setBoardingSchoolId] = useState<string | undefined>(undefined);
+
+  // UEC Hall of Fame Modal state
+  const [isHallOfFameOpen, setIsHallOfFameOpen] = useState(false);
 
   // Timeline table filter state
   const [timelineStateFilter, setTimelineStateFilter] = useState('全部');
@@ -254,6 +263,25 @@ export default function HomePage() {
               <BookOpen className="w-4 h-4 text-amber-300" />
               <span>{t('入学考真题与备考全指南')}</span>
               <span className="px-1.5 py-0.5 rounded bg-red-800/60 text-[10px] font-bold">NEW</span>
+            </button>
+            <button
+              onClick={() => {
+                setBoardingSchoolId(undefined);
+                setIsBoardingOpen(true);
+              }}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <BedDouble className="w-4 h-4 text-amber-300" />
+              <span>{t('寄宿生活与外州专线')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-blue-800/60 text-[10px] font-bold">安心</span>
+            </button>
+            <button
+              onClick={() => setIsHallOfFameOpen(true)}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-amber-600 to-orange-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <Trophy className="w-4 h-4 text-amber-300" />
+              <span>{t('UEC 顶尖名校录取榜')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-amber-800/60 text-[10px] font-bold">殿堂</span>
             </button>
             <button
               onClick={() => setIsBudgetOpen(true)}
@@ -1146,6 +1174,23 @@ export default function HomePage() {
         onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
       />
 
+      {/* MODAL: BOARDING LIFE GUIDE */}
+      <BoardingLifeModal
+        isOpen={isBoardingOpen}
+        onClose={() => setIsBoardingOpen(false)}
+        schools={displaySchools}
+        initialSchoolId={boardingSchoolId}
+        onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+      />
+
+      {/* MODAL: UEC HALL OF FAME */}
+      <UECHallOfFameModal
+        isOpen={isHallOfFameOpen}
+        onClose={() => setIsHallOfFameOpen(false)}
+        schools={displaySchools}
+        onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
+      />
+
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {modalSchool && (() => {
         const culture = getSchoolCulture(modalSchool.school_id);
@@ -1259,7 +1304,7 @@ export default function HomePage() {
 
                   {/* Matriculation Highlights */}
                   {culture.matriculation_highlights && (
-                    <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5 sm:col-span-2">
+                    <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2 sm:col-span-2">
                       <div className="flex items-center space-x-1.5 font-bold text-emerald-900">
                         <GraduationCap className="w-4 h-4 text-emerald-700" />
                         <span>{t('升学去向与学术优势 (Global Matriculation)')}</span>
@@ -1267,6 +1312,13 @@ export default function HomePage() {
                       <p className="text-xs text-emerald-800 leading-relaxed">
                         {t(culture.matriculation_highlights)}
                       </p>
+                      <button
+                        onClick={() => setIsHallOfFameOpen(true)}
+                        className="w-full mt-1 py-2 px-3 rounded-xl bg-white hover:bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-2xs"
+                      >
+                        <Trophy className="w-3.5 h-3.5 text-amber-600" />
+                        <span>{t('查阅历年 UEC 全国顶尖考生世界名校录取案例库 (Hall of Fame)')}</span>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -1433,6 +1485,16 @@ export default function HomePage() {
                         <span className="text-slate-600">{t('管理规则：')}</span>
                         <span className="font-medium text-slate-900">{t(modalSchool.dormitory_and_boarding.study_hall_rules || '统一晚自习')}</span>
                       </div>
+                      <button
+                        onClick={() => {
+                          setBoardingSchoolId(modalSchool.school_id);
+                          setIsBoardingOpen(true);
+                        }}
+                        className="w-full mt-2 py-2 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-900 text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-2xs"
+                      >
+                        <BedDouble className="w-3.5 h-3.5 text-blue-600" />
+                        <span>{t('查看独中寄宿全景指南 · 24h作息 · 手机管控 · 外州校车专线')}</span>
+                      </button>
                     </>
                   )}
                 </div>
