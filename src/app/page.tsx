@@ -16,6 +16,7 @@ import UECHallOfFameModal from '../components/UECHallOfFameModal';
 import SchoolRadarChart from '../components/SchoolRadarChart';
 import CutoffTrendsModal from '../components/CutoffTrendsModal';
 import ScholarshipAidModal from '../components/ScholarshipAidModal';
+import PrimarySecondaryBridgeModal from '../components/PrimarySecondaryBridgeModal';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
 import { 
@@ -24,7 +25,7 @@ import {
   CheckCircle2, X, Plus, ArrowRight, ShieldCheck,
   GraduationCap, HelpCircle, Phone, Globe, DollarSign,
   Sparkles, Share2, Layers, Check, Award, AlertCircle, Clock,
-  Landmark, Trophy, Users, Music, TrendingUp, HeartHandshake
+  Landmark, Trophy, Users, Music, TrendingUp, HeartHandshake, Compass
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -72,6 +73,9 @@ export default function HomePage() {
   // Scholarship & Financial Aid Modal state
   const [isScholarshipOpen, setIsScholarshipOpen] = useState(false);
   const [scholarshipSchoolId, setScholarshipSchoolId] = useState<string | undefined>(undefined);
+
+  // Primary-to-Secondary Transition Bridge Modal state
+  const [isBridgeModalOpen, setIsBridgeModalOpen] = useState(false);
 
   // Comparison section view mode: 'table' | 'radar'
   const [compareViewMode, setCompareViewMode] = useState<'table' | 'radar'>('radar');
@@ -318,6 +322,14 @@ export default function HomePage() {
               <HeartHandshake className="w-4 h-4 text-amber-300" />
               <span>{t('奖助学金与清寒全免')}</span>
               <span className="px-1.5 py-0.5 rounded bg-emerald-950/60 text-[10px] font-bold">助学</span>
+            </button>
+            <button
+              onClick={() => setIsBridgeModalOpen(true)}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center justify-center space-x-2"
+            >
+              <Compass className="w-4 h-4 text-amber-100" />
+              <span>{t('华小升中衔接宝典')}</span>
+              <span className="px-1.5 py-0.5 rounded bg-amber-950/60 text-[10px] font-bold">过渡</span>
             </button>
             <button
               onClick={() => setIsBudgetOpen(true)}
@@ -1333,6 +1345,20 @@ export default function HomePage() {
         onSelectSchoolDetail={(s) => setActiveModalSchool(s)}
       />
 
+      {/* MODAL: PRIMARY-TO-SECONDARY TRANSITION BRIDGE */}
+      <PrimarySecondaryBridgeModal
+        isOpen={isBridgeModalOpen}
+        onClose={() => setIsBridgeModalOpen(false)}
+        onOpenCutoffTrends={() => {
+          setIsBridgeModalOpen(false);
+          setIsCutoffModalOpen(true);
+        }}
+        onOpenPrepPapers={() => {
+          setIsBridgeModalOpen(false);
+          setIsExamPrepOpen(true);
+        }}
+      />
+
       {/* MODAL: SCHOOL DETAIL VIEW */}
       {modalSchool && (() => {
         const culture = getSchoolCulture(modalSchool.school_id);
@@ -1626,6 +1652,14 @@ export default function HomePage() {
                 >
                   <HeartHandshake className="w-3.5 h-3.5 text-teal-700" />
                   <span>{t('查看该校董事会助学金 · 清寒免学费 · 郭氏基金申请指南')}</span>
+                </button>
+
+                <button
+                  onClick={() => setIsBridgeModalOpen(true)}
+                  className="w-full py-2.5 px-3 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-950 text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-xs"
+                >
+                  <Compass className="w-3.5 h-3.5 text-amber-700" />
+                  <span>{t('华小升初中衔接宝典 · 6大断层破局 · 预备班答疑 · 适应力自测')}</span>
                 </button>
               </div>
 
