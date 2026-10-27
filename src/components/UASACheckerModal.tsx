@@ -52,8 +52,6 @@ export default function UASACheckerModal({
   // State filter for results
   const [filterState, setFilterState] = useState('全部');
 
-  if (!isOpen) return null;
-
   // Calculate total TP & estimated percentage
   const totalTP = tpScores.bc + tpScores.bm + tpScores.bi + tpScores.math + tpScores.science;
   
@@ -299,12 +297,14 @@ export default function UASACheckerModal({
   // Apply State Filter to result lists
   const filterByState = (list: { school: School; matchReason: string }[]) => {
     if (filterState === '全部' || filterState === t('全部')) return list;
-    return list.filter(item => item.school.location.state === filterState);
+    return list.filter(item => item.school?.location?.state === filterState);
   };
 
   const filteredDirect = filterByState(directAdmission);
   const filteredTalent = filterByState(talentOrRec);
   const filteredExam = filterByState(examOnly);
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-md animate-fadeIn">

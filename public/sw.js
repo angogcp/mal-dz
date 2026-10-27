@@ -1,4 +1,4 @@
-const CACHE_NAME = 'maldz-cache-v2';
+const CACHE_NAME = 'maldz-cache-v3';
 const PRECACHE_ASSETS = [
   '/',
   '/manifest.json',
