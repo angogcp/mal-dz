@@ -1719,10 +1719,11 @@ export default function HomePage() {
                         href={modalSchool.contact.website_url} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="text-red-700 hover:underline flex items-center space-x-1"
+                        className="text-red-700 hover:underline flex items-center space-x-1.5 font-medium"
                       >
                         <span>{t('访问学校官网')}</span>
-                        <ExternalLink className="w-3 h-3 inline" />
+                        <span className="text-slate-400 font-normal text-[11px]">({modalSchool.contact.website_url.replace(/^https?:\/\//, '').replace(/\/$/, '')})</span>
+                        <ExternalLink className="w-3 h-3 inline text-red-500" />
                       </a>
                     </div>
                   )}
