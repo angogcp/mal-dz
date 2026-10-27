@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { School } from '../types/school';
 import { useLanguage } from '../contexts/LanguageContext';
+import { calculateSchoolBudget } from '../utils/costCalculator';
 import { 
   X, Calculator, DollarSign, Wallet, Building2, 
   BedDouble, Bus, Utensils, BookOpen, Sparkles, 
@@ -70,86 +71,18 @@ export default function BudgetCalculatorModal({
   // If school has no dormitory, force day student
   const isDormAvailable = selectedSchool?.dormitory_and_boarding.has_dormitory ?? false;
 
-  // Calculation function
-  const calculateBudget = (school: School, isBoarder: boolean) => {
-    const isActuallyBoarder = isBoarder && school.dormitory_and_boarding.has_dormitory;
-    
-    const regFee = school.costs_and_fees.registration_fee || 350;
-    const uniformAndBooksInitial = 800; // Uniform, badge, textbooks upfront
-    const devFundAnnual = school.costs_and_fees.development_fund_annual || 250;
-    const miscFeeAnnual = school.costs_and_fees.misc_fee_annual || 300;
-    
-    const juniorTuitionAnnual = school.costs_and_fees.tuition_junior_yearly;
-    const seniorTuitionAnnual = school.costs_and_fees.tuition_senior_yearly || (juniorTuitionAnnual * 1.15);
-    
-    const dormMonthly = school.dormitory_and_boarding.dorm_fee_monthly || 450;
-    const dormAnnual = isActuallyBoarder ? (dormMonthly * 10) : 0; // 10 school months
-
-    // Scholarship discount factor applied to tuition
-    const discountMultiplier = hasScholarship ? (1 - scholarshipDeductionPercent / 100) : 1;
-
-    // Year 1 (初一首年)
-    const year1Tuition = juniorTuitionAnnual * discountMultiplier;
-    const year1TransportOrDorm = isActuallyBoarder 
-      ? (dormAnnual + boarderMealMonthly * 10)
-      : (transportMonthly * 10 + pocketMoneyMonthly * 10);
-    const year1Total = regFee + uniformAndBooksInitial + devFundAnnual + miscFeeAnnual + year1Tuition + year1TransportOrDorm + ccaAnnual;
-
-    // Junior 3 Years (初中三年总计)
-    let junior3Total = 0;
-    for (let yr = 1; yr <= 3; yr++) {
-      const isYr1 = yr === 1;
-      const initialOneOff = isYr1 ? (regFee + uniformAndBooksInitial) : 250; // extra book renewal
-      const tuition = juniorTuitionAnnual * discountMultiplier;
-      const living = isActuallyBoarder
-        ? (dormAnnual + boarderMealMonthly * 10)
-        : (transportMonthly * 10 + pocketMoneyMonthly * 10);
-      junior3Total += (initialOneOff + devFundAnnual + miscFeeAnnual + tuition + living + ccaAnnual);
-    }
-
-    // Full 6 Years (初中三年 + 高中三年总计)
-    let full6Total = junior3Total;
-    for (let yr = 4; yr <= 6; yr++) {
-      const bookRenewal = 350;
-      const tuition = seniorTuitionAnnual * discountMultiplier;
-      const living = isActuallyBoarder
-        ? (dormAnnual + boarderMealMonthly * 10)
-        : (transportMonthly * 10 + pocketMoneyMonthly * 10);
-      full6Total += (bookRenewal + devFundAnnual + miscFeeAnnual + tuition + living + ccaAnnual);
-    }
-
-    // Selected Horizon Output
-    let activeTotal = year1Total;
-    let monthsInPeriod = 10;
-    if (timeHorizon === 'junior3') {
-      activeTotal = junior3Total;
-      monthsInPeriod = 30;
-    } else if (timeHorizon === 'full6') {
-      activeTotal = full6Total;
-      monthsInPeriod = 60;
-    }
-
-    const monthlyAverage = Math.round(activeTotal / monthsInPeriod);
-
-    return {
-      regFee,
-      uniformAndBooksInitial,
-      devFundAnnual,
-      miscFeeAnnual,
-      juniorTuitionAnnual,
-      seniorTuitionAnnual,
-      dormAnnual,
-      year1Total,
-      junior3Total,
-      full6Total,
-      activeTotal,
-      monthlyAverage,
-      isActuallyBoarder
-    };
-  };
-
+  // Unified Budget Calculation from costCalculator
   const primaryBudget = useMemo(() => {
-    return calculateBudget(selectedSchool, studentType === 'boarder');
+    return calculateSchoolBudget(selectedSchool, {
+      isBoarder: studentType === 'boarder',
+      timeHorizon,
+      transportMonthly,
+      pocketMoneyMonthly,
+      boarderMealMonthly,
+      ccaAnnual,
+      hasScholarship,
+      scholarshipDeductionPercent,
+    });
   }, [
     selectedSchool, studentType, timeHorizon, transportMonthly, 
     pocketMoneyMonthly, boarderMealMonthly, ccaAnnual, 
@@ -158,7 +91,16 @@ export default function BudgetCalculatorModal({
 
   const secondaryBudget = useMemo(() => {
     if (!compareSchool) return null;
-    return calculateBudget(compareSchool, studentType === 'boarder');
+    return calculateSchoolBudget(compareSchool, {
+      isBoarder: studentType === 'boarder',
+      timeHorizon,
+      transportMonthly,
+      pocketMoneyMonthly,
+      boarderMealMonthly,
+      ccaAnnual,
+      hasScholarship,
+      scholarshipDeductionPercent,
+    });
   }, [
     compareSchool, studentType, timeHorizon, transportMonthly, 
     pocketMoneyMonthly, boarderMealMonthly, ccaAnnual, 

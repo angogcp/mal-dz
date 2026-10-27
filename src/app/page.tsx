@@ -19,6 +19,7 @@ import ScholarshipAidModal from '../components/ScholarshipAidModal';
 import PrimarySecondaryBridgeModal from '../components/PrimarySecondaryBridgeModal';
 import { getSchoolCulture } from '../data/schoolCultureData';
 import { generateSchoolICS, generateAllIntakeICS, downloadICS } from '../utils/calendarGenerator';
+import { calculateSchoolBudget } from '../utils/costCalculator';
 import { 
   Search, Filter, MapPin, Building2, BedDouble, 
   BookOpen, Calculator, Calendar, ExternalLink, 
@@ -227,22 +228,19 @@ export default function HomePage() {
     return displaySchools.find(s => s.school_id === activeModalSchool.school_id) || activeModalSchool;
   }, [activeModalSchool, displaySchools]);
 
-  // Total cost estimate
+  // Total cost estimate using unified costCalculator
   const calcResults = useMemo(() => {
-    const baseJunior = calcSchool.costs_and_fees.tuition_junior_yearly || 4000;
-    const baseSenior = calcSchool.costs_and_fees.tuition_senior_yearly || (baseJunior * 1.15);
-    const dormAnnual = (calcSchool.dormitory_and_boarding.dorm_fee_monthly || 400) * 11;
-    const transportAnnual = calcMonthlyTransport * 11;
-
-    const yearlyCostJunior = baseJunior + (calcIsBoarder ? dormAnnual : transportAnnual) + 800;
-    const yearlyCostSenior = baseSenior + (calcIsBoarder ? dormAnnual : transportAnnual) + 900;
-
-    const total6Years = (yearlyCostJunior * 3) + (yearlyCostSenior * 3);
+    const budget = calculateSchoolBudget(calcSchool, {
+      isBoarder: calcIsBoarder,
+      transportMonthly: calcMonthlyTransport,
+    });
 
     return {
-      yearlyJunior: Math.round(yearlyCostJunior),
-      yearlySenior: Math.round(yearlyCostSenior),
-      total6Years: Math.round(total6Years)
+      yearlyJunior: budget.yearlyAverageJunior,
+      yearlySenior: budget.yearlyAverageSenior,
+      junior3Total: budget.junior3Total,
+      senior3Total: budget.senior3Total,
+      total6Years: budget.full6Total
     };
   }, [calcSchool, calcIsBoarder, calcMonthlyTransport]);
 
@@ -1006,13 +1004,16 @@ export default function HomePage() {
                 【{calcSchool.name_zh}】{calcIsBoarder ? '寄宿生' : '走读生'} 投入预估
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-2 gap-4 mb-5">
                 <div className="bg-slate-900/60 p-4 rounded-xl border border-white/5">
                   <div className="text-xs text-slate-400">初中阶段年平均开销</div>
                   <div className="text-xl sm:text-2xl font-black text-white mt-1">
                     RM {calcResults.yearlyJunior.toLocaleString()}
                   </div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">含学费+杂费+{calcIsBoarder ? '宿舍伙食' : '校车交通'}</div>
+                  <div className="text-[11px] text-amber-300/90 font-semibold mt-1">
+                    初中 3 年累计预估: RM {calcResults.junior3Total.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-0.5">含学费+杂费+{calcIsBoarder ? '全天三餐宿费' : '午餐校车'}</div>
                 </div>
 
                 <div className="bg-slate-900/60 p-4 rounded-xl border border-white/5">
@@ -1020,18 +1021,31 @@ export default function HomePage() {
                   <div className="text-xl sm:text-2xl font-black text-white mt-1">
                     RM {calcResults.yearlySenior.toLocaleString()}
                   </div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">高中学费略有上调</div>
+                  <div className="text-[11px] text-amber-300/90 font-semibold mt-1">
+                    高中 3 年累计预估: RM {calcResults.senior3Total.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] text-slate-400 mt-0.5">高中学费比初中略高约 15%</div>
                 </div>
               </div>
 
               <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div>
-                  <div className="text-xs text-slate-400">独中 6 年累计总投入估算 (TCO)</div>
+                  <div className="text-xs text-slate-400">独中 6 年累计总投入估算 (TCO = 初中3年 + 高中3年)</div>
                   <div className="text-3xl font-black text-amber-400">
                     RM {calcResults.total6Years.toLocaleString()}
                   </div>
                 </div>
-                <div className="text-right sm:text-right">
+                <div className="flex flex-col sm:items-end gap-1.5">
+                  <button
+                    onClick={() => {
+                      setBudgetSelectedSchool(calcSchool);
+                      setIsBudgetOpen(true);
+                    }}
+                    className="inline-flex items-center space-x-1 text-xs text-amber-300 hover:text-amber-200 underline font-medium"
+                  >
+                    <span>自选测算完整明细</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                   <span className="inline-block text-[11px] px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 font-medium border border-emerald-500/30">
                     约为国际学校的 1/4 - 1/6
                   </span>
