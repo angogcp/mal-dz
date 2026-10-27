@@ -77,7 +77,7 @@ export default function SchoolRadarChart({ schools, onSelectSchoolDetail }: Scho
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            {t('涵盖学术严谨、联课社团、学费性价比、全球升学、校园硬件及品格关怀六大关键维度')}
+            {t('基于各校公开发布的真实学杂费(RM)、宿舍硬件、单/双轨学制、社团数与统考海外升学出路综合测算，非主观排名')}
           </p>
         </div>
 

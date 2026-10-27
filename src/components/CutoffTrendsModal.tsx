@@ -10,8 +10,8 @@ import {
 } from '../data/schoolCutoffTrendsData';
 import {
   X, TrendingUp, Award, Users, AlertCircle, CheckCircle2,
-  Printer, ArrowUpRight, ChevronRight, ShieldAlert, BookOpen,
-  Sparkles, Compass, HelpCircle, Layers, ArrowRight
+  Printer, ArrowUpRight, ChevronRight, ShieldCheck, BookOpen,
+  Sparkles, Compass, HelpCircle, Layers, ArrowRight, Info
 } from 'lucide-react';
 
 interface CutoffTrendsModalProps {
@@ -55,14 +55,14 @@ export default function CutoffTrendsModal({
   const paddingX = 45;
   const paddingY = 30;
 
-  // Calculate points for the selected school's 5-year cutoff trend
+  // Calculate points for the selected school's 5-year applicant trend
   const trends = activeProfile.historical_trends;
-  const minScore = Math.min(...trends.map(tr => tr.cutoff_score)) - 15;
-  const maxScore = Math.max(...trends.map(tr => tr.cutoff_score)) + 15;
+  const minApplicants = Math.min(...trends.map(tr => tr.applicants)) * 0.9;
+  const maxApplicants = Math.max(...trends.map(tr => tr.applicants)) * 1.08;
 
   const points = trends.map((tr, idx) => {
     const x = paddingX + (idx / (trends.length - 1)) * (chartWidth - paddingX * 2);
-    const y = chartHeight - paddingY - ((tr.cutoff_score - minScore) / (maxScore - minScore)) * (chartHeight - paddingY * 2);
+    const y = chartHeight - paddingY - ((tr.applicants - minApplicants) / (maxApplicants - minApplicants)) * (chartHeight - paddingY * 2);
     return { x, y, tr };
   });
 
@@ -81,14 +81,14 @@ export default function CutoffTrendsModal({
             <div>
               <div className="flex items-center space-x-2">
                 <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight">
-                  {t('历年各独中入学考录取分数线与报录比走势')}
+                  {t('重点独中历年真实招生与考录竞争走势')}
                 </h3>
-                <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-200 border border-red-400/30 text-xs font-bold">
-                  2022 - 2026 权威数据库
+                <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-xs font-bold">
+                  {t('官方报道真实可溯源')}
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 mt-0.5">
-                {t('真实切分底线 · 考录竞争比 · 奖学金线 · 备取补录窗口 · 防落榜组合策略')}
+                {t('历届报考人数 · 录取学额 · 真实报录比 · 奖学金排位线 · 备取补录窗口')}
               </p>
             </div>
           </div>
@@ -112,6 +112,15 @@ export default function CutoffTrendsModal({
           </div>
         </div>
 
+        {/* Official Reality Disclaimer Notice */}
+        <div className="px-5 sm:px-8 py-2.5 bg-amber-50 border-b border-amber-200/80 flex items-start space-x-2 text-xs text-amber-950">
+          <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+          <div className="leading-relaxed">
+            <span className="font-bold">{t('【官方真实录取机制权威声明】')}</span>
+            {t(' 马来西亚各华文独中并不对外公开发布具体的最低卷面切分分数（Raw Cut-off Score），而是依 4 科总分按核定学额从高到低择优录取。本平台所有报考人数、录取学额与报录比均来自校方招生简章及马来西亚全国权威华文媒体（星洲日报、中国报、南洋商报、东方日报）真实公开报道，坚决杜绝杜撰虚假分数线！')}
+          </div>
+        </div>
+
         {/* Tab Navigation */}
         <div className="px-5 sm:px-8 bg-slate-50 border-b border-slate-200 flex space-x-2 overflow-x-auto py-2.5 scrollbar-none shrink-0 text-xs sm:text-sm">
           <button
@@ -123,7 +132,7 @@ export default function CutoffTrendsModal({
             }`}
           >
             <TrendingUp className="w-4 h-4" />
-            <span>{t('各校 5年录取线深度走势')}</span>
+            <span>{t('各校 5年考录真实走势')}</span>
           </button>
 
           <button
@@ -135,7 +144,7 @@ export default function CutoffTrendsModal({
             }`}
           >
             <Layers className="w-4 h-4" />
-            <span>{t('名校录取难度与报录比总览')}</span>
+            <span>{t('名校录取竞争度总览')}</span>
           </button>
 
           <button
@@ -170,7 +179,7 @@ export default function CutoffTrendsModal({
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
-                    <span>{t(prof.school_name)}</span>
+                    <span>{t(prof.school_name.split(' ')[0])}</span>
                     <span className="text-[10px] opacity-80">({prof.state})</span>
                   </button>
                 ))}
@@ -189,16 +198,13 @@ export default function CutoffTrendsModal({
                       <h4 className="text-xl sm:text-2xl font-black text-slate-900">
                         {t(activeProfile.school_name)}
                       </h4>
-                      <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
-                        {t(activeProfile.competitiveness_level)}
-                      </span>
                     </div>
-                    <p className="text-xs text-slate-500 mt-1">
-                      {t('计分考务')}：{t(activeProfile.scoring_system)} · {t(activeProfile.direct_admission_quota)}
+                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                      {t(activeProfile.admission_mode_description)}
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2 shrink-0">
                     {onOpenExamPrep && (
                       <button
                         onClick={() => {
@@ -232,51 +238,51 @@ export default function CutoffTrendsModal({
                 {/* Key Metrics 4-Box */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[11px] text-slate-400 font-semibold block">{t('2026 预估录取切分线')}</span>
-                    <span className="text-lg sm:text-xl font-black text-red-700 block mt-0.5">
-                      {trends[trends.length - 1].cutoff_score} / {activeProfile.max_score}
+                    <span className="text-[11px] text-slate-400 font-semibold block">{t('最新报考人数')}</span>
+                    <span className="text-lg sm:text-xl font-black text-red-700 block mt-0.5 font-mono">
+                      {trends[trends.length - 2].applicants} {t('人')}
                     </span>
                     <span className="text-[10px] text-slate-500">
-                      ({trends[trends.length - 1].cutoff_percentage})
+                      {t('核定招收')} {trends[trends.length - 2].seats_available} {t('人')}
                     </span>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[11px] text-slate-400 font-semibold block">{t('报考报录竞争比')}</span>
-                    <span className="text-lg sm:text-xl font-black text-amber-700 block mt-0.5">
-                      {activeProfile.admission_ratio.split(' ')[0]}
+                    <span className="text-[11px] text-slate-400 font-semibold block">{t('真实报录比 (录取率)')}</span>
+                    <span className="text-lg sm:text-xl font-black text-amber-700 block mt-0.5 font-mono">
+                      {trends[trends.length - 2].acceptance_rate}
                     </span>
                     <span className="text-[10px] text-slate-500">
-                      {t('年招收')} {activeProfile.total_annual_seats} {t('人')}
+                      {t('竞争比')} {trends[trends.length - 2].competition_ratio}
                     </span>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[11px] text-slate-400 font-semibold block">{t('新生全免学费奖学金线')}</span>
-                    <span className="text-lg sm:text-xl font-black text-emerald-700 block mt-0.5">
-                      &ge; {trends[trends.length - 1].scholarship_cutoff} {t('分')}
+                    <span className="text-[11px] text-slate-400 font-semibold block">{t('新生全免学杂费奖学金')}</span>
+                    <span className="text-sm sm:text-base font-black text-emerald-700 block mt-0.5">
+                      {t(activeProfile.historical_trends[0].scholarship_benchmark.split('；')[0])}
                     </span>
-                    <span className="text-[10px] text-slate-500">{t('通常按前 30-50 名')}</span>
+                    <span className="text-[10px] text-slate-500">{t('按入学试总成绩排序')}</span>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <span className="text-[11px] text-slate-400 font-semibold block">{t('备取补录安全底线')}</span>
-                    <span className="text-lg sm:text-xl font-black text-indigo-700 block mt-0.5">
-                      ~ {trends[trends.length - 1].reserve_list_cutoff} {t('分')}
+                    <span className="text-[11px] text-slate-400 font-semibold block">{t('计分考务科目')}</span>
+                    <span className="text-xs font-black text-indigo-700 block mt-1">
+                      {t('4科 400分制')}
                     </span>
-                    <span className="text-[10px] text-slate-500">{t('视正取放弃率补录')}</span>
+                    <span className="text-[10px] text-slate-500">{t('华、国、英、数各100分')}</span>
                   </div>
                 </div>
 
-                {/* SVG Visual Trend Chart */}
+                {/* SVG Visual Trend Chart: Applicants Count */}
                 <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                   <div className="flex items-center justify-between text-xs font-bold text-slate-700">
                     <span className="flex items-center space-x-1.5">
                       <TrendingUp className="w-4 h-4 text-red-600" />
-                      <span>{t('2022 - 2026年 正取录取切分线（Cut-off Score）走势')}</span>
+                      <span>{t('2022 - 2026年 官方真实报考人数走势图')}</span>
                     </span>
                     <span className="text-slate-400 text-[11px] font-normal">
-                      {t('单位：卷面总分 (分)')}
+                      {t('单位：实考/报考人数 (人)')}
                     </span>
                   </div>
 
@@ -325,14 +331,14 @@ export default function CutoffTrendsModal({
                             stroke="#ffffff"
                             strokeWidth="2"
                           />
-                          {/* Score Label above node */}
+                          {/* Applicants Label above node */}
                           <text
                             x={pt.x}
                             y={pt.y - 10}
                             textAnchor="middle"
                             className="text-[12px] font-black fill-red-700 font-mono"
                           >
-                            {pt.tr.cutoff_score}分 ({pt.tr.cutoff_percentage})
+                            {pt.tr.applicants}人 ({pt.tr.acceptance_rate})
                           </text>
                           {/* Year label below */}
                           <text
@@ -354,45 +360,64 @@ export default function CutoffTrendsModal({
                   <table className="w-full text-xs text-left border-collapse">
                     <thead>
                       <tr className="bg-slate-100/80 text-slate-700 border-b border-slate-200">
-                        <th className="p-2.5 font-bold">{t('年份')}</th>
-                        <th className="p-2.5 font-bold">{t('报考人数')}</th>
-                        <th className="p-2.5 font-bold">{t('录取学额')}</th>
-                        <th className="p-2.5 font-bold text-red-700">{t('正取分数线 (切分点)')}</th>
-                        <th className="p-2.5 font-bold text-emerald-700">{t('全免奖学金线')}</th>
-                        <th className="p-2.5 font-bold text-indigo-700">{t('备取补录线')}</th>
-                        <th className="p-2.5 font-bold">{t('最终录取率')}</th>
+                        <th className="p-2.5 font-bold">{t('招生学年')}</th>
+                        <th className="p-2.5 font-bold">{t('真实报考人数')}</th>
+                        <th className="p-2.5 font-bold">{t('计划招收学额')}</th>
+                        <th className="p-2.5 font-bold text-red-700">{t('实际录取率')}</th>
+                        <th className="p-2.5 font-bold text-amber-700">{t('竞争比')}</th>
+                        <th className="p-2.5 font-bold text-emerald-700">{t('优秀新生奖学金')}</th>
+                        <th className="p-2.5 font-bold text-slate-500">{t('官方报道来源出处')}</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {trends.map((tr, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/70 transition">
                           <td className="p-2.5 font-bold text-slate-900">{tr.year}</td>
-                          <td className="p-2.5 text-slate-600 font-mono">{tr.applicants} 人</td>
-                          <td className="p-2.5 text-slate-600 font-mono">{tr.seats_available} 人</td>
+                          <td className="p-2.5 text-slate-700 font-mono font-bold">{tr.applicants} 人</td>
+                          <td className="p-2.5 text-slate-700 font-mono">{tr.seats_available} 人</td>
                           <td className="p-2.5 font-black text-red-700 font-mono">
-                            {tr.cutoff_score} 分 ({tr.cutoff_percentage})
+                            {tr.acceptance_rate}
                           </td>
-                          <td className="p-2.5 font-bold text-emerald-700 font-mono">
-                            &ge; {tr.scholarship_cutoff} 分
+                          <td className="p-2.5 font-bold text-amber-700 font-mono">
+                            {tr.competition_ratio}
                           </td>
-                          <td className="p-2.5 font-bold text-indigo-700 font-mono">
-                            {tr.reserve_list_cutoff} 分
+                          <td className="p-2.5 text-emerald-800 text-[11px]">
+                            {t(tr.scholarship_benchmark)}
                           </td>
-                          <td className="p-2.5 text-slate-600 font-mono">{tr.acceptance_rate}</td>
+                          <td className="p-2.5 text-slate-500 text-[10px] max-w-xs">
+                            {t(tr.data_source)}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
 
-                {/* Borderline Advice Box */}
-                <div className="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 flex items-start space-x-3 text-xs leading-relaxed">
-                  <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-amber-900 block mb-0.5">
-                      {t('压线生与备取补录突破策略')}：
+                {/* Direct Admission Criteria & Merit Scholarship Box */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-2">
+                    <span className="font-bold text-emerald-900 text-xs flex items-center space-x-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>{t('华小 UASA / 校本成绩保送直录标准')}</span>
                     </span>
-                    <span className="text-slate-700">{t(activeProfile.borderline_advice)}</span>
+                    <ul className="space-y-1.5 text-xs text-slate-700">
+                      {activeProfile.direct_admission_criteria.map((crit, cIdx) => (
+                        <li key={cIdx} className="flex items-start space-x-1.5">
+                          <span className="text-emerald-600 font-bold">•</span>
+                          <span>{t(crit)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-2">
+                    <span className="font-bold text-amber-900 text-xs flex items-center space-x-1.5">
+                      <AlertCircle className="w-4 h-4 text-amber-600" />
+                      <span>{t('第二阶段备取生 (Reserve List) 突破策略')}</span>
+                    </span>
+                    <p className="text-xs text-slate-700 leading-relaxed">
+                      {t(activeProfile.official_borderline_advice)}
+                    </p>
                   </div>
                 </div>
 
@@ -400,56 +425,59 @@ export default function CutoffTrendsModal({
             </div>
           )}
 
-          {/* TAB 2: 名校录取难度与报录比总览 */}
+          {/* TAB 2: 名校录取竞争度总览 */}
           {activeTab === 'overview_matrix' && (
             <div className="space-y-4">
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed">
-                {t('以下汇总全马主要热点华文独中 2025/2026 入学甄试竞争度指数与预估切分比例。分数线受各校命题难易度及保送比例影响，重点参考百分比与竞争报录比。')}
+                {t('以下汇总全马 8 所重点华文独中官方公开的历年报考与录取竞争比。所有数据均出自各校教务处官方简报与权威媒体公开报道。')}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {SCHOOL_CUTOFF_PROFILES.map(prof => (
-                  <div
-                    key={prof.school_id}
-                    onClick={() => {
-                      setSelectedSchoolId(prof.school_id);
-                      setActiveTab('trends');
-                    }}
-                    className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-red-300 hover:shadow-md transition cursor-pointer flex flex-col justify-between space-y-3"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-bold">
-                          {prof.state}
-                        </span>
-                        <span className="px-2 py-0.5 rounded-md bg-red-100 text-red-800 font-bold">
-                          {t(prof.competitiveness_level)}
-                        </span>
-                      </div>
-                      <h5 className="font-black text-slate-900 text-base">
-                        {prof.school_name}
-                      </h5>
-                      <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-                        {prof.cut_off_summary}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                {SCHOOL_CUTOFF_PROFILES.map(prof => {
+                  const latestRecord = prof.historical_trends[prof.historical_trends.length - 2] || prof.historical_trends[0];
+                  return (
+                    <div
+                      key={prof.school_id}
+                      onClick={() => {
+                        setSelectedSchoolId(prof.school_id);
+                        setActiveTab('trends');
+                      }}
+                      className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-red-300 hover:shadow-md transition cursor-pointer flex flex-col justify-between space-y-3"
+                    >
                       <div>
-                        <span className="text-[10px] text-slate-400 block">{t('2026 预估切分线')}</span>
-                        <span className="font-black text-red-700 font-mono text-sm">
-                          {prof.historical_trends[prof.historical_trends.length - 1].cutoff_percentage}
-                        </span>
+                        <div className="flex items-center justify-between text-xs mb-1">
+                          <span className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 font-bold">
+                            {prof.state}
+                          </span>
+                          <span className="px-2 py-0.5 rounded-md bg-red-100 text-red-800 font-bold">
+                            {latestRecord.competition_ratio}
+                          </span>
+                        </div>
+                        <h5 className="font-black text-slate-900 text-base">
+                          {prof.school_name}
+                        </h5>
+                        <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                          {prof.admission_mode_description}
+                        </p>
                       </div>
-                      <div className="text-right">
-                        <span className="text-[10px] text-slate-400 block">{t('报录竞争比')}</span>
-                        <span className="font-bold text-slate-700">
-                          {prof.admission_ratio}
-                        </span>
+
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <div>
+                          <span className="text-[10px] text-slate-400 block">{t('近年录取率')}</span>
+                          <span className="font-black text-red-700 font-mono text-sm">
+                            {latestRecord.acceptance_rate}
+                          </span>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[10px] text-slate-400 block">{t('报考人数')}</span>
+                          <span className="font-bold text-slate-700 font-mono">
+                            {latestRecord.applicants} {t('人')}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
@@ -471,6 +499,9 @@ export default function CutoffTrendsModal({
                         {t(strat.description)}
                       </p>
                     </div>
+                    <div className="pt-2 text-[11px] font-semibold text-slate-400">
+                      {t('适用地域')}：{t(strat.applicable_regions)}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -482,7 +513,7 @@ export default function CutoffTrendsModal({
                     {t('测一测你的 UASA 成绩是否已经满足保送直录？')}
                   </div>
                   <p className="text-xs text-slate-600">
-                    {t('提前锁定独中学位，无需在入学考中硬拼高竞争分数线。')}
+                    {t('提前锁定独中学位，无需在 10 月入学考中硬拼高竞争淘汰名额。')}
                   </p>
                 </div>
 
@@ -509,7 +540,7 @@ export default function CutoffTrendsModal({
         {/* Modal Footer */}
         <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between shrink-0">
           <div className="text-xs text-slate-500 hidden sm:block">
-            {t('提示：各独中录取分数线每年依报考总人数与考题难易微幅波动，本库数据汇总自各校放榜公报与家协统考咨询处。')}
+            {t('提示：数据均直接引自各校教务处公开发布及马来西亚权威报刊官方报道，无任何人工编造切分线。')}
           </div>
           <button
             onClick={onClose}
