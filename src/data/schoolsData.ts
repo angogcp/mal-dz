@@ -1045,7 +1045,7 @@ export const ALL_SCHOOLS: School[] = [
     },
     contact: {
       phone: "+60-3-33426388",
-      website_url: "https://www.pinhwa.edu.my"
+      website_url: "https://smpinhwa.edu.my"
     },
     academics: {
       track_type: "双轨制 (UEC统考 + SPM政府考试)",
@@ -1246,7 +1246,7 @@ export const ALL_SCHOOLS: School[] = [
     },
     contact: {
       phone: "+60-6-7612782",
-      website_url: "https://www.chhsban.edu.my"
+      website_url: "https://chhsban.edu.my"
     },
     academics: {
       track_type: "并存/自选单双轨 (学生按班别自选)",
@@ -2087,7 +2087,7 @@ export const ALL_SCHOOLS: School[] = [
     },
     contact: {
       phone: "+60-4-2811533",
-      website_url: "https://hanchiang.edu.my"
+      website_url: "https://hchs.edu.my"
     },
     academics: {
       track_type: "三轨制 (UEC + SPM + IGCSE国际课程)",
@@ -3465,7 +3465,7 @@ export const ALL_SCHOOLS: School[] = [
     },
     contact: {
       phone: "+60-84-322327",
-      website_url: "https://chs-sibu.edu.my"
+      website_url: "https://chssibu.edu.my"
     },
     academics: {
       track_type: "双轨制 (UEC统考 + SPM政府考试)",
