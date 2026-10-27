@@ -20,8 +20,8 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     campus_facilities: ['宽柔大礼堂', '校史与宽柔文物馆', '陈徽崇音乐活动中心', '现代化冷气综合图书馆', '标准400米跑道田径场', '冷气多媒体多功能课室'],
     notable_alumni: ['陈徽崇 (国家文化人物、二十四节令鼓创办人之一)', '郭鹤年家族母校渊源', '各界国州议员、科学家、大学教授及跨国企业家'],
     matriculation_highlights: '统考成绩常年名列全国前茅，毕业生广泛保送或直升新加坡国立大学 (NUS)、南洋理工 (NTU)、清华北大、台湾台成清交及欧美英澳名校。',
-    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Foon_Yew_High_School_Library.jpg?width=800',
-    caption: '新山宽柔中学校本部宏伟图书馆与滨海校区建筑'
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Foon_Yew_High_School.jpg?width=800',
+    caption: '新山宽柔中学校本部宏伟校舍与宽阔校园'
   },
   'foonyew-kulai': {
     school_motto: '礼、义、廉、耻',
@@ -31,8 +31,8 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     campus_facilities: ['大型多功能冷气礼堂', '综合体育馆与室内羽球馆', '冷气标准化学生男女宿舍大楼', '科技大楼与数理实验室', '多功能学术报告厅'],
     notable_alumni: ['各界医学、工程及数码科技领军人才', '新马知名企业家与教育工作者'],
     matriculation_highlights: '单轨制统考学业优异，历届优秀生深受中国、台湾、新加坡及澳洲顶尖大学争相录用并获丰厚奖学金。',
-    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Foon_Yew_High_School_Library.jpg?width=800',
-    caption: '宽柔中学现代化教学楼与林荫大道'
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/%E5%8F%A4%E4%BE%86%E5%AF%AC%E4%B8%AD%E5%88%86%E6%A0%A1.jpg?width=800',
+    caption: '宽柔中学古来分校现代化教学大楼'
   },
   'foonyew-bsa': {
     school_motto: '礼、义、廉、耻',
@@ -43,7 +43,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['新一代科创新锐青年与杰出学子'],
     matriculation_highlights: '承继新山校本部优质课程传统，三语水平全面均衡，直通全球顶尖高校。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Foon_Yew_High_School_Library.jpg?width=800',
-    caption: '宽柔中学至达城分校高科技智慧建筑全貌'
+    caption: '宽柔中学至达城分校科技智慧新校区'
   },
   'chonghwa-kluang': {
     school_motto: '礼、义、廉、耻',
@@ -52,7 +52,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['銮中二十四节令鼓', '华乐团', '管乐团', '美术学会', '扯铃社', '武术醒狮团'],
     campus_facilities: ['光前教学大楼', '艺术馆与美术设计展厅', '多功能冷气大礼堂', '大型学生男女宿舍楼', '标准大操场'],
     notable_alumni: ['国际知名艺术家、建筑设计师', '政商两界杰出侨领与学术专家'],
-    matriculation_highlights: '学术统考与技职统考双双名列全国前列，美术与电工毕业生在台湾、新加坡及海外高等学府深受欢迎。'
+    matriculation_highlights: '学术统考与技职统考双双名列全国前列，美术与电工毕业生在台湾、新加坡及海外高等学府深受欢迎。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chong%20hwa%20kluang%20mandarin.png?width=800',
+    caption: '居銮中华中学校徽与山岗花园式校园'
   },
   'chunghwa-muar': {
     school_motto: '礼、义、廉、耻',
@@ -61,7 +63,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['中化二十四节令鼓', '华乐团', '管乐团', '戏剧社', '辩论社', '童军团'],
     campus_facilities: ['中化大礼堂', '世纪演艺厅', '文物校史馆', '多媒体科技教学中心', '全冷气图书馆'],
     notable_alumni: ['新马各界商界翘楚、文化学者及慈善贤达'],
-    matriculation_highlights: '历年众多毕业生直升中台新欧顶尖学府，学术声誉响彻柔北。'
+    matriculation_highlights: '历年众多毕业生直升中台新欧顶尖学府，学术声誉响彻柔北。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/%E4%B8%AD%E5%8C%96%E6%A0%A1%E5%BE%BD.png?width=800',
+    caption: '麻坡中化中学百年校徽与麻河畔校区'
   },
   'peichun-pontian': {
     school_motto: '礼、义、廉、耻',
@@ -70,7 +74,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['培群鼓队', '华乐团', '扯铃社', '红新月会', '美术学会'],
     campus_facilities: ['吴如思综合大楼', '现代化男女学生宿舍', '冷气大礼堂', '图书资讯大楼', '生态园'],
     notable_alumni: ['工程、农科、商业各领域骨干英才'],
-    matriculation_highlights: '毕业生升学率连年提升，为大马各界输送大量踏实有为的专业青年。'
+    matriculation_highlights: '毕业生升学率连年提升，为大马各界输送大量踏实有为的专业青年。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pei_Chun_High_School.jpg?width=800',
+    caption: '笨珍培群独立中学红顶教学楼建筑群'
   },
   'chsbp-batupahat': {
     school_motto: '礼、义、廉、耻',
@@ -79,7 +85,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['华仁华乐团', '管乐团', '二十四节令鼓', '戏剧社 (常年全国赛大奖)', '吉他社', '舞蹈团'],
     campus_facilities: ['一力厅与伏龙山露天剧场', '校史艺术馆', '综合多媒体图书馆', '标准大礼堂', '男女宿舍楼'],
     notable_alumni: ['著名马华文学作家、诗人、导演与文化学者', '海内外资深建筑师与商业领袖'],
-    matriculation_highlights: '学术与艺术双轨开花，毕业生广泛升向欧美两岸三地顶尖文理大学。'
+    matriculation_highlights: '学术与艺术双轨开花，毕业生广泛升向欧美两岸三地顶尖文理大学。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chinese%20High%20School%20Batu%20Pahat.jpg?width=800',
+    caption: '峇株巴辖华仁中学大门与优美校园风貌'
   },
   'peihwa-tangkak': {
     school_motto: '礼、义、廉、耻',
@@ -88,7 +96,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['醒狮与武术团', '二十四节令鼓', '华乐团', '电脑创客社'],
     campus_facilities: ['综合教学大楼', '冷气综合礼堂', '学生宿舍楼', '电脑室与科学实验室'],
     notable_alumni: ['柔北工商业界中坚力量及杰出教育工作者'],
-    matriculation_highlights: '坚持三语并重与实用技能，海内外大学升学通路顺畅。'
+    matriculation_highlights: '坚持三语并重与实用技能，海内外大学升学通路顺畅。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/%E5%9F%B9%E5%8D%8E%E7%8B%AC%E4%B8%AD%E6%A0%A1%E9%97%A81.jpg?width=800',
+    caption: '利丰港培华独立中学校门与主教学楼'
   },
   'sinhwa-rengit': {
     school_motto: '礼、义、廉、耻',
@@ -106,7 +116,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['科技创新社', '节令鼓队', '华乐团', '舞蹈社', '戏剧社'],
     campus_facilities: ['全新智慧教学大厦', '现代化综合礼堂', '数码图书馆', '学生公寓宿舍'],
     notable_alumni: ['新一代海内外留学青年与创新创业企业家'],
-    matriculation_highlights: '广泛开拓台湾、中国大陆、新加坡及英国大学直接对接升学途径。'
+    matriculation_highlights: '广泛开拓台湾、中国大陆、新加坡及英国大学直接对接升学途径。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Yong_Peng_High_School.jpg?width=800',
+    caption: '永平独立中学校舍与宽敞运动操场'
   },
 
   // ===================== 2. 吉隆坡 (4所) =====================
@@ -119,7 +131,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['海鸥集团创办人陈凯希', '各界学术界顶级学者、国际科研科学家、著名医师与政商领袖'],
     matriculation_highlights: '每年大量毕业生获清华大学、北京大学、复旦、台大、新国大(NUS)、南大(NTU)、香港大学、英国帝国理工与爱丁堡大学全奖/优录。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/%E5%90%89%E9%9A%86%E5%9D%A1%E4%B8%AD%E5%8D%8E%E7%8B%AC%E7%AB%8B%E4%B8%AD%E5%AD%A6.jpg?width=800',
-    caption: '吉隆坡中华独立中学光前堂与现代化综合校区'
+    caption: '吉隆坡中华独立中学光前堂与现代化综合大楼'
   },
   'kuencheng-kl': {
     school_motto: '德、智、体、群、美',
@@ -129,8 +141,8 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     campus_facilities: ['现代化高规格全冷气教学综合楼群', '多功能现代化大礼堂', '大型数字化藏书阅览中心', '现代化室内体育综合馆', '先进科学与生物探究实验室'],
     notable_alumni: ['国际著名医学专家、跨国法律界翘楚、著名企业高管及海内外杰出女性领袖'],
     matriculation_highlights: '除中台新顶尖大学外，坤成毕业生广泛受到英国罗素集团 (剑桥/IC/UCL/LSE)、澳洲八大 (墨尔本/悉尼) 及北美顶尖高校青睐。',
-    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kuen_Cheng_High_School_(211030).jpg?width=800',
-    caption: '吉隆坡坤成中学现代化教学楼群与综合建筑'
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Kuala_Lumpur_Malaysia_Kuen-Cheng-High-School-03.jpg?width=800',
+    caption: '吉隆坡坤成中学现代化教学大楼与校园全景'
   },
   'tsunjin-kl': {
     school_motto: '公、诚、勤、毅',
@@ -140,8 +152,8 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     campus_facilities: ['循人大礼堂', '数码化多媒体演艺厅', '冷气全覆盖教学大楼', '高标准电脑与科技教室', '全功能图书与阅览中心'],
     notable_alumni: ['科技互联网领域技术大咖、高科技创业领军人物、金融精算名师'],
     matriculation_highlights: '毕业生学术严谨受广泛赞誉，直升新马两岸三地及欧美大学理工科、商科表现极为亮眼。',
-    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tsun_Jin_High_School_Main_Building.jpg?width=800',
-    caption: '吉隆坡循人中学教学主楼与校园全景'
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/ChineseIndependentHighSchool004.jpg?width=800',
+    caption: '吉隆坡循人中学校舍大楼与大礼堂'
   },
   'confucian-kl': {
     school_motto: '勤、朴、勇、毅',
@@ -152,7 +164,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['大马政界、文化界、艺术设计界及华社历史重要领军人物'],
     matriculation_highlights: '学术与技职升学双轨畅通，众多美术班学子赴中台英澳顶尖设计艺术院校深造。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/ChineseIndependentHighSchool003.jpg?width=800',
-    caption: '吉隆坡尊孔独立中学百年校舍建筑与崭新综合大楼'
+    caption: '吉隆坡尊孔独立中学百年校舍与现代化综合教学大楼'
   },
 
   // ===================== 3. 雪兰莪州 (4所) =====================
@@ -165,7 +177,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['杨忠礼机构 (YTL) 创办人丹斯里杨忠礼', '各界科创企业家、知名医生及大学教授'],
     matriculation_highlights: '每年百余位毕业生直录世界排名前百顶尖大学，清华、北大、新加坡NUS/NTU录用人数稳居全国前列。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Exterior_of_Hin_Hua_high_school%2C_Malaysia.jpg?width=800',
-    caption: '巴生兴华中学十层人文科技大楼与现代校区'
+    caption: '巴生兴华中学十层科技大楼与人本智慧校园'
   },
   'pinhua-klang': {
     school_motto: '勤、勇、忠、信',
@@ -174,7 +186,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['滨华管乐团', '华乐团', '二十四节令鼓', '领导力培育研习社', '辩论社', '机器人与编程社'],
     campus_facilities: ['现代化李平福综合大楼', '高星级标准学生男女宿舍楼', '室内全冷气体育馆', '数码化多功能报告厅', '松木风雅图书馆'],
     notable_alumni: ['海内外跨国商界领袖、科技创新精英与杰出金融专家'],
-    matriculation_highlights: '毕业生兼具扎实三语能力与领导风范，在欧美、澳洲、新加坡及两岸三地大学表现亮丽。'
+    matriculation_highlights: '毕业生兼具扎实三语能力与领导风范，在欧美、澳洲、新加坡及两岸三地大学表现亮丽。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pin_Hwa_High_School_%28220711%29_04.jpg?width=800',
+    caption: '巴生滨华中学现代化宏伟教学大楼与运动场'
   },
   'chunghua-klang': {
     school_motto: '公、诚、勤、毅',
@@ -192,7 +206,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['光华二十四节令鼓', '管乐团', '华乐团', '篮球校队 (全州冠亚军常客)', '舞蹈社', '科学学会'],
     campus_facilities: ['新落成宏伟教学大楼', '现代化大礼堂', '室内综合体育馆', '现代化科技实验室', '学生自习室'],
     notable_alumni: ['商业实业家、专业建筑工程师与体育名将'],
-    matriculation_highlights: '各科统考成绩扎实，历届毕业生普遍升入台湾、中国大陆、新加坡及本地顶尖大专。'
+    matriculation_highlights: '各科统考成绩扎实，历届毕业生普遍升入台湾、中国大陆、新加坡及本地顶尖大专。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pin_Hwa_High_School_%28220711%29_01.jpg?width=800',
+    caption: '巴生光华独立中学校园教学建筑与活动广场'
   },
 
   // ===================== 4. 森美兰州 (2所) =====================
@@ -203,7 +219,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['芙中二十四节令鼓队', '华乐团 (大型交响名团)', '管乐团', '弦乐团', '紫竹戏剧社', '天文社', '舞蹈团'],
     campus_facilities: ['半山依山而建之壮丽校园', '李光前现代化大礼堂', '多栋现代化冷气男女宿舍楼', '标准大田径操场', '天文观测台与天象室', '中华文物馆'],
     notable_alumni: ['政商界重要领袖、国际知名科学家、名医与学者'],
-    matriculation_highlights: '深受雪隆、柔佛及外州家庭青睐，毕业生直升海内外顶尖高校比例极高。'
+    matriculation_highlights: '深受雪隆、柔佛及外州家庭青睐，毕业生直升海内外顶尖高校比例极高。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chung_Hua_High_School_Seremban_(220709)_01.jpg?width=800',
+    caption: '芙蓉中华中学宏伟校舍、大礼堂与现代寄宿大楼'
   },
   'chunghua-pd': {
     school_motto: '礼、义、廉、耻',
@@ -225,7 +243,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['大马文化界巨擘、资深汉学学者、海内外知名企业家与慈善家'],
     matriculation_highlights: '两岸三地顶尖大学长期设立“培风专属校长推荐全免奖学金”，毕业生在文史、理工、商业皆有杰出造诣。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pay_Fong_Middle_School.jpg?width=800',
-    caption: '马六甲培风中学百年历史校舍与思源楼全景'
+    caption: '马六甲培风中学古城运河畔标志性大楼与怀萱堂'
   },
 
   // ===================== 6. 霹雳州 (9所) =====================
@@ -236,7 +254,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['深斋二十四节令鼓', '华乐团', '管乐团', '科技与机器人社', '扯铃社'],
     campus_facilities: ['胡曰皆大礼堂', '现代化教学大楼群', '学生冷气宿舍大厦', '多功能科技实验室', '大草场'],
     notable_alumni: ['矿业与工商业领袖、资深医学家与科技工程师'],
-    matriculation_highlights: '统考与SPM成绩优异，毕业生大量就读于新马两地大专及中台英澳名校。'
+    matriculation_highlights: '统考与SPM成绩优异，毕业生大量就读于新马两地大专及中台英澳名校。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Shen_Jai_High_School_entrance_arch_%2820220618%29.jpg?width=800',
+    caption: '怡保深斋中学校门牌坊与优美绿化校园'
   },
   'poilam-ipoh': {
     school_motto: '冲风破浪',
@@ -254,7 +274,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['育才二十四节令鼓队', '华乐团', '管乐团', '汽车工程社', '童军团', '武术团'],
     campus_facilities: ['育才大礼堂', '汽车修护与机械实训中心', '冷气学生宿舍大楼', '图书大厦', '综合田径场'],
     notable_alumni: ['各界工程实业巨擘、汽车工业领军人物及文化名家'],
-    matriculation_highlights: '学术与技能两翼齐飞，技职生直升台湾及海外科技大学就业率几近100%。'
+    matriculation_highlights: '学术与技能两翼齐飞，技职生直升台湾及海外科技大学就业率几近100%。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Yuk_Choy_High_School_(200118)_01.jpg?width=800',
+    caption: '怡保育才独立中学校门、钟楼与苍翠校园'
   },
   'hualian-taiping': {
     school_motto: '礼、义、廉、耻',
@@ -272,7 +294,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['三民二十四节令鼓队', '管乐团', '华乐团', '龙狮团', '科技创客社', '扯铃社'],
     campus_facilities: ['现代化宏伟新校舍', '四星级学生冷气公寓宿舍', '全冷气宏伟礼堂', '塑胶跑道大操场', '数码阅览室'],
     notable_alumni: ['下霹雳商业翘楚与政经界新一代青年领袖'],
-    matriculation_highlights: '众多雪隆、霹雳外州家长争相报读，毕业生直通中台新欧美著名学府。'
+    matriculation_highlights: '众多雪隆、霹雳外州家长争相报读，毕业生直通中台新欧美著名学府。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/SMJK_San_Min.jpg?width=800',
+    caption: '安顺三民独立中学校舍与运动场'
   },
   'yikching-pantai': {
     school_motto: '礼、义、廉、耻',
@@ -308,7 +332,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['培元二十四节令鼓', '管乐团', '华乐团', '戏剧社', '童军团'],
     campus_facilities: ['培元大礼堂', '综合教学楼', '图书馆与电脑多媒体室', '科学实验室'],
     notable_alumni: ['金宝与霹雳各界实业先驱及杰出校友'],
-    matriculation_highlights: '地利邻近拉曼大学等多所高校，毕业生升学深造极为便利。'
+    matriculation_highlights: '地利邻近拉曼大学等多所高校，毕业生升学深造极为便利。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Pei_Yuan_High_School_(230312)_01.jpg?width=800',
+    caption: '金宝培元独立中学校舍大楼与大礼堂'
   },
 
   // ===================== 7. 槟城州 (5所) =====================
@@ -321,7 +347,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['多国科学院院士、国际顶尖物理/化学/医学科学家、政界首长及跨国巨头CEO'],
     matriculation_highlights: '每年直升中国清华北大、英国剑桥牛津、新加坡NUS/NTU、美国常春藤盟校及澳纽医科理科，学术口碑誉满全球。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chung_Ling_Private_High_School_front_view.jpg?width=800',
-    caption: '槟城锺灵独立中学校舍正门与宏伟教学主楼'
+    caption: '槟城锺灵独立中学标志性大钟楼与全冷气大楼'
   },
   'hanchiang-penang': {
     school_motto: '诚、毅',
@@ -332,7 +358,7 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     notable_alumni: ['国际新闻媒体行业高管、著名影视导演、传媒学者及商业翘楚'],
     matriculation_highlights: '涵盖统考文凭与剑桥 IGCSE 双认证，全球英联邦名校及亚洲顶尖大学录取率极高。',
     hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Han_Chiang_High_School.jpg?width=800',
-    caption: '槟城韩江中学校园综合建筑全景'
+    caption: '槟城韩江中学宏伟连华堂大礼堂与林连登雕像'
   },
   'pcg-penang': {
     school_motto: '庄敬自强',
@@ -341,7 +367,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['槟华华乐团', '弦乐团', '二十四节令女子鼓队', '女童军团', '舞蹈团 (全国金奖)', '辩论社'],
     campus_facilities: ['槟华大礼堂', '女子艺术馆与练琴房', '多功能现代化教学楼', '现代化女生公寓宿舍', '生态植物园'],
     notable_alumni: ['杰出女性科学家、国际医学专家、跨国法律合伙人及著名艺术家'],
-    matriculation_highlights: '毕业生知书达礼、逻辑严密，在欧美、新马与中台名校皆有杰出成就。'
+    matriculation_highlights: '毕业生知书达礼、逻辑严密，在欧美、新马与中台名校皆有杰出成就。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Penang_Chinese_Girls%27_High_School.jpg?width=800',
+    caption: '槟城槟华女子独立中学校园大楼建筑群'
   },
   'phortay-penang': {
     school_motto: '慈、悲、喜、舍',
@@ -359,7 +387,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['日新二十四节令鼓队 (声名赫赫)', '管乐团', '华乐团 (常年全国金牌)', '童军团', '红新月会', '辩论社', '武术醒狮团'],
     campus_facilities: ['怀德综合大礼堂', '现代化科技教学大楼', '高品质冷气男女学生宿舍楼', '标准大型田径运动场', '现代化多功能图书馆'],
     notable_alumni: ['马来西亚各界政经文教栋梁、知名工程院士及商界领军企业家'],
-    matriculation_highlights: '历届统考优等生众多，大批录取新加坡NUS/NTU、中国清华北大、台大及欧美名牌大学。'
+    matriculation_highlights: '历届统考优等生众多，大批录取新加坡NUS/NTU、中国清华北大、台大及欧美名牌大学。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Jit_Sin_Independent_High_School_2013.JPG?width=800',
+    caption: '大山脚日新独立中学校舍大门与操场'
   },
 
   // ===================== 8. 吉打州 (3所) =====================
@@ -399,7 +429,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['丹中二十四节令鼓', '华乐团', '铜管乐团', '扯铃社', '醒狮团', '传统书法与水墨画社'],
     campus_facilities: ['占地广阔之生态园林校区', '全冷气男女学生宿舍楼群', '丹中综合大礼堂', '大型体育场与综合球类场馆', '马达教学大厦与图书馆'],
     notable_alumni: ['东海岸华社领袖、专业科技英才与海内外创业家'],
-    matriculation_highlights: '独立自主生活能力极强，深得中台新大学教授与招生办特别青睐赞赏。'
+    matriculation_highlights: '独立自主生活能力极强，深得中台新大学教授与招生办特别青睐赞赏。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chung_Hwa_Independent_High_School%2C_Kelantan%2C_Nov_2019.jpg?width=800',
+    caption: '吉兰丹中华独立中学校舍与花园式校区'
   },
 
   // ===================== 10. 彭亨州 (1所) =====================
@@ -421,7 +453,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['崇正管乐团 (国际大赛金奖)', '二十四节令鼓队', '崇正华乐团', '模拟联合国社 (Model UN)', '机器人创客社', '弦乐团', '少年军团'],
     campus_facilities: ['树惠现代化综合大礼堂', '科技综合教学大楼', '标准室内冷气体育中心', '数字化现代图书馆', '数理专业实验楼'],
     notable_alumni: ['沙巴政商界重要领军人物、国际知名医学博士、硅谷科技精英'],
-    matriculation_highlights: '毕业生大批直录新加坡国立大学 (NUS)、南洋理工 (NTU)、英国帝国理工、澳洲八大及清华北大台大。'
+    matriculation_highlights: '毕业生大批直录新加坡国立大学 (NUS)、南洋理工 (NTU)、英国帝国理工、澳洲八大及清华北大台大。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Sabah_Tshung_Tsin_Secondary_School.JPG?width=800',
+    caption: '沙巴崇正中学树惠堂大礼堂与现代化科技楼'
   },
   'kiankok-kk': {
     school_motto: '公、忠、勤、毅',
@@ -430,7 +464,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['建国二十四节令鼓', '管乐团', '华乐团', '美术设计学会', '龙狮团', '篮球社'],
     campus_facilities: ['综合教学大楼', '大型综合大礼堂', '冷气男女学生宿舍楼', '美术设计专业工坊', '电脑多媒体室'],
     notable_alumni: ['沙巴建筑工程界骨干、工商翘楚及艺术名家'],
-    matriculation_highlights: '学术与文创技职并重，直通海内外各类高等专业学府。'
+    matriculation_highlights: '学术与文创技职并重，直通海内外各类高等专业学府。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/KotaKinabalu_Sabah_Kian-Kok-Middle-School-01.jpg?width=800',
+    caption: '亚庇建国中学八层综合大楼与标准跑道运动场'
   },
   'bahua-tawau': {
     school_motto: '自强不息',
@@ -439,7 +475,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['巴华二十四节令鼓队', '华乐团', '管乐团', '童军团', '排球校队'],
     campus_facilities: ['巴华大礼堂', '综合教学大厦', '现代化学生冷气宿舍', '科学实验室', '图书阅览中心'],
     notable_alumni: ['斗湖各大种植业、商业领袖及杰出专业人才'],
-    matriculation_highlights: '毕业生勤劳朴实，深受中台新澳高校欢迎。'
+    matriculation_highlights: '毕业生勤劳朴实，深受中台新澳高校欢迎。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tawau_Sabah_Sekolah-Tinggi-Cina-Sabah-07.jpg?width=800',
+    caption: '斗湖巴华中学校舍与美丽东海岸热带校园'
   },
   'yuyuan-sandakan': {
     school_motto: '公、诚、勤、朴',
@@ -466,7 +504,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['节令鼓队', '华乐团', '农业实践社', '童军团'],
     campus_facilities: ['崇正教学大厦', '礼堂', '学生宿舍大楼', '生态种植园'],
     notable_alumni: ['沙巴内陆地区政商与文教人才'],
-    matriculation_highlights: '毕业生吃苦耐劳，海内外升学顺利。'
+    matriculation_highlights: '毕业生吃苦耐劳，海内外升学顺利。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Tenom%20Sabah%20SMK-Tshung-Tsin-02.jpg?width=800',
+    caption: '丹南崇正中学校门与绿色山谷校舍'
   },
   'beaufort-ms': {
     school_motto: '公、忠、勤、毅',
@@ -504,7 +544,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['一中二十四节令鼓队 (东马王者名团)', '一中华乐团 (全国大型交响乐团)', '管乐团', '舞蹈团', '辩论社', '机器人创客社', '童军团'],
     campus_facilities: ['宏伟一中大礼堂', '现代化科技教学大楼', '大型数字化阅览大厦', '冷气多功能会议报告厅', '标准田径操场与室内体育中心'],
     notable_alumni: ['砂拉越内阁要员、国州议员、国际工程大师、著名医学专家及商界巨子'],
-    matriculation_highlights: '统考成绩优异，毕业生大量直升新加坡NUS/NTU、清华北大、台成清交、澳洲八大及欧美名校。'
+    matriculation_highlights: '统考成绩优异，毕业生大量直升新加坡NUS/NTU、清华北大、台成清交、澳洲八大及欧美名校。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Chung_Hua_Middle_School_(04052022-1).jpg?width=800',
+    caption: '古晋中华第一中学宏伟教学楼与现代化校园'
   },
   'chms3-kuching': {
     school_motto: '公、忠、勤、毅',
@@ -549,7 +591,9 @@ export const SCHOOL_CULTURE_MAP: Record<string, SchoolCulture> = {
     flagship_clubs: ['公教华乐团', '管乐团', '公教二十四节令鼓', '少年军团', '数理奥数社', '辩论社'],
     campus_facilities: ['圣母昆仲教学大楼', '公教多功能大礼堂', '冷气学生宿舍楼', '现代化物理化学实验室', '图书阅览中心'],
     notable_alumni: ['国际顶尖数学家、海内外医学专科名医、工程巨擘及各界学术权威'],
-    matriculation_highlights: '统考数理成绩常居全国首屈一指，毕业生直录欧美新中台世界一流名牌大学。'
+    matriculation_highlights: '统考数理成绩常居全国首屈一指，毕业生直录欧美新中台世界一流名牌大学。',
+    hero_image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gateway_of_Catholic_High_School%2C_Sibu.jpg?width=800',
+    caption: '诗巫公教中学校门牌坊与长青综合体育馆'
   },
   'wns-sibu': {
     school_motto: '忠、信、勤、勇',
